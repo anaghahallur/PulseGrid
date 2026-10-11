@@ -251,31 +251,36 @@ class OccupancyCalculator:
         # Write Parquet to staging
         hdfs_client.write_parquet(staging_path, df, overwrite=True)
 
-        # Atomic Rename
+        # Atomic Rename of Primary Parquet File
         rename_ok = hdfs_client.rename(staging_path, final_path)
         if not rename_ok:
             raise IOError(f"Atomic HDFS rename failed from {staging_path} to {final_path}")
 
         # Atomic update of latest-output manifest to avoid alphabetical file sorting ambiguities
-        try:
-            import json
-            min_ts = df["timestamp"].min() if ("timestamp" in df.columns and not df.empty) else None
-            max_ts = df["timestamp"].max() if ("timestamp" in df.columns and not df.empty) else None
-            manifest_data = {
-                "latest_file": final_path,
-                "filename": fname,
-                "min_timestamp": min_ts.isoformat() if pd.notna(min_ts) else None,
-                "max_timestamp": max_ts.isoformat() if pd.notna(max_ts) else None,
-                "row_count": int(len(df)),
-                "created_at": datetime.now(timezone.utc).isoformat(),
-            }
-            manifest_bytes = json.dumps(manifest_data, indent=2).encode("utf-8")
-            stage_manifest = f"{staging_dir}/stage_latest_manifest.json"
-            final_manifest = f"{target_dir}/latest_manifest.json"
-            hdfs_client.write_file(stage_manifest, manifest_bytes, overwrite=True)
-            hdfs_client.rename(stage_manifest, final_manifest)
-        except Exception as me:
-            import logging
-            logging.getLogger(__name__).warning("Could not persist latest_manifest.json to HDFS: %s", me)
+        import json
+        min_ts = df["timestamp"].min() if ("timestamp" in df.columns and not df.empty) else None
+        max_ts = df["timestamp"].max() if ("timestamp" in df.columns and not df.empty) else None
+        manifest_data = {
+            "latest_file": final_path,
+            "filename": fname,
+            "min_timestamp": min_ts.isoformat() if pd.notna(min_ts) else None,
+            "max_timestamp": max_ts.isoformat() if pd.notna(max_ts) else None,
+            "row_count": int(len(df)),
+            "created_at": datetime.now(timezone.utc).isoformat(),
+        }
+        manifest_bytes = json.dumps(manifest_data, indent=2).encode("utf-8")
+        stage_manifest = f"{staging_dir}/stage_latest_manifest.json"
+        final_manifest = f"{target_dir}/latest_manifest.json"
+
+        write_manifest_ok = hdfs_client.write_file(stage_manifest, manifest_bytes, overwrite=True)
+        if not write_manifest_ok:
+            raise IOError(f"Failed to write staging manifest to {stage_manifest}")
+
+        if hdfs_client.exists(final_manifest):
+            hdfs_client.delete(final_manifest, recursive=False)
+
+        manifest_rename_ok = hdfs_client.rename(stage_manifest, final_manifest)
+        if not manifest_rename_ok:
+            raise IOError(f"Atomic HDFS manifest rename failed from {stage_manifest} to {final_manifest}")
 
         return final_path

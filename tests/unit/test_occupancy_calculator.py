@@ -599,3 +599,57 @@ def test_stays_crossing_processing_window(sample_units):
     assert csru_10 == 1, "Patient admitted prior to start_hour is active at window start"
     assert csru_14 == 1, "Patient remains active at window end"
 
+
+def test_persist_occupancy_manifest_rename_failure_raises_ioerror(sample_units):
+    """
+    Verifies that if HDFS manifest rename returns False, persist_occupancy_to_hdfs()
+    does NOT silently report success, but explicitly raises an IOError.
+    """
+    from unittest.mock import MagicMock
+    import pandas as pd
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = pd.DataFrame({
+        "timestamp": [datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)],
+        "unit_id": ["MICU"],
+        "occupied_beds": [5.0],
+        "capacity": [20],
+    })
+
+    mock_hdfs = MagicMock()
+    mock_hdfs.write_parquet.return_value = True
+    # First rename (primary Parquet) succeeds, second rename (manifest) returns False
+    mock_hdfs.rename.side_effect = [True, False]
+    mock_hdfs.write_file.return_value = True
+
+    with pytest.raises(IOError, match="Atomic HDFS manifest rename failed"):
+        calc.persist_occupancy_to_hdfs(df, mock_hdfs, "/processed")
+
+
+def test_persist_occupancy_primary_parquet_rename_failure_raises_ioerror(sample_units):
+    """
+    Verifies that if the primary Parquet file rename returns False, persist_occupancy_to_hdfs()
+    immediately raises an IOError and does not attempt manifest operations.
+    """
+    from unittest.mock import MagicMock
+    import pandas as pd
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = pd.DataFrame({
+        "timestamp": [datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)],
+        "unit_id": ["MICU"],
+        "occupied_beds": [5.0],
+        "capacity": [20],
+    })
+
+    mock_hdfs = MagicMock()
+    mock_hdfs.write_parquet.return_value = True
+    # Primary rename fails
+    mock_hdfs.rename.return_value = False
+
+    with pytest.raises(IOError, match="Atomic HDFS rename failed"):
+        calc.persist_occupancy_to_hdfs(df, mock_hdfs, "/processed")
+
+    # Ensure manifest write was never attempted
+    mock_hdfs.write_file.assert_not_called()
+

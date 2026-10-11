@@ -36,8 +36,8 @@
     "hash": "eedc07c481b6ee3403153ed4af968ef9"
   },
   "C:\\building projs\\bda proj\\src\\api\\service.py": {
-    "mtime": 1791749180.3546326,
-    "hash": "a1836a719b6ec8ca9a88b3e82bf6dc34"
+    "mtime": 1791749651.6198502,
+    "hash": "a410b694328afd7b6618d31867b23ca7"
   },
   "C:\\building projs\\bda proj\\src\\api\\__init__.py": {
     "mtime": 1791741251.2214396,
@@ -72,8 +72,8 @@
     "hash": "a00ec2f730a04357f51bb31ae3f1bb1b"
   },
   "C:\\building projs\\bda proj\\src\\processing\\occupancy_calculator.py": {
-    "mtime": 1791748873.903883,
-    "hash": "398f58f447a1fd82cfac2e87b62f24ce"
+    "mtime": 1791749872.8883877,
+    "hash": "5eddbdd693dd09b628b13d1fba5399cc"
   },
   "C:\\building projs\\bda proj\\src\\processing\\__init__.py": {
     "mtime": 1791730030.853642,
@@ -140,8 +140,8 @@
     "hash": "056c7bb5eae9c264042ad33d8b57751f"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_api_schemas_and_service.py": {
-    "mtime": 1791749214.460193,
-    "hash": "cfc310860a58b1d98677e1d5d45c74a5"
+    "mtime": 1791749711.10643,
+    "hash": "4a870f5dacb01f1c1d4b6facc055dc0f"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_dashboard.py": {
     "mtime": 1791741490.3455052,
@@ -152,8 +152,8 @@
     "hash": "1db843986f3ff9758c26346d112e7c10"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_occupancy_calculator.py": {
-    "mtime": 1791748052.0892587,
-    "hash": "33533e67ba10d1864ecb9865521e224d"
+    "mtime": 1791749676.6984522,
+    "hash": "c704613d8f6f4a073f69bc125722759e"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_schemas.py": {
     "mtime": 1791730058.0408955,

@@ -495,3 +495,166 @@ def test_is_live_stream_decoupled_from_hdfs_storage(monkeypatch):
     assert res.is_live_stream is False
     assert res.source_age_hours is not None and res.source_age_hours >= 10.0
     assert any("STALE_STREAM_WARNING" in w for w in res.warnings)
+
+
+def test_load_history_from_store_stale_manifest_falls_back_to_newer_data(monkeypatch):
+    """
+    Verifies that if latest_manifest.json points to an older dataset, but a newer valid
+    Parquet file exists in HDFS, the service detects manifest staleness and loads the newer dataset.
+    """
+    import json
+    import pandas as pd
+    from unittest.mock import MagicMock
+
+    # Older dataset referenced by stale manifest (Oct 1..3)
+    t_old = [datetime(2026, 10, 1, 0, 0, tzinfo=timezone.utc) + timedelta(hours=h) for h in range(30)]
+    df_old = pd.DataFrame({
+        "timestamp": t_old,
+        "unit_id": "MICU",
+        "occupied_beds": 11.0,
+        "capacity": 24,
+    })
+
+    # Newer dataset that arrived after manifest write (Oct 7..9)
+    t_new = [datetime(2026, 10, 7, 0, 0, tzinfo=timezone.utc) + timedelta(hours=h) for h in range(30)]
+    df_new = pd.DataFrame({
+        "timestamp": t_new,
+        "unit_id": "MICU",
+        "occupied_beds": 15.0,
+        "capacity": 24,
+    })
+
+    # Stale manifest pointing to older file
+    manifest_bytes = json.dumps({
+        "latest_file": "/processed/icu_occupancy_hourly/older_batch.parquet",
+        "max_timestamp": "2026-10-02T05:00:00Z",
+    }).encode("utf-8")
+
+    mock_hdfs = MagicMock()
+    mock_hdfs.is_healthy.return_value = True
+    mock_hdfs.exists.return_value = True
+    mock_hdfs.read_file.return_value = manifest_bytes
+    mock_hdfs.find_files.return_value = [
+        "/processed/icu_occupancy_hourly/older_batch.parquet",
+        "/processed/icu_occupancy_hourly/newer_batch.parquet",
+    ]
+
+    def fake_read_parquet(path):
+        if "older_batch" in path:
+            return df_old
+        if "newer_batch" in path:
+            return df_new
+        raise FileNotFoundError(path)
+
+    mock_hdfs.read_parquet.side_effect = fake_read_parquet
+
+    service = ForecastingService()
+    monkeypatch.setattr("src.api.service.HDFSClient", lambda **kwargs: mock_hdfs)
+
+    records, data_source, is_live = service.load_history_from_store(unit_id="MICU", lookback_hours=24)
+    assert data_source == "HDFS_PROCESSED_LAKE"
+    # Origin must be from newer_batch (Oct 8), NOT older_batch (Oct 2)
+    max_ts = max(r.timestamp for r in records)
+    assert max_ts.day >= 7
+
+
+def test_load_history_from_store_invalid_manifest_target_falls_back(monkeypatch):
+    """
+    Verifies that if latest_manifest.json points to a non-existent or unreadable file,
+    the service safely falls back to scanning available Parquet files without error.
+    """
+    import json
+    import pandas as pd
+    from unittest.mock import MagicMock
+
+    t_valid = [datetime(2026, 10, 4, 0, 0, tzinfo=timezone.utc) + timedelta(hours=h) for h in range(30)]
+    df_valid = pd.DataFrame({
+        "timestamp": t_valid,
+        "unit_id": "MICU",
+        "occupied_beds": 12.0,
+        "capacity": 24,
+    })
+
+    # Manifest pointing to a ghost file that does not exist
+    manifest_bytes = json.dumps({
+        "latest_file": "/processed/icu_occupancy_hourly/non_existent_ghost.parquet",
+        "max_timestamp": "2026-10-05T00:00:00Z",
+    }).encode("utf-8")
+
+    mock_hdfs = MagicMock()
+    mock_hdfs.is_healthy.return_value = True
+
+    def fake_exists(path):
+        if "ghost" in path:
+            return False
+        return True
+
+    mock_hdfs.exists.side_effect = fake_exists
+    mock_hdfs.read_file.return_value = manifest_bytes
+    mock_hdfs.find_files.return_value = [
+        "/processed/icu_occupancy_hourly/valid_dataset.parquet",
+    ]
+    mock_hdfs.read_parquet.return_value = df_valid
+
+    service = ForecastingService()
+    monkeypatch.setattr("src.api.service.HDFSClient", lambda **kwargs: mock_hdfs)
+
+    records, data_source, is_live = service.load_history_from_store(unit_id="MICU", lookback_hours=24)
+    assert data_source == "HDFS_PROCESSED_LAKE"
+    assert len(records) == 25
+    assert records[-1].timestamp.day >= 4
+
+
+def test_load_history_from_store_manifest_target_missing_timestamp_falls_back(monkeypatch):
+    """
+    Verifies that if latest_manifest.json points to a file lacking the required timestamp column,
+    the service rejects the manifest and safely falls back to valid files via scan.
+    """
+    import json
+    import pandas as pd
+    from unittest.mock import MagicMock
+
+    # File lacking timestamp column
+    df_no_ts = pd.DataFrame({
+        "unit_id": ["MICU"],
+        "occupied_beds": [10.0],
+    })
+
+    # Valid file with timestamp column
+    t_valid = [datetime(2026, 10, 8, 0, 0, tzinfo=timezone.utc) + timedelta(hours=h) for h in range(30)]
+    df_valid = pd.DataFrame({
+        "timestamp": t_valid,
+        "unit_id": "MICU",
+        "occupied_beds": 14.0,
+        "capacity": 24,
+    })
+
+    manifest_bytes = json.dumps({
+        "latest_file": "/processed/icu_occupancy_hourly/missing_ts.parquet",
+    }).encode("utf-8")
+
+    mock_hdfs = MagicMock()
+    mock_hdfs.is_healthy.return_value = True
+    mock_hdfs.exists.return_value = True
+    mock_hdfs.read_file.return_value = manifest_bytes
+    mock_hdfs.find_files.return_value = [
+        "/processed/icu_occupancy_hourly/missing_ts.parquet",
+        "/processed/icu_occupancy_hourly/valid.parquet",
+    ]
+
+    def fake_read_parquet(path):
+        if "missing_ts" in path:
+            return df_no_ts
+        if "valid" in path:
+            return df_valid
+        raise FileNotFoundError(path)
+
+    mock_hdfs.read_parquet.side_effect = fake_read_parquet
+
+    service = ForecastingService()
+    monkeypatch.setattr("src.api.service.HDFSClient", lambda **kwargs: mock_hdfs)
+
+    records, data_source, is_live = service.load_history_from_store(unit_id="MICU", lookback_hours=24)
+    assert data_source == "HDFS_PROCESSED_LAKE"
+    max_ts = max(r.timestamp for r in records)
+    assert max_ts.day >= 8

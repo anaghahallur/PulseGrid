@@ -207,41 +207,90 @@ class ForecastingService:
             )
             if hdfs.is_healthy():
                 target_dir = self.settings.hdfs_processed_path.rstrip("/")
-                latest_file: Optional[str] = None
-
-                # 1. Check atomic latest-output manifest first
                 manifest_path = f"{target_dir}/latest_manifest.json"
+
+                manifest_file: Optional[str] = None
+                manifest_max_ts: Optional[pd.Timestamp] = None
+
+                # 1. Inspect and validate manifest if present
                 try:
                     if hdfs.exists(manifest_path):
                         m_content = hdfs.read_file(manifest_path).decode("utf-8")
                         m_data = json.loads(m_content)
                         cand = m_data.get("latest_file")
                         if cand and hdfs.exists(cand):
-                            latest_file = cand
-                            logger.info("Selected newest HDFS dataset via manifest: %s", latest_file)
-                except Exception as me:
-                    logger.debug("Latest manifest check skipped: %s", me)
-
-                # 2. If no manifest, select dataset by evaluating actual data timestamps (never naive alphabetical filename!)
-                if not latest_file:
-                    processed_files = hdfs.find_files(target_dir, suffix=".parquet")
-                    valid_files = [f for f in processed_files if not os.path.basename(f).startswith(".")]
-                    if valid_files:
-                        best_file = None
-                        best_max_ts = None
-                        for cand in valid_files:
+                            # Validate manifest target is readable and contains usable columns
                             try:
                                 cand_df = hdfs.read_parquet(cand)
-                                if isinstance(cand_df, pd.DataFrame) and not cand_df.empty and "timestamp" in cand_df.columns:
-                                    cand_max = pd.to_datetime(cand_df["timestamp"]).max()
-                                    if best_max_ts is None or cand_max > best_max_ts:
-                                        best_max_ts = cand_max
-                                        best_file = cand
-                            except Exception as ce:
-                                logger.warning("Could not inspect timestamp for %s: %s", cand, ce)
+                                if (
+                                    isinstance(cand_df, pd.DataFrame)
+                                    and not cand_df.empty
+                                    and "timestamp" in cand_df.columns
+                                    and "unit_id" in cand_df.columns
+                                ):
+                                    manifest_file = cand
+                                    manifest_max_ts = pd.to_datetime(cand_df["timestamp"]).max()
+                                    logger.info(
+                                        "Manifest target %s validated with max timestamp: %s",
+                                        manifest_file,
+                                        manifest_max_ts,
+                                    )
+                                else:
+                                    logger.warning(
+                                        "Manifest target %s is invalid (empty or missing required columns).",
+                                        cand,
+                                    )
+                            except Exception as pe:
+                                logger.warning("Manifest target %s is unreadable (%s).", cand, pe)
+                        else:
+                            logger.warning("Manifest references non-existent HDFS target: %s", cand)
+                except Exception as me:
+                    logger.warning("Failed to parse latest_manifest.json from HDFS (%s).", me)
 
-                        latest_file = best_file or valid_files[0]
-                        logger.info("Selected HDFS dataset by newest data timestamp (%s): %s", best_max_ts, latest_file)
+                # 2. Scan all valid Parquet files in target_dir to find newest data and detect stale manifest
+                best_file: Optional[str] = None
+                best_max_ts: Optional[pd.Timestamp] = None
+
+                processed_files = hdfs.find_files(target_dir, suffix=".parquet")
+                valid_files = [f for f in processed_files if not os.path.basename(f).startswith(".")]
+
+                for cand in valid_files:
+                    try:
+                        cand_df = hdfs.read_parquet(cand)
+                        if isinstance(cand_df, pd.DataFrame) and not cand_df.empty and "timestamp" in cand_df.columns:
+                            cand_max = pd.to_datetime(cand_df["timestamp"]).max()
+                            if best_max_ts is None or cand_max > best_max_ts:
+                                best_max_ts = cand_max
+                                best_file = cand
+                    except Exception as ce:
+                        logger.warning("Could not inspect timestamp for %s: %s", cand, ce)
+
+                # 3. Resolve latest file:
+                # If manifest points to a valid file, check if a newer Parquet file exists (stale manifest detection).
+                latest_file: Optional[str] = None
+                if manifest_file and manifest_max_ts is not None:
+                    if best_max_ts is not None and best_max_ts > manifest_max_ts:
+                        logger.warning(
+                            "Manifest at %s points to %s (max ts: %s) which is STALE relative to %s (max ts: %s). "
+                            "Safely falling back to timestamp-based selection.",
+                            manifest_path,
+                            manifest_file,
+                            manifest_max_ts,
+                            best_file,
+                            best_max_ts,
+                        )
+                        latest_file = best_file
+                    else:
+                        latest_file = manifest_file
+                else:
+                    # Manifest missing, invalid, or unreadable: safely use best_file from scan
+                    if manifest_file is None and valid_files:
+                        logger.info(
+                            "Manifest unavailable or invalid; using timestamp-based selection: %s (max ts: %s)",
+                            best_file,
+                            best_max_ts,
+                        )
+                    latest_file = best_file
 
                 if latest_file:
                     logger.info("Loading processed census from HDFS: %s", latest_file)
