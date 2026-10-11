@@ -22,6 +22,7 @@ env/
 .env
 *.env
 !.env.example
+!docker/hadoop/hadoop.env
 .netrc
 _netrc
 *credential*

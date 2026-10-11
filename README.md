@@ -5,53 +5,119 @@ A real-time big data streaming, forecasting, and operational capacity planning s
 ## Overview
 This project forecasts ICU bed occupancy for the next 24 hours using historical patient admission, transfer, and discharge (ADT) events.
 
-### Core Stack
-- **Streaming Ingestion:** Apache Kafka (`icu-events` topic)
-- **Data Lake Storage:** Hadoop HDFS (`/raw/icu_events` and `/processed/icu_occupancy_hourly`)
-- **Processing & State Tracking:** Python & Pandas (atomic double-counting prevention)
-- **Machine Learning:** Scikit-learn multi-step regression models (Phase 4)
-- **Prediction Serving:** FastAPI (Phase 5)
-- **Operational Visuals:** Streamlit & Plotly (Phase 6)
-- **Container Infrastructure:** Docker Compose (Kafka, ZooKeeper, Hadoop NameNode, DataNode)
-- **Testing:** Pytest
+### Phase Roadmap & Architecture
+- **Phase 1: Foundation & Data Pipelines** — Docker Compose infra (Kafka, ZooKeeper, Hadoop NameNode, DataNode), Pydantic ADT schemas, deterministic synthetic event generator, and MIMIC-IV demo CSV ingestion.
+- **Phase 2 & 2.1: Streaming Ingestion & Lake Storage** — Kafka producer, Kafka-to-HDFS atomic micro-batch sink (`/raw/icu_events`), dead-letter quarantine, and stateful hourly occupancy reconstruction (`/processed/icu_occupancy_hourly`) with duplicate event deduplication.
+- **Phase 3: Machine Learning & Occupancy Forecasting** — Unit-isolated leakage-safe feature engineering (lags, rolling stats, cyclical calendar harmonics), direct multi-horizon regression models, 24-hour target buffer gap, and model evaluation against baselines.
+- **Phase 4: Serving & Operational Visuals (Future)** — Prediction REST API (FastAPI) and interactive clinical capacity dashboard (Streamlit & Plotly).
 
 ---
 
 ## Data Strategy & Provenance
 The system strictly distinguishes between two data sources:
-1. **Synthetic Data (`SYNTHETIC`):** Primary source for continuous Kafka streaming, surge testing, and ML training (generating 60+ days of consistent hospital occupancy).
+1. **Synthetic Data (`SYNTHETIC`):** Primary source for continuous Kafka streaming, surge testing, and ML training (generating 90 days of consistent hospital occupancy across 5 ICU units).
 2. **MIMIC-IV Demo Data (`MIMIC_DEMO`):** Open-access subset (100 patients, ODbL license) from PhysioNet used strictly to validate CSV ingestion, schema transformations, and clinical transfer logic without temporal misalignment.
 
 ---
 
-## Quickstart Guide
+## Installation & Setup Guide
 
 ### 1. Environment Setup
+Create a Python 3.12 virtual environment:
 ```powershell
-# Create Python 3.12 virtual environment using uv
+# Using uv (recommended)
 uv venv .venv --python 3.12
 .\.venv\Scripts\Activate.ps1
 
-# Install pinned dependencies
+# Or standard venv
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+### 2. Dependency Installation
+
+#### A. Core & Testing Suite
+For pipeline ingestion, Kafka streaming, HDFS sinks, and running automated tests:
+```powershell
 uv pip install -e ".[test]"
+# Or: pip install -e ".[test]"
 ```
 
-### 2. Launch Local Big Data Infrastructure
+#### B. Machine Learning Training & Evaluation
+To train and evaluate the Phase 3 multi-horizon forecasting models (`scikit-learn`, `joblib`):
 ```powershell
+uv pip install -e ".[ml,test]"
+# Or: pip install -e ".[ml,test]"
+```
+
+#### C. Prediction Serving & Dashboard (Phase 4 — Future)
+Serving dependencies (`fastapi`, `uvicorn`, `streamlit`, `plotly`) are documented separately for the upcoming serving/dashboard phase:
+```powershell
+uv pip install -e ".[serving]"
+# Or: pip install -e ".[serving]"
+```
+
+---
+
+## Quickstart Workflow
+
+### 1. Launch Local Big Data Infrastructure
+Ensure Docker Desktop is running. Clean clones include default cluster configurations in `docker/hadoop/hadoop.env`:
+```powershell
+docker compose config
 docker compose up -d
+docker compose ps
 ```
 
-### 3. Generate Synthetic Historical Data
+### 2. Generate Synthetic Historical Data (90 Days)
+Generates 90 days of synthetic ADT events and precomputes hourly census ground truth with a TSICU surge scenario:
 ```powershell
-python scripts/generate_synthetic_data.py --days 60 --seed 42 --surge
+python scripts/generate_synthetic_data.py --days 90 --seed 42 --surge
+```
+
+### 3. Train and Evaluate Forecasting Models
+Trains direct multi-horizon models (Ridge, HistGradientBoosting) against Persistence and Seasonal-Naive baselines using chronological splits (70% Train, 15% Val, 15% Test with a 24-hour buffer gap):
+```powershell
+python scripts/train_eval_forecaster.py --data-path data/synthetic/simulated_hourly_occupancy.parquet --output-dir models --seed 42
 ```
 
 ### 4. (Optional) Ingest MIMIC-IV Clinical Demo Data
+Ingests and validates schema alignment against PhysioNet demo records:
 ```powershell
 python scripts/ingest_mimic_data.py --source demo
 ```
 
-### 5. Run Test Suite
+### 5. Run Automated Tests
 ```powershell
 pytest
 ```
+
+---
+
+## Synthetic-Data Forecasting Evaluation (Phase 3)
+
+> [!IMPORTANT]
+> **Synthetic Data Disclaimer:** All metrics reported below were evaluated strictly on synthetic simulation data. They validate data engineering, feature generation, and multi-horizon architectural mechanics. They **do not** demonstrate clinical efficacy or real-world patient outcomes.
+
+### Model Comparison
+Models were selected based on **Validation MAE** (chronological partition untouched by test data). **Persistence Baseline** is retained as the primary operational benchmark:
+
+| Model | Val MAE (Selection) | Test MAE | Test RMSE | Test WAPE | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Persistence Baseline** ($y_{t+h} = y_t$) | 1.72 beds | **1.56 beds** | **2.30 beds** | **21.8%** | **Primary Benchmark** |
+| **Direct Ridge Regression** ($\alpha=10.0$) | **1.68 beds** | 2.09 beds | 2.72 beds | 29.0% | Selected Candidate |
+| **Seasonal-Naive Baseline** ($24\text{h}$) | 2.37 beds | 2.48 beds | 3.28 beds | 34.5% | Secondary Baseline |
+| **Direct HistGradientBoosting** | 1.94 beds | 2.74 beds | 3.52 beds | 38.1% | Non-linear Candidate |
+
+### Test Performance by Lead Horizon (Direct Ridge Forecaster)
+- **+1 hour ($h_1$):** MAE = 0.38 beds | RMSE = 0.58 beds | WAPE = 4.9%
+- **+3 hours ($h_3$):** MAE = 0.84 beds | RMSE = 1.07 beds | WAPE = 11.0%
+- **+6 hours ($h_6$):** MAE = 1.33 beds | RMSE = 1.65 beds | WAPE = 17.8%
+- **+12 hours ($h_{12}$):** MAE = 2.15 beds | RMSE = 2.59 beds | WAPE = 29.9%
+- **+24 hours ($h_{24}$):** MAE = 3.30 beds | RMSE = 3.96 beds | WAPE = 48.9%
+
+### Analysis of Test Set Dynamic: Ridge vs. Persistence
+- **Active Inflow Period (Oct 21 – Oct 29, 1,035 samples):** During normal ongoing patient arrivals, Direct Ridge Regression outperformed Persistence (**1.72 vs 1.80 MAE**).
+- **Simulation Runout Tail (Oct 30 – Nov 03, 540 samples):** Because admissions stopped at Day 90, census collapsed to zero. Persistence followed the collapsing values without mean-reversion (**1.11 MAE**), whereas Ridge's stationary weights predicted mean-reversion toward typical operating census (~9.6 beds), incurring **2.78 MAE** (+1.10 beds positive bias).
+- In accordance with rigorous machine learning methodology, the held-out test partition is preserved unsegmented, and **Persistence Baseline is maintained as the primary benchmark**.
+

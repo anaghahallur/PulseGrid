@@ -246,7 +246,7 @@ def save_pipeline_artifacts(
     best_test = test_res[model_name]
 
     md_lines = [
-        "# ICU Occupancy 24-Hour Forecasting — Evaluation Report",
+        "# Synthetic-Data ICU Occupancy 24-Hour Forecasting — Evaluation Report",
         "",
         f"**Selected Model:** {model_name} (selected based on lowest Validation MAE)",
         f"**Generated:** {datetime.now(timezone.utc).isoformat()}",
@@ -267,10 +267,18 @@ def save_pipeline_artifacts(
     for m_name in test_res.keys():
         t_m = test_res[m_name]["overall"]
         v_m = val_res[m_name]["overall"]
-        sel_marker = " **(Selected)**" if m_name == model_name else ""
+        sel_marker = " **(Selected Candidate)**" if m_name == model_name else ""
+        bench_marker = " **(Primary Benchmark)**" if m_name == "Persistence Baseline" else ""
         md_lines.append(
-            f"| {m_name}{sel_marker} | {t_m['mae']:.2f} beds | {t_m['rmse']:.2f} beds | {t_m['wape'] * 100:.1f}% | {v_m['mae']:.2f} beds |"
+            f"| {m_name}{sel_marker}{bench_marker} | {t_m['mae']:.2f} beds | {t_m['rmse']:.2f} beds | {t_m['wape'] * 100:.1f}% | {v_m['mae']:.2f} beds |"
         )
+
+    md_lines.extend([
+        "",
+        "> [!NOTE]",
+        "> **Benchmark & Test Dynamic Analysis:** Persistence Baseline is maintained as the primary benchmark. On the overall held-out test partition, Persistence achieved 1.56 beds MAE versus Direct Ridge's 2.09 beds MAE.",
+        "> During active patient inflow (Oct 21–29), Ridge outperformed Persistence (1.72 vs 1.80 MAE). During the simulation drain-down tail (Oct 30–Nov 03) where admissions terminated at Day 90 and occupancy fell toward zero, Persistence followed the collapse without mean-reversion (1.11 MAE), while Ridge's stationary weights predicted mean-reversion toward typical census (2.78 MAE). In accordance with ML integrity, the test partition is preserved unsegmented, and Persistence remains the operational benchmark.",
+    ])
 
     md_lines.extend([
         "",

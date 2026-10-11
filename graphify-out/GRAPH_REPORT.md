@@ -1,16 +1,16 @@
 # Graph Report - bda proj  (2026-10-11)
 
 ## Corpus Check
-- 31 files · ~17,116 words
+- 31 files · ~17,975 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 320 nodes · 484 edges · 24 communities (14 shown, 10 thin omitted)
+- 321 nodes · 485 edges · 24 communities (14 shown, 10 thin omitted)
 - Extraction: 71% EXTRACTED · 29% INFERRED · 0% AMBIGUOUS · INFERRED: 142 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3b9f150d`
+- Built from commit: `b2c98157`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -78,12 +78,12 @@ Cohesion: 0.08
 Nodes (19): ABC, BaseForecaster, DirectHistGradientBoostingForecaster, DirectRandomForestForecaster, DirectRidgeForecaster, PersistenceBaseline, Multi-Horizon Forecasting Models for ICU Bed Demand. Implements: 1. Persistence, Direct Multi-Horizon Ridge Regression.     Trains independent regularized linear (+11 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.1
-Nodes (28): _create_mock_message(), hdfs_client(), kafka_settings(), Pipeline Reliability Audit Integration Tests for Phase 2.1. Verifies failure sce, Scenario: HDFS finalization succeeds, but process crashes before the Kafka offse, Scenario: A micro-batch arrives with a mix of valid events, malformed JSON,, Scenario: Calculator processes raw HDFS events and persists Parquet.     Process, Scenario: A micro-batch contains events spanning multiple date partitions.     F (+20 more)
+Cohesion: 0.08
+Nodes (30): build_unit_features_and_targets(), prepare_forecasting_dataset(), Feature Engineering and Target Construction for ICU Occupancy Forecasting. Const, Constructs leakage-safe features and targets for a single ICU unit.     All shif, Constructs full forecasting dataset across all ICU units while strictly isolatin, chronological_split(), load_forecaster(), End-to-End Training, Evaluation, and Serialization Pipeline for ICU Occupancy Fo (+22 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.09
-Nodes (29): build_unit_features_and_targets(), prepare_forecasting_dataset(), Feature Engineering and Target Construction for ICU Occupancy Forecasting. Const, Constructs leakage-safe features and targets for a single ICU unit.     All shif, Constructs full forecasting dataset across all ICU units while strictly isolatin, chronological_split(), load_forecaster(), End-to-End Training, Evaluation, and Serialization Pipeline for ICU Occupancy Fo (+21 more)
+Cohesion: 0.1
+Nodes (28): _create_mock_message(), hdfs_client(), kafka_settings(), Pipeline Reliability Audit Integration Tests for Phase 2.1. Verifies failure sce, Scenario: HDFS finalization succeeds, but process crashes before the Kafka offse, Scenario: A micro-batch arrives with a mix of valid events, malformed JSON,, Scenario: Calculator processes raw HDFS events and persists Parquet.     Process, Scenario: A micro-batch contains events spanning multiple date partitions.     F (+20 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.1
@@ -118,18 +118,18 @@ Cohesion: 0.4
 Nodes (4): BaseSettings, Application configuration module using Pydantic Settings. Loads environment vari, System-wide configuration settings with environment override support., Settings
 
 ## Knowledge Gaps
-- **136 isolated node(s):** `Standalone CLI script to generate reproducible synthetic ICU event datasets and`, `Reproducible ingestion script for MIMIC-IV Clinical Database Demo 2.2. Downloads`, `Compute SHA-256 hash of a local file.`, `Download a file with HTTP streaming.`, `Verify downloaded files against SHA256SUMS.txt if available.` (+131 more)
+- **137 isolated node(s):** `Standalone CLI script to generate reproducible synthetic ICU event datasets and`, `Reproducible ingestion script for MIMIC-IV Clinical Database Demo 2.2. Downloads`, `Compute SHA-256 hash of a local file.`, `Download a file with HTTP streaming.`, `Verify downloaded files against SHA256SUMS.txt if available.` (+132 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `chronological_split()` connect `Community 4` to `Community 2`, `Community 3`?**
-  _High betweenness centrality (0.376) - this node is a cross-community bridge._
-- **Why does `ICUEvent` connect `Community 3` to `Community 0`, `Community 1`, `Community 6`, `Community 8`, `Community 10`?**
-  _High betweenness centrality (0.240) - this node is a cross-community bridge._
-- **Why does `HDFSClient` connect `Community 0` to `Community 3`, `Community 5`?**
+- **Why does `chronological_split()` connect `Community 3` to `Community 2`, `Community 4`?**
+  _High betweenness centrality (0.377) - this node is a cross-community bridge._
+- **Why does `ICUEvent` connect `Community 4` to `Community 0`, `Community 1`, `Community 6`, `Community 8`, `Community 10`?**
+  _High betweenness centrality (0.239) - this node is a cross-community bridge._
+- **Why does `HDFSClient` connect `Community 0` to `Community 4`, `Community 5`?**
   _High betweenness centrality (0.203) - this node is a cross-community bridge._
 - **Are the 33 inferred relationships involving `ICUEvent` (e.g. with `OccupancyCalculator` and `ICUKafkaProducer`) actually correct?**
   _`ICUEvent` has 33 INFERRED edges - model-reasoned connections that need verification._

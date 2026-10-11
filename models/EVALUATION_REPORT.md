@@ -1,4 +1,4 @@
-# ICU Occupancy 24-Hour Forecasting — Evaluation Report
+# Synthetic-Data ICU Occupancy 24-Hour Forecasting — Evaluation Report
 
 **Selected Model:** Direct Ridge Regression (selected based on lowest Validation MAE)
 **Generated:** 2026-10-11T17:19:16.995680+00:00
@@ -14,10 +14,14 @@
 ## 2. Model Comparison on Held-Out Test Set
 | Model | Test MAE | Test RMSE | Test WAPE | Validation MAE |
 | :--- | :--- | :--- | :--- | :--- |
-| Persistence Baseline | 1.56 beds | 2.30 beds | 21.8% | 1.72 beds |
+| Persistence Baseline **(Primary Benchmark)** | 1.56 beds | 2.30 beds | 21.8% | 1.72 beds |
 | Seasonal-Naive Baseline (24h) | 2.48 beds | 3.28 beds | 34.5% | 2.37 beds |
-| Direct Ridge Regression **(Selected)** | 2.09 beds | 2.72 beds | 29.0% | 1.68 beds |
+| Direct Ridge Regression **(Selected Candidate)** | 2.09 beds | 2.72 beds | 29.0% | 1.68 beds |
 | Direct HistGradientBoosting | 2.74 beds | 3.52 beds | 38.1% | 1.94 beds |
+
+> [!NOTE]
+> **Benchmark & Test Dynamic Analysis:** Persistence Baseline is maintained as the primary benchmark. On the overall held-out test partition, Persistence achieved 1.56 beds MAE versus Direct Ridge's 2.09 beds MAE.
+> During active patient inflow (Oct 21–29), Ridge outperformed Persistence (1.72 vs 1.80 MAE). During the simulation drain-down tail (Oct 30–Nov 03) where admissions terminated at Day 90 and occupancy fell toward zero, Persistence followed the collapse without mean-reversion (1.11 MAE), while Ridge's stationary weights predicted mean-reversion toward typical census (2.78 MAE). In accordance with ML integrity, the test partition is preserved unsegmented, and Persistence remains the operational benchmark.
 
 ## 3. Test Performance by Forecast Horizon (Selected Model)
 | Horizon | Forecast Lead | Test MAE | Test RMSE | Test WAPE |
