@@ -51,9 +51,10 @@ docker compose down
 ```powershell
 # 1. Produce streaming synthetic events into Kafka topic 'icu-events'
 python -c "
+from datetime import datetime, timezone
 from src.producer.simulator import ICUSimulator
 from src.producer.kafka_producer import ICUKafkaProducer
-sim = ICUSimulator(days=7, seed=42)
+sim = ICUSimulator(start_date=datetime(2026, 10, 1, tzinfo=timezone.utc), days=7, random_seed=42)
 events = sim.generate_events()
 prod = ICUKafkaProducer()
 prod.publish_stream(events[:100], raise_on_error=True)

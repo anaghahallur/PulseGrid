@@ -9,7 +9,7 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L1",
       "id": "scripts_check_ports_py",
-      "community": 24,
+      "community": 25,
       "norm_label": "check_ports.py"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L17",
       "id": "scripts_check_ports_check_port",
-      "community": 24,
+      "community": 25,
       "norm_label": "check_port()"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L28",
       "id": "scripts_check_ports_main",
-      "community": 24,
+      "community": 25,
       "norm_label": "main()"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L1",
       "id": "scripts_check_ports_rationale_1",
-      "community": 24,
+      "community": 25,
       "norm_label": "cli utility to audit, verify, and report port assignments for icu bed demand for"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L18",
       "id": "scripts_check_ports_rationale_18",
-      "community": 24,
+      "community": 25,
       "norm_label": "returns true if the port is open/listening on the given host."
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L1",
       "id": "scripts_generate_synthetic_data_py",
-      "community": 4,
+      "community": 8,
       "norm_label": "generate_synthetic_data.py"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L19",
       "id": "scripts_generate_synthetic_data_parse_args",
-      "community": 4,
+      "community": 8,
       "norm_label": "parse_args()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L55",
       "id": "scripts_generate_synthetic_data_main",
-      "community": 4,
+      "community": 8,
       "norm_label": "main()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L1",
       "id": "scripts_generate_synthetic_data_rationale_1",
-      "community": 4,
+      "community": 8,
       "norm_label": "standalone cli script to generate reproducible synthetic icu event datasets and"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L1",
       "id": "scripts_ingest_mimic_data_py",
-      "community": 18,
+      "community": 15,
       "norm_label": "ingest_mimic_data.py"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L48",
       "id": "scripts_ingest_mimic_data_compute_sha256",
-      "community": 18,
+      "community": 15,
       "norm_label": "compute_sha256()"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L57",
       "id": "scripts_ingest_mimic_data_download_file",
-      "community": 18,
+      "community": 15,
       "norm_label": "download_file()"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L75",
       "id": "scripts_ingest_mimic_data_verify_checksums",
-      "community": 18,
+      "community": 15,
       "norm_label": "verify_checksums()"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L109",
       "id": "scripts_ingest_mimic_data_parse_mimic_events",
-      "community": 18,
+      "community": 15,
       "norm_label": "parse_mimic_events()"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L214",
       "id": "scripts_ingest_mimic_data_main",
-      "community": 18,
+      "community": 15,
       "norm_label": "main()"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L1",
       "id": "scripts_ingest_mimic_data_rationale_1",
-      "community": 18,
+      "community": 15,
       "norm_label": "reproducible ingestion script for mimic-iv clinical database demo 2.2. downloads"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L49",
       "id": "scripts_ingest_mimic_data_rationale_49",
-      "community": 18,
+      "community": 15,
       "norm_label": "compute sha-256 hash of a local file."
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L58",
       "id": "scripts_ingest_mimic_data_rationale_58",
-      "community": 18,
+      "community": 15,
       "norm_label": "download a file with http streaming."
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L76",
       "id": "scripts_ingest_mimic_data_rationale_76",
-      "community": 18,
+      "community": 15,
       "norm_label": "verify downloaded files against sha256sums.txt if available."
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L110",
       "id": "scripts_ingest_mimic_data_rationale_110",
-      "community": 18,
+      "community": 15,
       "norm_label": "parses transfers.csv.gz to extract structured patient icu transition events."
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L1",
       "id": "scripts_run_streaming_pipeline_py",
-      "community": 26,
+      "community": 7,
       "norm_label": "run_streaming_pipeline.py"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L27",
       "id": "scripts_run_streaming_pipeline_parse_args",
-      "community": 26,
+      "community": 7,
       "norm_label": "parse_args()"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L35",
       "id": "scripts_run_streaming_pipeline_main",
-      "community": 26,
+      "community": 7,
       "norm_label": "main()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L1",
       "id": "scripts_run_streaming_pipeline_rationale_1",
-      "community": 26,
+      "community": 7,
       "norm_label": "demonstration script for phase 2: live streaming ingestion and kafka-to-hdfs pip"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "scripts/train_eval_forecaster.py",
       "source_location": "L1",
       "id": "scripts_train_eval_forecaster_py",
-      "community": 21,
+      "community": 20,
       "norm_label": "train_eval_forecaster.py"
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "scripts/train_eval_forecaster.py",
       "source_location": "L18",
       "id": "scripts_train_eval_forecaster_parse_args",
-      "community": 21,
+      "community": 20,
       "norm_label": "parse_args()"
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "scripts/train_eval_forecaster.py",
       "source_location": "L48",
       "id": "scripts_train_eval_forecaster_main",
-      "community": 21,
+      "community": 20,
       "norm_label": "main()"
     },
     {
@@ -252,8 +252,62 @@
       "source_file": "scripts/train_eval_forecaster.py",
       "source_location": "L1",
       "id": "scripts_train_eval_forecaster_rationale_1",
-      "community": 21,
+      "community": 20,
       "norm_label": "standalone cli script to execute the phase 3 icu occupancy forecasting training"
+    },
+    {
+      "label": "verify_e2e_pipeline.py",
+      "file_type": "code",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L1",
+      "id": "scripts_verify_e2e_pipeline_py",
+      "community": 23,
+      "norm_label": "verify_e2e_pipeline.py"
+    },
+    {
+      "label": "validate_reconstruction_and_manifest()",
+      "file_type": "code",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L35",
+      "id": "scripts_verify_e2e_pipeline_validate_reconstruction_and_manifest",
+      "community": 23,
+      "norm_label": "validate_reconstruction_and_manifest()"
+    },
+    {
+      "label": "validate_manifest_edge_cases()",
+      "file_type": "code",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L84",
+      "id": "scripts_verify_e2e_pipeline_validate_manifest_edge_cases",
+      "community": 23,
+      "norm_label": "validate_manifest_edge_cases()"
+    },
+    {
+      "label": "validate_api_endpoints()",
+      "file_type": "code",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L140",
+      "id": "scripts_verify_e2e_pipeline_validate_api_endpoints",
+      "community": 23,
+      "norm_label": "validate_api_endpoints()"
+    },
+    {
+      "label": "validate_dashboard()",
+      "file_type": "code",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L201",
+      "id": "scripts_verify_e2e_pipeline_validate_dashboard",
+      "community": 23,
+      "norm_label": "validate_dashboard()"
+    },
+    {
+      "label": "End-to-End Pipeline Validation Script for Phase 5. Validates: 1. Occupancy recon",
+      "file_type": "rationale",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L1",
+      "id": "scripts_verify_e2e_pipeline_rationale_1",
+      "community": 23,
+      "norm_label": "end-to-end pipeline validation script for phase 5. validates: 1. occupancy recon"
     },
     {
       "label": "config.py",
@@ -261,7 +315,7 @@
       "source_file": "src/config.py",
       "source_location": "L1",
       "id": "src_config_py",
-      "community": 14,
+      "community": 16,
       "norm_label": "config.py"
     },
     {
@@ -270,7 +324,7 @@
       "source_file": "src/config.py",
       "source_location": "L12",
       "id": "src_config_settings",
-      "community": 14,
+      "community": 16,
       "norm_label": "settings"
     },
     {
@@ -279,7 +333,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basesettings",
-      "community": 14,
+      "community": 16,
       "norm_label": "basesettings"
     },
     {
@@ -288,7 +342,7 @@
       "source_file": "src/config.py",
       "source_location": "L92",
       "id": "src_config_get_settings",
-      "community": 14,
+      "community": 16,
       "norm_label": "get_settings()"
     },
     {
@@ -297,7 +351,7 @@
       "source_file": "src/config.py",
       "source_location": "L1",
       "id": "src_config_rationale_1",
-      "community": 14,
+      "community": 16,
       "norm_label": "application configuration module using pydantic settings. loads environment vari"
     },
     {
@@ -306,7 +360,7 @@
       "source_file": "src/config.py",
       "source_location": "L13",
       "id": "src_config_rationale_13",
-      "community": 14,
+      "community": 16,
       "norm_label": "system-wide configuration settings with environment override support."
     },
     {
@@ -315,7 +369,7 @@
       "source_file": "src/config.py",
       "source_location": "L93",
       "id": "src_config_rationale_93",
-      "community": 14,
+      "community": 16,
       "norm_label": "retrieve cached application settings instance."
     },
     {
@@ -324,7 +378,7 @@
       "source_file": "src/__init__.py",
       "source_location": "L1",
       "id": "src_init_py",
-      "community": 28,
+      "community": 27,
       "norm_label": "__init__.py"
     },
     {
@@ -333,7 +387,7 @@
       "source_file": "src/__init__.py",
       "source_location": "L1",
       "id": "src_init_rationale_1",
-      "community": 28,
+      "community": 27,
       "norm_label": "icu bed demand forecasting system package."
     },
     {
@@ -342,7 +396,7 @@
       "source_file": "src/api/main.py",
       "source_location": "L1",
       "id": "src_api_main_py",
-      "community": 1,
+      "community": 3,
       "norm_label": "main.py"
     },
     {
@@ -351,7 +405,7 @@
       "source_file": "src/api/main.py",
       "source_location": "L29",
       "id": "api_main_lifespan",
-      "community": 1,
+      "community": 3,
       "norm_label": "lifespan()"
     },
     {
@@ -360,7 +414,7 @@
       "source_file": "src/api/main.py",
       "source_location": "L46",
       "id": "api_main_create_app",
-      "community": 1,
+      "community": 3,
       "norm_label": "create_app()"
     },
     {
@@ -369,7 +423,7 @@
       "source_file": "src/api/main.py",
       "source_location": "L1",
       "id": "api_main_rationale_1",
-      "community": 1,
+      "community": 3,
       "norm_label": "fastapi application entrypoint for icu bed demand forecasting. provides health,"
     },
     {
@@ -378,7 +432,7 @@
       "source_file": "src/api/main.py",
       "source_location": "L30",
       "id": "api_main_rationale_30",
-      "community": 1,
+      "community": 3,
       "norm_label": "application lifespan context manager.     loads and validates the trained model"
     },
     {
@@ -387,7 +441,7 @@
       "source_file": "src/api/main.py",
       "source_location": "L47",
       "id": "api_main_rationale_47",
-      "community": 1,
+      "community": 3,
       "norm_label": "factory function to build and configure the fastapi application."
     },
     {
@@ -396,7 +450,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L1",
       "id": "src_api_schemas_py",
-      "community": 2,
+      "community": 4,
       "norm_label": "schemas.py"
     },
     {
@@ -414,7 +468,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 2,
+      "community": 4,
       "norm_label": "basemodel"
     },
     {
@@ -423,7 +477,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L25",
       "id": "api_schemas_ensure_utc",
-      "community": 2,
+      "community": 4,
       "norm_label": "ensure_utc()"
     },
     {
@@ -441,7 +495,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L69",
       "id": "api_schemas_normalize_unit_id",
-      "community": 2,
+      "community": 4,
       "norm_label": "normalize_unit_id()"
     },
     {
@@ -450,7 +504,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L74",
       "id": "api_schemas_normalize_model_name",
-      "community": 2,
+      "community": 4,
       "norm_label": "normalize_model_name()"
     },
     {
@@ -459,7 +513,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L78",
       "id": "api_schemas_horizonprediction",
-      "community": 2,
+      "community": 4,
       "norm_label": "horizonprediction"
     },
     {
@@ -468,7 +522,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L89",
       "id": "api_schemas_predictionresponse",
-      "community": 2,
+      "community": 5,
       "norm_label": "predictionresponse"
     },
     {
@@ -477,7 +531,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L133",
       "id": "api_schemas_healthresponse",
-      "community": 2,
+      "community": 4,
       "norm_label": "healthresponse"
     },
     {
@@ -486,7 +540,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L142",
       "id": "api_schemas_readinessresponse",
-      "community": 2,
+      "community": 4,
       "norm_label": "readinessresponse"
     },
     {
@@ -495,7 +549,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L154",
       "id": "api_schemas_unitinfo",
-      "community": 2,
+      "community": 4,
       "norm_label": "unitinfo"
     },
     {
@@ -504,7 +558,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L161",
       "id": "api_schemas_modelinforesponse",
-      "community": 2,
+      "community": 4,
       "norm_label": "modelinforesponse"
     },
     {
@@ -513,7 +567,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L1",
       "id": "api_schemas_rationale_1",
-      "community": 2,
+      "community": 4,
       "norm_label": "pydantic request and response schemas for the icu occupancy forecasting api. enf"
     },
     {
@@ -540,7 +594,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L79",
       "id": "api_schemas_rationale_79",
-      "community": 2,
+      "community": 4,
       "norm_label": "forecast result for a specific future hour."
     },
     {
@@ -549,7 +603,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L90",
       "id": "api_schemas_rationale_90",
-      "community": 2,
+      "community": 5,
       "norm_label": "complete prediction response from the forecasting service."
     },
     {
@@ -558,7 +612,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L134",
       "id": "api_schemas_rationale_134",
-      "community": 2,
+      "community": 4,
       "norm_label": "service liveness probe response."
     },
     {
@@ -567,7 +621,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L143",
       "id": "api_schemas_rationale_143",
-      "community": 2,
+      "community": 4,
       "norm_label": "service readiness probe response."
     },
     {
@@ -576,7 +630,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L155",
       "id": "api_schemas_rationale_155",
-      "community": 2,
+      "community": 4,
       "norm_label": "icu unit capacity metadata."
     },
     {
@@ -585,7 +639,7 @@
       "source_file": "src/api/schemas.py",
       "source_location": "L162",
       "id": "api_schemas_rationale_162",
-      "community": 2,
+      "community": 4,
       "norm_label": "information regarding the active forecasting model and baselines."
     },
     {
@@ -594,7 +648,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L1",
       "id": "src_api_service_py",
-      "community": 1,
+      "community": 3,
       "norm_label": "service.py"
     },
     {
@@ -612,7 +666,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L38",
       "id": "api_service_forecastingservice_init",
-      "community": 15,
+      "community": 12,
       "norm_label": ".__init__()"
     },
     {
@@ -639,7 +693,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L159",
       "id": "api_service_forecastingservice_get_configured_units",
-      "community": 2,
+      "community": 4,
       "norm_label": ".get_configured_units()"
     },
     {
@@ -648,7 +702,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L166",
       "id": "api_service_forecastingservice_get_model_info",
-      "community": 2,
+      "community": 4,
       "norm_label": ".get_model_info()"
     },
     {
@@ -693,7 +747,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L712",
       "id": "api_service_get_forecasting_service",
-      "community": 1,
+      "community": 3,
       "norm_label": "get_forecasting_service()"
     },
     {
@@ -702,7 +756,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L1",
       "id": "api_service_rationale_1",
-      "community": 1,
+      "community": 3,
       "norm_label": "inference service for icu bed demand forecasting. loads trained forecasters, val"
     },
     {
@@ -738,7 +792,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L160",
       "id": "api_service_rationale_160",
-      "community": 2,
+      "community": 4,
       "norm_label": "returns the configured icu units and staffed capacities."
     },
     {
@@ -747,7 +801,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L167",
       "id": "api_service_rationale_167",
-      "community": 2,
+      "community": 4,
       "norm_label": "returns metadata regarding active models and benchmarks."
     },
     {
@@ -792,7 +846,7 @@
       "source_file": "src/api/service.py",
       "source_location": "L713",
       "id": "api_service_rationale_713",
-      "community": 1,
+      "community": 3,
       "norm_label": "provides access to the global forecastingservice instance."
     },
     {
@@ -801,7 +855,7 @@
       "source_file": "src/api/__init__.py",
       "source_location": "L1",
       "id": "src_api_init_py",
-      "community": 29,
+      "community": 28,
       "norm_label": "__init__.py"
     },
     {
@@ -810,7 +864,7 @@
       "source_file": "src/api/__init__.py",
       "source_location": "L1",
       "id": "api_init_rationale_1",
-      "community": 29,
+      "community": 28,
       "norm_label": "fastapi prediction service package for icu bed demand forecasting."
     },
     {
@@ -927,7 +981,7 @@
       "source_file": "src/dashboard/__init__.py",
       "source_location": "L1",
       "id": "src_dashboard_init_py",
-      "community": 30,
+      "community": 29,
       "norm_label": "__init__.py"
     },
     {
@@ -936,7 +990,7 @@
       "source_file": "src/dashboard/__init__.py",
       "source_location": "L1",
       "id": "dashboard_init_rationale_1",
-      "community": 30,
+      "community": 29,
       "norm_label": "streamlit operational dashboard for icu bed demand forecasting."
     },
     {
@@ -945,7 +999,7 @@
       "source_file": "src/ml/features.py",
       "source_location": "L1",
       "id": "src_ml_features_py",
-      "community": 7,
+      "community": 9,
       "norm_label": "features.py"
     },
     {
@@ -954,7 +1008,7 @@
       "source_file": "src/ml/features.py",
       "source_location": "L21",
       "id": "ml_features_build_unit_features_and_targets",
-      "community": 7,
+      "community": 9,
       "norm_label": "build_unit_features_and_targets()"
     },
     {
@@ -963,7 +1017,7 @@
       "source_file": "src/ml/features.py",
       "source_location": "L84",
       "id": "ml_features_prepare_forecasting_dataset",
-      "community": 7,
+      "community": 9,
       "norm_label": "prepare_forecasting_dataset()"
     },
     {
@@ -972,7 +1026,7 @@
       "source_file": "src/ml/features.py",
       "source_location": "L1",
       "id": "ml_features_rationale_1",
-      "community": 7,
+      "community": 9,
       "norm_label": "feature engineering and target construction for icu occupancy forecasting. const"
     },
     {
@@ -981,7 +1035,7 @@
       "source_file": "src/ml/features.py",
       "source_location": "L27",
       "id": "ml_features_rationale_27",
-      "community": 7,
+      "community": 9,
       "norm_label": "constructs leakage-safe features and targets for a single icu unit.     all shif"
     },
     {
@@ -990,7 +1044,7 @@
       "source_file": "src/ml/features.py",
       "source_location": "L90",
       "id": "ml_features_rationale_90",
-      "community": 7,
+      "community": 9,
       "norm_label": "constructs full forecasting dataset across all icu units while strictly isolatin"
     },
     {
@@ -999,7 +1053,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L1",
       "id": "src_ml_metrics_py",
-      "community": 17,
+      "community": 14,
       "norm_label": "metrics.py"
     },
     {
@@ -1008,7 +1062,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L12",
       "id": "ml_metrics_calculate_mae",
-      "community": 17,
+      "community": 14,
       "norm_label": "calculate_mae()"
     },
     {
@@ -1017,7 +1071,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L19",
       "id": "ml_metrics_calculate_rmse",
-      "community": 17,
+      "community": 14,
       "norm_label": "calculate_rmse()"
     },
     {
@@ -1026,7 +1080,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L26",
       "id": "ml_metrics_calculate_wape",
-      "community": 17,
+      "community": 14,
       "norm_label": "calculate_wape()"
     },
     {
@@ -1035,7 +1089,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L49",
       "id": "ml_metrics_compute_metrics",
-      "community": 17,
+      "community": 14,
       "norm_label": "compute_metrics()"
     },
     {
@@ -1044,7 +1098,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L58",
       "id": "ml_metrics_evaluate_forecasts",
-      "community": 17,
+      "community": 14,
       "norm_label": "evaluate_forecasts()"
     },
     {
@@ -1053,7 +1107,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L1",
       "id": "ml_metrics_rationale_1",
-      "community": 17,
+      "community": 14,
       "norm_label": "evaluation metrics and error analysis for icu occupancy forecasting. computes ma"
     },
     {
@@ -1062,7 +1116,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L20",
       "id": "ml_metrics_rationale_20",
-      "community": 17,
+      "community": 14,
       "norm_label": "root mean squared error."
     },
     {
@@ -1071,7 +1125,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L27",
       "id": "ml_metrics_rationale_27",
-      "community": 17,
+      "community": 14,
       "norm_label": "weighted absolute percentage error:     wape = sum(|y_true - y_pred|) / sum(y_tr"
     },
     {
@@ -1080,7 +1134,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L50",
       "id": "ml_metrics_rationale_50",
-      "community": 17,
+      "community": 14,
       "norm_label": "computes mae, rmse, and wape dictionary for matching truth and predictions."
     },
     {
@@ -1089,7 +1143,7 @@
       "source_file": "src/ml/metrics.py",
       "source_location": "L64",
       "id": "ml_metrics_rationale_64",
-      "community": 17,
+      "community": 14,
       "norm_label": "comprehensive evaluation of 24-horizon forecast matrix:     - overall aggregate"
     },
     {
@@ -1098,7 +1152,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L1",
       "id": "src_ml_models_py",
-      "community": 9,
+      "community": 10,
       "norm_label": "models.py"
     },
     {
@@ -1107,7 +1161,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L22",
       "id": "ml_models_baseforecaster",
-      "community": 9,
+      "community": 10,
       "norm_label": "baseforecaster"
     },
     {
@@ -1116,7 +1170,7 @@
       "source_file": "",
       "source_location": "",
       "id": "abc",
-      "community": 9,
+      "community": 10,
       "norm_label": "abc"
     },
     {
@@ -1125,7 +1179,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L25",
       "id": "ml_models_baseforecaster_init",
-      "community": 9,
+      "community": 10,
       "norm_label": ".__init__()"
     },
     {
@@ -1134,7 +1188,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L31",
       "id": "ml_models_fit",
-      "community": 9,
+      "community": 10,
       "norm_label": "fit()"
     },
     {
@@ -1143,7 +1197,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L36",
       "id": "ml_models_raw_predict",
-      "community": 9,
+      "community": 10,
       "norm_label": "_raw_predict()"
     },
     {
@@ -1152,7 +1206,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L40",
       "id": "ml_models_baseforecaster_predict",
-      "community": 9,
+      "community": 10,
       "norm_label": ".predict()"
     },
     {
@@ -1161,7 +1215,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L53",
       "id": "ml_models_persistencebaseline",
-      "community": 15,
+      "community": 12,
       "norm_label": "persistencebaseline"
     },
     {
@@ -1170,7 +1224,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L60",
       "id": "ml_models_persistencebaseline_init",
-      "community": 15,
+      "community": 12,
       "norm_label": ".__init__()"
     },
     {
@@ -1179,7 +1233,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L64",
       "id": "ml_models_persistencebaseline_fit",
-      "community": 15,
+      "community": 12,
       "norm_label": ".fit()"
     },
     {
@@ -1188,7 +1242,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L68",
       "id": "ml_models_persistencebaseline_raw_predict",
-      "community": 15,
+      "community": 12,
       "norm_label": "._raw_predict()"
     },
     {
@@ -1197,7 +1251,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L82",
       "id": "ml_models_seasonalnaivebaseline",
-      "community": 15,
+      "community": 12,
       "norm_label": "seasonalnaivebaseline"
     },
     {
@@ -1206,7 +1260,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L91",
       "id": "ml_models_seasonalnaivebaseline_init",
-      "community": 15,
+      "community": 12,
       "norm_label": ".__init__()"
     },
     {
@@ -1215,7 +1269,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L95",
       "id": "ml_models_seasonalnaivebaseline_fit",
-      "community": 15,
+      "community": 12,
       "norm_label": ".fit()"
     },
     {
@@ -1224,7 +1278,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L99",
       "id": "ml_models_seasonalnaivebaseline_raw_predict",
-      "community": 15,
+      "community": 12,
       "norm_label": "._raw_predict()"
     },
     {
@@ -1233,7 +1287,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L121",
       "id": "ml_models_directridgeforecaster",
-      "community": 20,
+      "community": 18,
       "norm_label": "directridgeforecaster"
     },
     {
@@ -1242,7 +1296,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L128",
       "id": "ml_models_directridgeforecaster_init",
-      "community": 15,
+      "community": 12,
       "norm_label": ".__init__()"
     },
     {
@@ -1251,7 +1305,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L139",
       "id": "ml_models_directridgeforecaster_fit",
-      "community": 20,
+      "community": 18,
       "norm_label": ".fit()"
     },
     {
@@ -1260,7 +1314,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L144",
       "id": "ml_models_directridgeforecaster_raw_predict",
-      "community": 9,
+      "community": 10,
       "norm_label": "._raw_predict()"
     },
     {
@@ -1269,7 +1323,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L148",
       "id": "ml_models_directhistgradientboostingforecaster",
-      "community": 9,
+      "community": 10,
       "norm_label": "directhistgradientboostingforecaster"
     },
     {
@@ -1278,7 +1332,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L155",
       "id": "ml_models_directhistgradientboostingforecaster_init",
-      "community": 9,
+      "community": 10,
       "norm_label": ".__init__()"
     },
     {
@@ -1287,7 +1341,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L180",
       "id": "ml_models_directhistgradientboostingforecaster_fit",
-      "community": 20,
+      "community": 18,
       "norm_label": ".fit()"
     },
     {
@@ -1296,7 +1350,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L185",
       "id": "ml_models_directhistgradientboostingforecaster_raw_predict",
-      "community": 9,
+      "community": 10,
       "norm_label": "._raw_predict()"
     },
     {
@@ -1305,7 +1359,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L189",
       "id": "ml_models_directrandomforestforecaster",
-      "community": 9,
+      "community": 10,
       "norm_label": "directrandomforestforecaster"
     },
     {
@@ -1314,7 +1368,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L195",
       "id": "ml_models_directrandomforestforecaster_init",
-      "community": 15,
+      "community": 12,
       "norm_label": ".__init__()"
     },
     {
@@ -1323,7 +1377,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L215",
       "id": "ml_models_directrandomforestforecaster_fit",
-      "community": 20,
+      "community": 18,
       "norm_label": ".fit()"
     },
     {
@@ -1332,7 +1386,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L220",
       "id": "ml_models_directrandomforestforecaster_raw_predict",
-      "community": 9,
+      "community": 10,
       "norm_label": "._raw_predict()"
     },
     {
@@ -1341,7 +1395,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L1",
       "id": "ml_models_rationale_1",
-      "community": 9,
+      "community": 10,
       "norm_label": "multi-horizon forecasting models for icu bed demand. implements: 1. persistence"
     },
     {
@@ -1350,7 +1404,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L23",
       "id": "ml_models_rationale_23",
-      "community": 9,
+      "community": 10,
       "norm_label": "abstract base class for 24-horizon icu occupancy forecasters."
     },
     {
@@ -1359,7 +1413,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L32",
       "id": "ml_models_rationale_32",
-      "community": 39,
+      "community": 34,
       "norm_label": "fits the multi-horizon forecaster on training features and targets."
     },
     {
@@ -1368,7 +1422,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L37",
       "id": "ml_models_rationale_37",
-      "community": 40,
+      "community": 35,
       "norm_label": "internal predict returning raw 2d array of shape (n, horizons)."
     },
     {
@@ -1377,7 +1431,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L41",
       "id": "ml_models_rationale_41",
-      "community": 9,
+      "community": 10,
       "norm_label": "generates predictions for all 24 horizons.         guarantees non-negative physi"
     },
     {
@@ -1386,7 +1440,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L54",
       "id": "ml_models_rationale_54",
-      "community": 15,
+      "community": 12,
       "norm_label": "persistence baseline:     forecasts all future horizons h in {1..24} using the l"
     },
     {
@@ -1395,7 +1449,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L83",
       "id": "ml_models_rationale_83",
-      "community": 15,
+      "community": 12,
       "norm_label": "daily seasonal-naive baseline:     uses the observation from the corresponding h"
     },
     {
@@ -1404,7 +1458,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L122",
       "id": "ml_models_rationale_122",
-      "community": 20,
+      "community": 18,
       "norm_label": "direct multi-horizon ridge regression.     trains independent regularized linear"
     },
     {
@@ -1413,7 +1467,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L149",
       "id": "ml_models_rationale_149",
-      "community": 9,
+      "community": 10,
       "norm_label": "direct multi-horizon histogram gradient boosting regressor.     fast non-linear"
     },
     {
@@ -1422,7 +1476,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L190",
       "id": "ml_models_rationale_190",
-      "community": 9,
+      "community": 10,
       "norm_label": "direct multi-horizon random forest regressor.     ensemble of bagging decision t"
     },
     {
@@ -1431,7 +1485,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L1",
       "id": "src_ml_pipeline_py",
-      "community": 19,
+      "community": 11,
       "norm_label": "pipeline.py"
     },
     {
@@ -1440,7 +1494,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L28",
       "id": "ml_pipeline_chronological_split",
-      "community": 19,
+      "community": 11,
       "norm_label": "chronological_split()"
     },
     {
@@ -1449,7 +1503,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L91",
       "id": "ml_pipeline_run_training_and_evaluation",
-      "community": 19,
+      "community": 11,
       "norm_label": "run_training_and_evaluation()"
     },
     {
@@ -1458,7 +1512,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L192",
       "id": "ml_pipeline_save_pipeline_artifacts",
-      "community": 21,
+      "community": 20,
       "norm_label": "save_pipeline_artifacts()"
     },
     {
@@ -1467,7 +1521,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L354",
       "id": "ml_pipeline_load_forecaster",
-      "community": 19,
+      "community": 11,
       "norm_label": "load_forecaster()"
     },
     {
@@ -1476,7 +1530,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L1",
       "id": "ml_pipeline_rationale_1",
-      "community": 19,
+      "community": 11,
       "norm_label": "end-to-end training, evaluation, and serialization pipeline for icu occupancy fo"
     },
     {
@@ -1485,7 +1539,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L36",
       "id": "ml_pipeline_rationale_36",
-      "community": 19,
+      "community": 11,
       "norm_label": "splits features and targets strictly chronologically by forecast origin timestam"
     },
     {
@@ -1494,7 +1548,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L96",
       "id": "ml_pipeline_rationale_96",
-      "community": 19,
+      "community": 11,
       "norm_label": "executes the complete chronological training and evaluation pipeline:     1. pre"
     },
     {
@@ -1503,7 +1557,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L196",
       "id": "ml_pipeline_rationale_196",
-      "community": 21,
+      "community": 20,
       "norm_label": "persists selected model and evaluation reports to disk:     - model artifact: jo"
     },
     {
@@ -1512,7 +1566,7 @@
       "source_file": "src/ml/pipeline.py",
       "source_location": "L355",
       "id": "ml_pipeline_rationale_355",
-      "community": 19,
+      "community": 11,
       "norm_label": "safely loads a previously fitted baseforecaster model from disk.      security w"
     },
     {
@@ -1521,7 +1575,7 @@
       "source_file": "src/ml/__init__.py",
       "source_location": "L1",
       "id": "src_ml_init_py",
-      "community": 31,
+      "community": 30,
       "norm_label": "__init__.py"
     },
     {
@@ -1530,7 +1584,7 @@
       "source_file": "src/ml/__init__.py",
       "source_location": "L1",
       "id": "ml_init_rationale_1",
-      "community": 31,
+      "community": 30,
       "norm_label": "machine learning subpackage for icu occupancy forecasting. exposes feature engin"
     },
     {
@@ -1539,7 +1593,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L1",
       "id": "src_processing_occupancy_calculator_py",
-      "community": 8,
+      "community": 2,
       "norm_label": "occupancy_calculator.py"
     },
     {
@@ -1548,7 +1602,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L15",
       "id": "processing_occupancy_calculator_occupancycalculator",
-      "community": 8,
+      "community": 2,
       "norm_label": "occupancycalculator"
     },
     {
@@ -1557,7 +1611,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L21",
       "id": "processing_occupancy_calculator_occupancycalculator_init",
-      "community": 8,
+      "community": 2,
       "norm_label": ".__init__()"
     },
     {
@@ -1566,7 +1620,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L28",
       "id": "processing_occupancy_calculator_occupancycalculator_reconstruct",
-      "community": 8,
+      "community": 2,
       "norm_label": ".reconstruct()"
     },
     {
@@ -1575,7 +1629,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L223",
       "id": "processing_occupancy_calculator_occupancycalculator_persist_occupancy_to_hdfs",
-      "community": 8,
+      "community": 2,
       "norm_label": ".persist_occupancy_to_hdfs()"
     },
     {
@@ -1584,7 +1638,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L1",
       "id": "processing_occupancy_calculator_rationale_1",
-      "community": 8,
+      "community": 2,
       "norm_label": "hourly occupancy reconstruction engine. reconstructs exact instantaneous unit ce"
     },
     {
@@ -1593,7 +1647,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L16",
       "id": "processing_occupancy_calculator_rationale_16",
-      "community": 8,
+      "community": 2,
       "norm_label": "state machine that processes patient adt events to reconstruct hourly census."
     },
     {
@@ -1602,7 +1656,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L22",
       "id": "processing_occupancy_calculator_rationale_22",
-      "community": 8,
+      "community": 2,
       "norm_label": ":param unit_capacities: mapping of unit identifier to total bed capacity."
     },
     {
@@ -1611,7 +1665,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L34",
       "id": "processing_occupancy_calculator_rationale_34",
-      "community": 8,
+      "community": 2,
       "norm_label": "reconstructs hourly occupancy time series across all known units.          :para"
     },
     {
@@ -1620,7 +1674,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L230",
       "id": "processing_occupancy_calculator_rationale_230",
-      "community": 8,
+      "community": 2,
       "norm_label": "persists reconstructed hourly census dataframe to hdfs as parquet         using"
     },
     {
@@ -1629,7 +1683,7 @@
       "source_file": "src/processing/__init__.py",
       "source_location": "L1",
       "id": "src_processing_init_py",
-      "community": 32,
+      "community": 31,
       "norm_label": "__init__.py"
     },
     {
@@ -1638,7 +1692,7 @@
       "source_file": "src/processing/__init__.py",
       "source_location": "L1",
       "id": "processing_init_rationale_1",
-      "community": 32,
+      "community": 31,
       "norm_label": "processing module exports."
     },
     {
@@ -1647,7 +1701,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L1",
       "id": "src_producer_kafka_producer_py",
-      "community": 12,
+      "community": 7,
       "norm_label": "kafka_producer.py"
     },
     {
@@ -1656,7 +1710,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L16",
       "id": "producer_kafka_producer_icukafkaproducer",
-      "community": 12,
+      "community": 7,
       "norm_label": "icukafkaproducer"
     },
     {
@@ -1665,7 +1719,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L22",
       "id": "producer_kafka_producer_icukafkaproducer_init",
-      "community": 12,
+      "community": 7,
       "norm_label": ".__init__()"
     },
     {
@@ -1674,7 +1728,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L47",
       "id": "producer_kafka_producer_icukafkaproducer_delivery_report",
-      "community": 12,
+      "community": 7,
       "norm_label": "._delivery_report()"
     },
     {
@@ -1683,7 +1737,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L64",
       "id": "producer_kafka_producer_icukafkaproducer_get_partition_key",
-      "community": 12,
+      "community": 7,
       "norm_label": "._get_partition_key()"
     },
     {
@@ -1692,7 +1746,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L80",
       "id": "producer_kafka_producer_icukafkaproducer_send_event",
-      "community": 12,
+      "community": 7,
       "norm_label": ".send_event()"
     },
     {
@@ -1701,7 +1755,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L98",
       "id": "producer_kafka_producer_icukafkaproducer_publish_stream",
-      "community": 12,
+      "community": 7,
       "norm_label": ".publish_stream()"
     },
     {
@@ -1710,7 +1764,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L140",
       "id": "producer_kafka_producer_icukafkaproducer_flush",
-      "community": 12,
+      "community": 7,
       "norm_label": ".flush()"
     },
     {
@@ -1719,7 +1773,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L144",
       "id": "producer_kafka_producer_icukafkaproducer_close",
-      "community": 12,
+      "community": 7,
       "norm_label": ".close()"
     },
     {
@@ -1728,7 +1782,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L1",
       "id": "producer_kafka_producer_rationale_1",
-      "community": 12,
+      "community": 7,
       "norm_label": "resilient kafka event producer. publishes icu adt events to kafka topic with par"
     },
     {
@@ -1737,7 +1791,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L17",
       "id": "producer_kafka_producer_rationale_17",
-      "community": 12,
+      "community": 7,
       "norm_label": "publishes serialized icuevent records to apache kafka with delivery confirmation"
     },
     {
@@ -1746,7 +1800,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L48",
       "id": "producer_kafka_producer_rationale_48",
-      "community": 12,
+      "community": 7,
       "norm_label": "internal callback tracking delivery success and failures."
     },
     {
@@ -1755,7 +1809,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L65",
       "id": "producer_kafka_producer_rationale_65",
-      "community": 12,
+      "community": 7,
       "norm_label": "determines the partition routing key.         - 'encounter': guarantees all tran"
     },
     {
@@ -1764,7 +1818,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L81",
       "id": "producer_kafka_producer_rationale_81",
-      "community": 12,
+      "community": 7,
       "norm_label": "publishes a single validated icuevent to kafka."
     },
     {
@@ -1773,7 +1827,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L105",
       "id": "producer_kafka_producer_rationale_105",
-      "community": 12,
+      "community": 7,
       "norm_label": "publishes an iterable of events with optional rate throttling and event limiting"
     },
     {
@@ -1782,7 +1836,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L141",
       "id": "producer_kafka_producer_rationale_141",
-      "community": 12,
+      "community": 7,
       "norm_label": "wait for all outstanding messages to be delivered."
     },
     {
@@ -1791,7 +1845,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L145",
       "id": "producer_kafka_producer_rationale_145",
-      "community": 12,
+      "community": 7,
       "norm_label": "flush remaining messages and close producer."
     },
     {
@@ -1800,7 +1854,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L1",
       "id": "src_producer_simulator_py",
-      "community": 4,
+      "community": 8,
       "norm_label": "simulator.py"
     },
     {
@@ -1809,7 +1863,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L16",
       "id": "producer_simulator_icusimulator",
-      "community": 4,
+      "community": 8,
       "norm_label": "icusimulator"
     },
     {
@@ -1818,7 +1872,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L22",
       "id": "producer_simulator_icusimulator_init",
-      "community": 4,
+      "community": 8,
       "norm_label": ".__init__()"
     },
     {
@@ -1827,7 +1881,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L76",
       "id": "producer_simulator_icusimulator_get_arrival_multiplier",
-      "community": 4,
+      "community": 8,
       "norm_label": "._get_arrival_multiplier()"
     },
     {
@@ -1836,7 +1890,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L104",
       "id": "producer_simulator_icusimulator_sample_los_hours",
-      "community": 4,
+      "community": 8,
       "norm_label": "._sample_los_hours()"
     },
     {
@@ -1845,7 +1899,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L116",
       "id": "producer_simulator_icusimulator_generate_events",
-      "community": 10,
+      "community": 1,
       "norm_label": ".generate_events()"
     },
     {
@@ -1854,7 +1908,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L222",
       "id": "producer_simulator_icusimulator_export_jsonl",
-      "community": 4,
+      "community": 8,
       "norm_label": ".export_jsonl()"
     },
     {
@@ -1863,7 +1917,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L1",
       "id": "producer_simulator_rationale_1",
-      "community": 4,
+      "community": 8,
       "norm_label": "deterministic synthetic icu event generator. produces high-fidelity patient admi"
     },
     {
@@ -1872,7 +1926,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L17",
       "id": "producer_simulator_rationale_17",
-      "community": 4,
+      "community": 8,
       "norm_label": "simulates patient flow through an icu network with configurable capacities,"
     },
     {
@@ -1881,7 +1935,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L33",
       "id": "producer_simulator_rationale_33",
-      "community": 4,
+      "community": 8,
       "norm_label": "initialize the simulator.          :param start_date: starting datetime (utc)."
     },
     {
@@ -1890,7 +1944,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L77",
       "id": "producer_simulator_rationale_77",
-      "community": 4,
+      "community": 8,
       "norm_label": "computes diurnal and day-of-week arrival rate multiplier.         hospital admis"
     },
     {
@@ -1899,7 +1953,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L105",
       "id": "producer_simulator_rationale_105",
-      "community": 4,
+      "community": 8,
       "norm_label": "samples icu length of stay from a log-normal distribution.         clinical icu"
     },
     {
@@ -1908,7 +1962,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L121",
       "id": "producer_simulator_rationale_121",
-      "community": 10,
+      "community": 1,
       "norm_label": "generates chronologically ordered icu events across the simulation window."
     },
     {
@@ -1917,7 +1971,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L223",
       "id": "producer_simulator_rationale_223",
-      "community": 4,
+      "community": 8,
       "norm_label": "saves simulated events to json lines format.          :param filepath: target pa"
     },
     {
@@ -1926,7 +1980,7 @@
       "source_file": "src/producer/__init__.py",
       "source_location": "L1",
       "id": "src_producer_init_py",
-      "community": 33,
+      "community": 32,
       "norm_label": "__init__.py"
     },
     {
@@ -1935,7 +1989,7 @@
       "source_file": "src/producer/__init__.py",
       "source_location": "L1",
       "id": "producer_init_rationale_1",
-      "community": 33,
+      "community": 32,
       "norm_label": "producer module exports."
     },
     {
@@ -1944,7 +1998,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L1",
       "id": "src_schema_events_py",
-      "community": 4,
+      "community": 2,
       "norm_label": "events.py"
     },
     {
@@ -1953,7 +2007,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L13",
       "id": "schema_events_eventtype",
-      "community": 4,
+      "community": 2,
       "norm_label": "eventtype"
     },
     {
@@ -1962,7 +2016,7 @@
       "source_file": "",
       "source_location": "",
       "id": "str",
-      "community": 10,
+      "community": 1,
       "norm_label": "str"
     },
     {
@@ -1971,7 +2025,7 @@
       "source_file": "",
       "source_location": "",
       "id": "enum",
-      "community": 4,
+      "community": 2,
       "norm_label": "enum"
     },
     {
@@ -1980,7 +2034,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L20",
       "id": "schema_events_datasource",
-      "community": 4,
+      "community": 2,
       "norm_label": "datasource"
     },
     {
@@ -1989,7 +2043,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L27",
       "id": "schema_events_icuevent",
-      "community": 10,
+      "community": 1,
       "norm_label": "icuevent"
     },
     {
@@ -1998,7 +2052,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L90",
       "id": "schema_events_ensure_utc",
-      "community": 4,
+      "community": 2,
       "norm_label": "ensure_utc()"
     },
     {
@@ -2007,7 +2061,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L97",
       "id": "schema_events_validate_transition_integrity",
-      "community": 4,
+      "community": 2,
       "norm_label": "validate_transition_integrity()"
     },
     {
@@ -2016,7 +2070,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L134",
       "id": "schema_events_icuevent_to_dict",
-      "community": 10,
+      "community": 1,
       "norm_label": ".to_dict()"
     },
     {
@@ -2025,7 +2079,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L1",
       "id": "schema_events_rationale_1",
-      "community": 4,
+      "community": 2,
       "norm_label": "event schemas and validation rules for icu admission, transfer, and discharge (a"
     },
     {
@@ -2034,7 +2088,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L14",
       "id": "schema_events_rationale_14",
-      "community": 4,
+      "community": 2,
       "norm_label": "categorical types of patient bed events."
     },
     {
@@ -2043,7 +2097,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L21",
       "id": "schema_events_rationale_21",
-      "community": 4,
+      "community": 2,
       "norm_label": "provenance tracking for events."
     },
     {
@@ -2052,7 +2106,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L28",
       "id": "schema_events_rationale_28",
-      "community": 10,
+      "community": 1,
       "norm_label": "validated representation of an icu patient transition event.     serves as the c"
     },
     {
@@ -2061,7 +2115,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L91",
       "id": "schema_events_rationale_91",
-      "community": 41,
+      "community": 36,
       "norm_label": "ensure timestamp has explicit timezone awareness in utc."
     },
     {
@@ -2070,7 +2124,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L98",
       "id": "schema_events_rationale_98",
-      "community": 42,
+      "community": 37,
       "norm_label": "validates clinical unit routing consistency:         - admission must specify to"
     },
     {
@@ -2079,7 +2133,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L135",
       "id": "schema_events_rationale_135",
-      "community": 10,
+      "community": 1,
       "norm_label": "convert event to serialized dictionary with iso string timestamps and uuid strin"
     },
     {
@@ -2088,7 +2142,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L1",
       "id": "src_schema_occupancy_py",
-      "community": 2,
+      "community": 4,
       "norm_label": "occupancy.py"
     },
     {
@@ -2097,7 +2151,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L12",
       "id": "schema_occupancy_hourlyoccupancy",
-      "community": 2,
+      "community": 4,
       "norm_label": "hourlyoccupancy"
     },
     {
@@ -2106,7 +2160,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L81",
       "id": "schema_occupancy_hourlyoccupancy_to_dict",
-      "community": 2,
+      "community": 4,
       "norm_label": ".to_dict()"
     },
     {
@@ -2115,7 +2169,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L1",
       "id": "schema_occupancy_rationale_1",
-      "community": 2,
+      "community": 4,
       "norm_label": "hourly occupancy census schemas for icu units. represents aggregated ground-trut"
     },
     {
@@ -2124,7 +2178,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L13",
       "id": "schema_occupancy_rationale_13",
-      "community": 2,
+      "community": 4,
       "norm_label": "ground-truth census record for a specific icu unit at a specific hour boundary."
     },
     {
@@ -2133,7 +2187,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L82",
       "id": "schema_occupancy_rationale_82",
-      "community": 2,
+      "community": 4,
       "norm_label": "serialize occupancy model to dictionary."
     },
     {
@@ -2142,7 +2196,7 @@
       "source_file": "src/schema/__init__.py",
       "source_location": "L1",
       "id": "src_schema_init_py",
-      "community": 43,
+      "community": 38,
       "norm_label": "__init__.py"
     },
     {
@@ -2151,7 +2205,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L1",
       "id": "src_storage_hdfs_client_py",
-      "community": 3,
+      "community": 13,
       "norm_label": "hdfs_client.py"
     },
     {
@@ -2160,7 +2214,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L16",
       "id": "storage_hdfs_client_hdfsclient",
-      "community": 3,
+      "community": 13,
       "norm_label": "hdfsclient"
     },
     {
@@ -2169,7 +2223,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L21",
       "id": "storage_hdfs_client_hdfsclient_init",
-      "community": 14,
+      "community": 16,
       "norm_label": ".__init__()"
     },
     {
@@ -2178,7 +2232,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L34",
       "id": "storage_hdfs_client_hdfsclient_remap_redirect",
-      "community": 3,
+      "community": 19,
       "norm_label": "._remap_redirect()"
     },
     {
@@ -2187,7 +2241,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L48",
       "id": "storage_hdfs_client_hdfsclient_is_healthy",
-      "community": 3,
+      "community": 13,
       "norm_label": ".is_healthy()"
     },
     {
@@ -2196,7 +2250,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L57",
       "id": "storage_hdfs_client_hdfsclient_mkdir",
-      "community": 3,
+      "community": 13,
       "norm_label": ".mkdir()"
     },
     {
@@ -2205,7 +2259,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L65",
       "id": "storage_hdfs_client_hdfsclient_write_file",
-      "community": 3,
+      "community": 24,
       "norm_label": ".write_file()"
     },
     {
@@ -2214,7 +2268,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L94",
       "id": "storage_hdfs_client_hdfsclient_read_file",
-      "community": 3,
+      "community": 19,
       "norm_label": ".read_file()"
     },
     {
@@ -2223,7 +2277,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L111",
       "id": "storage_hdfs_client_hdfsclient_list_dir",
-      "community": 3,
+      "community": 17,
       "norm_label": ".list_dir()"
     },
     {
@@ -2232,7 +2286,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L120",
       "id": "storage_hdfs_client_hdfsclient_delete",
-      "community": 3,
+      "community": 13,
       "norm_label": ".delete()"
     },
     {
@@ -2241,7 +2295,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L131",
       "id": "storage_hdfs_client_hdfsclient_exists",
-      "community": 3,
+      "community": 13,
       "norm_label": ".exists()"
     },
     {
@@ -2250,7 +2304,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L143",
       "id": "storage_hdfs_client_hdfsclient_rename",
-      "community": 3,
+      "community": 13,
       "norm_label": ".rename()"
     },
     {
@@ -2259,7 +2313,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L158",
       "id": "storage_hdfs_client_hdfsclient_write_jsonl",
-      "community": 3,
+      "community": 24,
       "norm_label": ".write_jsonl()"
     },
     {
@@ -2268,7 +2322,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L164",
       "id": "storage_hdfs_client_hdfsclient_read_jsonl",
-      "community": 3,
+      "community": 17,
       "norm_label": ".read_jsonl()"
     },
     {
@@ -2277,7 +2331,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L174",
       "id": "storage_hdfs_client_hdfsclient_find_files",
-      "community": 3,
+      "community": 17,
       "norm_label": ".find_files()"
     },
     {
@@ -2286,7 +2340,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L200",
       "id": "storage_hdfs_client_hdfsclient_read_all_jsonl",
-      "community": 3,
+      "community": 17,
       "norm_label": ".read_all_jsonl()"
     },
     {
@@ -2295,7 +2349,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L210",
       "id": "storage_hdfs_client_hdfsclient_write_parquet",
-      "community": 3,
+      "community": 24,
       "norm_label": ".write_parquet()"
     },
     {
@@ -2304,7 +2358,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L221",
       "id": "storage_hdfs_client_hdfsclient_read_parquet",
-      "community": 3,
+      "community": 19,
       "norm_label": ".read_parquet()"
     },
     {
@@ -2313,7 +2367,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L1",
       "id": "storage_hdfs_client_rationale_1",
-      "community": 3,
+      "community": 13,
       "norm_label": "webhdfs rest api client. provides cross-platform access to hadoop hdfs without r"
     },
     {
@@ -2322,7 +2376,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L17",
       "id": "storage_hdfs_client_rationale_17",
-      "community": 3,
+      "community": 13,
       "norm_label": "robust webhdfs rest client with docker desktop redirect remapping."
     },
     {
@@ -2331,7 +2385,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L35",
       "id": "storage_hdfs_client_rationale_35",
-      "community": 3,
+      "community": 19,
       "norm_label": "remaps internal docker container hostnames in datanode redirects to localhost"
     },
     {
@@ -2340,7 +2394,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L49",
       "id": "storage_hdfs_client_rationale_49",
-      "community": 3,
+      "community": 13,
       "norm_label": "check if namenode webhdfs endpoint is reachable."
     },
     {
@@ -2349,7 +2403,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L58",
       "id": "storage_hdfs_client_rationale_58",
-      "community": 3,
+      "community": 13,
       "norm_label": "create directory in hdfs."
     },
     {
@@ -2358,7 +2412,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L66",
       "id": "storage_hdfs_client_rationale_66",
-      "community": 3,
+      "community": 24,
       "norm_label": "write bytes payload to hdfs using 2-step webhdfs protocol."
     },
     {
@@ -2367,7 +2421,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L95",
       "id": "storage_hdfs_client_rationale_95",
-      "community": 3,
+      "community": 19,
       "norm_label": "read file bytes from hdfs."
     },
     {
@@ -2376,7 +2430,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L112",
       "id": "storage_hdfs_client_rationale_112",
-      "community": 3,
+      "community": 17,
       "norm_label": "list contents of an hdfs directory."
     },
     {
@@ -2385,7 +2439,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L121",
       "id": "storage_hdfs_client_rationale_121",
-      "community": 3,
+      "community": 13,
       "norm_label": "delete an hdfs file or directory."
     },
     {
@@ -2394,7 +2448,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L132",
       "id": "storage_hdfs_client_rationale_132",
-      "community": 3,
+      "community": 13,
       "norm_label": "check if an hdfs path exists."
     },
     {
@@ -2403,7 +2457,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L144",
       "id": "storage_hdfs_client_rationale_144",
-      "community": 3,
+      "community": 13,
       "norm_label": "atomically rename a file or directory in hdfs.         destination must be an ab"
     },
     {
@@ -2412,7 +2466,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L159",
       "id": "storage_hdfs_client_rationale_159",
-      "community": 3,
+      "community": 24,
       "norm_label": "write list of dictionaries as newline-delimited json to hdfs."
     },
     {
@@ -2421,7 +2475,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L165",
       "id": "storage_hdfs_client_rationale_165",
-      "community": 3,
+      "community": 17,
       "norm_label": "read newline-delimited json file from hdfs into list of dictionaries."
     },
     {
@@ -2430,7 +2484,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L175",
       "id": "storage_hdfs_client_rationale_175",
-      "community": 3,
+      "community": 17,
       "norm_label": "recursively lists all file paths under base_path matching suffix.         ignore"
     },
     {
@@ -2439,7 +2493,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L201",
       "id": "storage_hdfs_client_rationale_201",
-      "community": 3,
+      "community": 17,
       "norm_label": "recursively finds and reads all jsonl files under base_path into a combined list"
     },
     {
@@ -2448,7 +2502,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L211",
       "id": "storage_hdfs_client_rationale_211",
-      "community": 3,
+      "community": 24,
       "norm_label": "serialize a pandas dataframe to parquet and write to hdfs."
     },
     {
@@ -2457,7 +2511,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L222",
       "id": "storage_hdfs_client_rationale_222",
-      "community": 3,
+      "community": 19,
       "norm_label": "read parquet file from hdfs into a pandas dataframe."
     },
     {
@@ -2466,7 +2520,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L1",
       "id": "src_storage_kafka_sink_py",
-      "community": 13,
+      "community": 1,
       "norm_label": "kafka_sink.py"
     },
     {
@@ -2475,7 +2529,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L21",
       "id": "storage_kafka_sink_kafkahdfssink",
-      "community": 13,
+      "community": 1,
       "norm_label": "kafkahdfssink"
     },
     {
@@ -2484,7 +2538,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L27",
       "id": "storage_kafka_sink_kafkahdfssink_init",
-      "community": 13,
+      "community": 16,
       "norm_label": ".__init__()"
     },
     {
@@ -2493,7 +2547,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L62",
       "id": "storage_kafka_sink_kafkahdfssink_parse_message",
-      "community": 13,
+      "community": 1,
       "norm_label": "._parse_message()"
     },
     {
@@ -2502,7 +2556,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L85",
       "id": "storage_kafka_sink_kafkahdfssink_process_batch",
-      "community": 13,
+      "community": 1,
       "norm_label": ".process_batch()"
     },
     {
@@ -2511,7 +2565,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L164",
       "id": "storage_kafka_sink_kafkahdfssink_commit_offsets",
-      "community": 13,
+      "community": 1,
       "norm_label": "._commit_offsets()"
     },
     {
@@ -2520,7 +2574,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L168",
       "id": "storage_kafka_sink_kafkahdfssink_poll_and_sink",
-      "community": 13,
+      "community": 1,
       "norm_label": ".poll_and_sink()"
     },
     {
@@ -2529,7 +2583,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L210",
       "id": "storage_kafka_sink_kafkahdfssink_close",
-      "community": 25,
+      "community": 1,
       "norm_label": ".close()"
     },
     {
@@ -2538,7 +2592,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L1",
       "id": "storage_kafka_sink_rationale_1",
-      "community": 13,
+      "community": 1,
       "norm_label": "kafka-to-hdfs sink pipeline. consumes events in bounded micro-batches from apach"
     },
     {
@@ -2547,7 +2601,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L22",
       "id": "storage_kafka_sink_rationale_22",
-      "community": 13,
+      "community": 1,
       "norm_label": "micro-batch consumer that lands kafka events into partitioned hdfs lake storage"
     },
     {
@@ -2556,7 +2610,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L63",
       "id": "storage_kafka_sink_rationale_63",
-      "community": 13,
+      "community": 1,
       "norm_label": "parses and validates a kafka message payload.         returns (valid_event, none"
     },
     {
@@ -2565,7 +2619,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L86",
       "id": "storage_kafka_sink_rationale_86",
-      "community": 13,
+      "community": 1,
       "norm_label": "processes a bounded batch of kafka messages:         1. validates and segregates"
     },
     {
@@ -2574,7 +2628,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L165",
       "id": "storage_kafka_sink_rationale_165",
-      "community": 13,
+      "community": 1,
       "norm_label": "synchronously commit kafka consumer offsets."
     },
     {
@@ -2583,7 +2637,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L174",
       "id": "storage_kafka_sink_rationale_174",
-      "community": 13,
+      "community": 1,
       "norm_label": "polls kafka for messages up to max_messages or until idle_timeout expires,"
     },
     {
@@ -2592,7 +2646,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L211",
       "id": "storage_kafka_sink_rationale_211",
-      "community": 25,
+      "community": 1,
       "norm_label": "closes the kafka consumer safely."
     },
     {
@@ -2601,7 +2655,7 @@
       "source_file": "src/storage/__init__.py",
       "source_location": "L1",
       "id": "src_storage_init_py",
-      "community": 34,
+      "community": 33,
       "norm_label": "__init__.py"
     },
     {
@@ -2610,7 +2664,7 @@
       "source_file": "src/storage/__init__.py",
       "source_location": "L1",
       "id": "storage_init_rationale_1",
-      "community": 34,
+      "community": 33,
       "norm_label": "storage module exports."
     },
     {
@@ -2619,7 +2673,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L1",
       "id": "tests_conftest_py",
-      "community": 27,
+      "community": 26,
       "norm_label": "conftest.py"
     },
     {
@@ -2628,7 +2682,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L10",
       "id": "tests_conftest_sample_units",
-      "community": 27,
+      "community": 26,
       "norm_label": "sample_units()"
     },
     {
@@ -2637,7 +2691,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L21",
       "id": "tests_conftest_base_timestamp",
-      "community": 27,
+      "community": 26,
       "norm_label": "base_timestamp()"
     },
     {
@@ -2646,7 +2700,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L1",
       "id": "tests_conftest_rationale_1",
-      "community": 27,
+      "community": 26,
       "norm_label": "shared pytest fixtures."
     },
     {
@@ -2655,7 +2709,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L1",
       "id": "tests_integration_test_api_endpoints_py",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_api_endpoints.py"
     },
     {
@@ -2664,7 +2718,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L21",
       "id": "integration_test_api_endpoints_client",
-      "community": 1,
+      "community": 3,
       "norm_label": "client()"
     },
     {
@@ -2673,7 +2727,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L27",
       "id": "integration_test_api_endpoints_test_health_endpoint",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_health_endpoint()"
     },
     {
@@ -2682,7 +2736,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L36",
       "id": "integration_test_api_endpoints_test_ready_endpoint",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_ready_endpoint()"
     },
     {
@@ -2691,7 +2745,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L48",
       "id": "integration_test_api_endpoints_test_units_endpoint",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_units_endpoint()"
     },
     {
@@ -2700,7 +2754,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L60",
       "id": "integration_test_api_endpoints_test_model_info_endpoint",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_model_info_endpoint()"
     },
     {
@@ -2709,7 +2763,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L71",
       "id": "integration_test_api_endpoints_test_predict_with_stored_dataset",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_with_stored_dataset()"
     },
     {
@@ -2718,7 +2772,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L93",
       "id": "integration_test_api_endpoints_test_predict_persistence_baseline",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_persistence_baseline()"
     },
     {
@@ -2727,7 +2781,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L113",
       "id": "integration_test_api_endpoints_test_predict_invalid_unit_returns_422",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_invalid_unit_returns_422()"
     },
     {
@@ -2736,7 +2790,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L124",
       "id": "integration_test_api_endpoints_test_predict_non_contiguous_history_returns_422",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_non_contiguous_history_returns_422()"
     },
     {
@@ -2745,7 +2799,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L152",
       "id": "integration_test_api_endpoints_test_predict_surge_capacity_exceedance_warning",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_surge_capacity_exceedance_warning()"
     },
     {
@@ -2754,7 +2808,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L180",
       "id": "integration_test_api_endpoints_test_predict_surfaces_data_provenance_and_simulation_label",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_surfaces_data_provenance_and_simulation_label()"
     },
     {
@@ -2763,7 +2817,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L198",
       "id": "integration_test_api_endpoints_test_unhandled_exception_returns_sanitized_500",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_unhandled_exception_returns_sanitized_500()"
     },
     {
@@ -2772,7 +2826,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L222",
       "id": "integration_test_api_endpoints_test_predict_api_rejects_future_dated_history_when_configured",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_api_rejects_future_dated_history_when_configured()"
     },
     {
@@ -2781,7 +2835,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L243",
       "id": "integration_test_api_endpoints_test_predict_api_preserves_negative_source_age_for_future_history_when_allowed",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_api_preserves_negative_source_age_for_future_history_when_allowed()"
     },
     {
@@ -2790,7 +2844,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L267",
       "id": "integration_test_api_endpoints_test_predict_api_respects_clock_skew_tolerance",
-      "community": 1,
+      "community": 3,
       "norm_label": "test_predict_api_respects_clock_skew_tolerance()"
     },
     {
@@ -2799,7 +2853,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L1",
       "id": "integration_test_api_endpoints_rationale_1",
-      "community": 1,
+      "community": 3,
       "norm_label": "integration tests for fastapi endpoints using testclient. tests: 1. liveness (/h"
     },
     {
@@ -2808,7 +2862,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L22",
       "id": "integration_test_api_endpoints_rationale_22",
-      "community": 1,
+      "community": 3,
       "norm_label": "provides a testclient with lifespan context executed."
     },
     {
@@ -2817,7 +2871,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L28",
       "id": "integration_test_api_endpoints_rationale_28",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that /health returns 200 with operational status."
     },
     {
@@ -2826,7 +2880,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L37",
       "id": "integration_test_api_endpoints_rationale_37",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that /ready returns 200 and confirms model readiness."
     },
     {
@@ -2835,7 +2889,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L49",
       "id": "integration_test_api_endpoints_rationale_49",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies /units returns all configured icu units."
     },
     {
@@ -2844,7 +2898,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L61",
       "id": "integration_test_api_endpoints_rationale_61",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies /model/info provides full transparency on features and benchmarks."
     },
     {
@@ -2853,7 +2907,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L72",
       "id": "integration_test_api_endpoints_rationale_72",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies /predict generates 24-hour predictions using stored data when history i"
     },
     {
@@ -2862,7 +2916,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L94",
       "id": "integration_test_api_endpoints_rationale_94",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies /predict with persistence baseline returns 24 constant horizons."
     },
     {
@@ -2871,7 +2925,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L114",
       "id": "integration_test_api_endpoints_rationale_114",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies /predict with an unknown unit id returns http 422."
     },
     {
@@ -2880,7 +2934,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L125",
       "id": "integration_test_api_endpoints_rationale_125",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies /predict with missing hourly gaps returns http 422.     missing observa"
     },
     {
@@ -2889,7 +2943,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L153",
       "id": "integration_test_api_endpoints_rationale_153",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that capacity exceedances generate warnings and exceedance flags."
     },
     {
@@ -2898,7 +2952,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L181",
       "id": "integration_test_api_endpoints_rationale_181",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that prediction responses include explicit data source, age, and simula"
     },
     {
@@ -2907,7 +2961,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L199",
       "id": "integration_test_api_endpoints_rationale_199",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that unexpected internal exceptions return a sanitized http 500     wit"
     },
     {
@@ -2916,7 +2970,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L223",
       "id": "integration_test_api_endpoints_rationale_223",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that calling /predict with future-dated history and reject_future_data="
     },
     {
@@ -2925,7 +2979,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L244",
       "id": "integration_test_api_endpoints_rationale_244",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that calling /predict with future-dated history and reject_future_data="
     },
     {
@@ -2934,7 +2988,7 @@
       "source_file": "tests/integration/test_api_endpoints.py",
       "source_location": "L268",
       "id": "integration_test_api_endpoints_rationale_268",
-      "community": 1,
+      "community": 3,
       "norm_label": "verifies that an origin 2 minutes ahead of server clock is accepted under     5-"
     },
     {
@@ -2943,7 +2997,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L1",
       "id": "tests_integration_test_end_to_end_pipeline_py",
-      "community": 14,
+      "community": 22,
       "norm_label": "test_end_to_end_pipeline.py"
     },
     {
@@ -2952,7 +3006,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L21",
       "id": "integration_test_end_to_end_pipeline_test_kafka_to_hdfs_sink_full_cycle",
-      "community": 14,
+      "community": 1,
       "norm_label": "test_kafka_to_hdfs_sink_full_cycle()"
     },
     {
@@ -2961,7 +3015,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L93",
       "id": "integration_test_end_to_end_pipeline_test_malformed_event_quarantine_to_dead_letter",
-      "community": 14,
+      "community": 22,
       "norm_label": "test_malformed_event_quarantine_to_dead_letter()"
     },
     {
@@ -2970,7 +3024,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L140",
       "id": "integration_test_end_to_end_pipeline_test_occupancy_persistence_to_hdfs_and_readback",
-      "community": 14,
+      "community": 22,
       "norm_label": "test_occupancy_persistence_to_hdfs_and_readback()"
     },
     {
@@ -2979,7 +3033,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L1",
       "id": "integration_test_end_to_end_pipeline_rationale_1",
-      "community": 14,
+      "community": 22,
       "norm_label": "integration tests for the complete live event ingestion pipeline: kafka producer"
     },
     {
@@ -2988,7 +3042,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L22",
       "id": "integration_test_end_to_end_pipeline_rationale_22",
-      "community": 14,
+      "community": 1,
       "norm_label": "verifies that:     1. published events are consumed by kafkahdfssink.     2. sto"
     },
     {
@@ -2997,7 +3051,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L94",
       "id": "integration_test_end_to_end_pipeline_rationale_94",
-      "community": 14,
+      "community": 22,
       "norm_label": "verifies that malformed, corrupted, or non-json messages sent to kafka     are i"
     },
     {
@@ -3006,7 +3060,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L141",
       "id": "integration_test_end_to_end_pipeline_rationale_141",
-      "community": 14,
+      "community": 22,
       "norm_label": "verifies that reconstructed occupancy dataframes are persisted to hdfs as parque"
     },
     {
@@ -3015,7 +3069,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L1",
       "id": "tests_integration_test_failure_recovery_py",
-      "community": 23,
+      "community": 1,
       "norm_label": "test_failure_recovery.py"
     },
     {
@@ -3024,7 +3078,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L22",
       "id": "integration_test_failure_recovery_test_hdfs_failure_aborts_offset_commit",
-      "community": 23,
+      "community": 1,
       "norm_label": "test_hdfs_failure_aborts_offset_commit()"
     },
     {
@@ -3033,7 +3087,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L93",
       "id": "integration_test_failure_recovery_test_sink_restart_does_not_duplicate_acknowledged_events",
-      "community": 23,
+      "community": 1,
       "norm_label": "test_sink_restart_does_not_duplicate_acknowledged_events()"
     },
     {
@@ -3042,7 +3096,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L1",
       "id": "integration_test_failure_recovery_rationale_1",
-      "community": 23,
+      "community": 1,
       "norm_label": "integration tests for kafka-hdfs failure recovery, offset semantics, and idempot"
     },
     {
@@ -3051,7 +3105,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L23",
       "id": "integration_test_failure_recovery_rationale_23",
-      "community": 23,
+      "community": 1,
       "norm_label": "simulates an hdfs write/rename failure during batch processing.     asserts that"
     },
     {
@@ -3060,7 +3114,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L94",
       "id": "integration_test_failure_recovery_rationale_94",
-      "community": 23,
+      "community": 1,
       "norm_label": "verifies that once a micro-batch is finalized and offsets are committed,     res"
     },
     {
@@ -3069,7 +3123,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L1",
       "id": "tests_integration_test_pipeline_reliability_audit_py",
-      "community": 16,
+      "community": 1,
       "norm_label": "test_pipeline_reliability_audit.py"
     },
     {
@@ -3078,7 +3132,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L22",
       "id": "integration_test_pipeline_reliability_audit_hdfs_client",
-      "community": 16,
+      "community": 13,
       "norm_label": "hdfs_client()"
     },
     {
@@ -3096,7 +3150,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L34",
       "id": "integration_test_pipeline_reliability_audit_create_mock_message",
-      "community": 16,
+      "community": 1,
       "norm_label": "_create_mock_message()"
     },
     {
@@ -3105,7 +3159,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L45",
       "id": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
-      "community": 16,
+      "community": 1,
       "norm_label": "test_multi_date_partition_hdfs_failure_aborts_offset_commit()"
     },
     {
@@ -3114,7 +3168,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L106",
       "id": "integration_test_pipeline_reliability_audit_test_post_finalization_crash_replay_and_downstream_dedup",
-      "community": 16,
+      "community": 1,
       "norm_label": "test_post_finalization_crash_replay_and_downstream_dedup()"
     },
     {
@@ -3123,7 +3177,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L200",
       "id": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
-      "community": 16,
+      "community": 1,
       "norm_label": "test_quarantine_segregation_in_mixed_microbatch()"
     },
     {
@@ -3132,7 +3186,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L278",
       "id": "integration_test_pipeline_reliability_audit_test_occupancy_calculator_cold_restart_reconstruction",
-      "community": 16,
+      "community": 1,
       "norm_label": "test_occupancy_calculator_cold_restart_reconstruction()"
     },
     {
@@ -3141,7 +3195,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L333",
       "id": "integration_test_pipeline_reliability_audit_test_dlq_write_failure_aborts_offset_commit",
-      "community": 16,
+      "community": 1,
       "norm_label": "test_dlq_write_failure_aborts_offset_commit()"
     },
     {
@@ -3150,7 +3204,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L1",
       "id": "integration_test_pipeline_reliability_audit_rationale_1",
-      "community": 16,
+      "community": 1,
       "norm_label": "pipeline reliability audit integration tests for phase 2.1. verifies failure sce"
     },
     {
@@ -3159,7 +3213,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L46",
       "id": "integration_test_pipeline_reliability_audit_rationale_46",
-      "community": 16,
+      "community": 1,
       "norm_label": "scenario: a micro-batch contains events spanning multiple date partitions.     f"
     },
     {
@@ -3168,7 +3222,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L107",
       "id": "integration_test_pipeline_reliability_audit_rationale_107",
-      "community": 16,
+      "community": 1,
       "norm_label": "scenario: hdfs finalization succeeds, but process crashes before the kafka offse"
     },
     {
@@ -3177,7 +3231,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L201",
       "id": "integration_test_pipeline_reliability_audit_rationale_201",
-      "community": 16,
+      "community": 1,
       "norm_label": "scenario: a micro-batch arrives with a mix of valid events, malformed json,"
     },
     {
@@ -3186,7 +3240,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L279",
       "id": "integration_test_pipeline_reliability_audit_rationale_279",
-      "community": 16,
+      "community": 1,
       "norm_label": "scenario: calculator processes raw hdfs events and persists parquet.     process"
     },
     {
@@ -3195,7 +3249,7 @@
       "source_file": "tests/integration/test_pipeline_reliability_audit.py",
       "source_location": "L334",
       "id": "integration_test_pipeline_reliability_audit_rationale_334",
-      "community": 16,
+      "community": 1,
       "norm_label": "scenario: a micro-batch contains a malformed message.     writing the dead-lette"
     },
     {
@@ -3204,7 +3258,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L1",
       "id": "tests_integration_test_storage_streaming_py",
-      "community": 22,
+      "community": 21,
       "norm_label": "test_storage_streaming.py"
     },
     {
@@ -3213,7 +3267,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L14",
       "id": "integration_test_storage_streaming_test_hdfs_connectivity_and_rw",
-      "community": 22,
+      "community": 21,
       "norm_label": "test_hdfs_connectivity_and_rw()"
     },
     {
@@ -3222,7 +3276,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L40",
       "id": "integration_test_storage_streaming_test_kafka_producer_publish",
-      "community": 22,
+      "community": 21,
       "norm_label": "test_kafka_producer_publish()"
     },
     {
@@ -3231,7 +3285,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L1",
       "id": "integration_test_storage_streaming_rationale_1",
-      "community": 22,
+      "community": 21,
       "norm_label": "integration tests for kafka streaming and hadoop hdfs storage."
     },
     {
@@ -3240,7 +3294,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L15",
       "id": "integration_test_storage_streaming_rationale_15",
-      "community": 22,
+      "community": 21,
       "norm_label": "verify webhdfs read and write cycle."
     },
     {
@@ -3249,7 +3303,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L41",
       "id": "integration_test_storage_streaming_rationale_41",
-      "community": 22,
+      "community": 21,
       "norm_label": "verify kafka producer connection and message emission."
     },
     {
@@ -3852,7 +3906,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L1",
       "id": "tests_unit_test_ml_pipeline_py",
-      "community": 7,
+      "community": 9,
       "norm_label": "test_ml_pipeline.py"
     },
     {
@@ -3861,7 +3915,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L45",
       "id": "unit_test_ml_pipeline_synthetic_multitown_df",
-      "community": 7,
+      "community": 9,
       "norm_label": "synthetic_multitown_df()"
     },
     {
@@ -3870,7 +3924,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L73",
       "id": "unit_test_ml_pipeline_test_target_construction_horizons_1_to_24",
-      "community": 7,
+      "community": 9,
       "norm_label": "test_target_construction_horizons_1_to_24()"
     },
     {
@@ -3879,7 +3933,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L97",
       "id": "unit_test_ml_pipeline_test_unit_specific_features_no_cross_unit_leakage",
-      "community": 7,
+      "community": 9,
       "norm_label": "test_unit_specific_features_no_cross_unit_leakage()"
     },
     {
@@ -3888,7 +3942,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L132",
       "id": "unit_test_ml_pipeline_test_prevention_of_future_feature_leakage",
-      "community": 7,
+      "community": 9,
       "norm_label": "test_prevention_of_future_feature_leakage()"
     },
     {
@@ -3897,7 +3951,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L164",
       "id": "unit_test_ml_pipeline_test_chronological_split_boundaries_and_buffer",
-      "community": 7,
+      "community": 11,
       "norm_label": "test_chronological_split_boundaries_and_buffer()"
     },
     {
@@ -3906,7 +3960,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L193",
       "id": "unit_test_ml_pipeline_test_missing_history_and_warmup_handling",
-      "community": 7,
+      "community": 9,
       "norm_label": "test_missing_history_and_warmup_handling()"
     },
     {
@@ -3915,7 +3969,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L219",
       "id": "unit_test_ml_pipeline_test_reproducible_training_fixed_seed",
-      "community": 20,
+      "community": 11,
       "norm_label": "test_reproducible_training_fixed_seed()"
     },
     {
@@ -3924,7 +3978,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L235",
       "id": "unit_test_ml_pipeline_test_model_serialization_and_reload",
-      "community": 19,
+      "community": 11,
       "norm_label": "test_model_serialization_and_reload()"
     },
     {
@@ -3933,7 +3987,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L260",
       "id": "unit_test_ml_pipeline_test_prediction_shape_finite_and_nonnegative",
-      "community": 7,
+      "community": 18,
       "norm_label": "test_prediction_shape_finite_and_nonnegative()"
     },
     {
@@ -3942,7 +3996,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L281",
       "id": "unit_test_ml_pipeline_test_metrics_and_zero_denominator_wape",
-      "community": 17,
+      "community": 14,
       "norm_label": "test_metrics_and_zero_denominator_wape()"
     },
     {
@@ -3951,7 +4005,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L303",
       "id": "unit_test_ml_pipeline_test_baseline_versus_candidate_comparison",
-      "community": 15,
+      "community": 12,
       "norm_label": "test_baseline_versus_candidate_comparison()"
     },
     {
@@ -3960,7 +4014,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L1",
       "id": "unit_test_ml_pipeline_rationale_1",
-      "community": 7,
+      "community": 9,
       "norm_label": "unit tests for icu occupancy forecasting machine learning pipeline (phase 3). ve"
     },
     {
@@ -3969,7 +4023,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L46",
       "id": "unit_test_ml_pipeline_rationale_46",
-      "community": 7,
+      "community": 9,
       "norm_label": "generates 30 days of continuous hourly data for 2 units."
     },
     {
@@ -3978,7 +4032,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L74",
       "id": "unit_test_ml_pipeline_rationale_74",
-      "community": 7,
+      "community": 9,
       "norm_label": "verifies that target_h1 through target_h24 match exact future shifts."
     },
     {
@@ -3987,7 +4041,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L98",
       "id": "unit_test_ml_pipeline_rationale_98",
-      "community": 7,
+      "community": 9,
       "norm_label": "verifies that lag and rolling statistics for unit a never mix with unit b,     e"
     },
     {
@@ -3996,7 +4050,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L133",
       "id": "unit_test_ml_pipeline_rationale_133",
-      "community": 7,
+      "community": 9,
       "norm_label": "verifies that a future spike at t+5 does not affect features at forecast origin"
     },
     {
@@ -4005,7 +4059,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L165",
       "id": "unit_test_ml_pipeline_rationale_165",
-      "community": 7,
+      "community": 11,
       "norm_label": "verifies chronological split ordering and enforces 24-hour target buffer gap"
     },
     {
@@ -4014,7 +4068,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L194",
       "id": "unit_test_ml_pipeline_rationale_194",
-      "community": 7,
+      "community": 9,
       "norm_label": "verifies that initial lookback warmup rows (168h) and forecast tail rows (24h)"
     },
     {
@@ -4023,7 +4077,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L220",
       "id": "unit_test_ml_pipeline_rationale_220",
-      "community": 20,
+      "community": 11,
       "norm_label": "verifies that model training is 100% deterministic with fixed random seed."
     },
     {
@@ -4032,7 +4086,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L236",
       "id": "unit_test_ml_pipeline_rationale_236",
-      "community": 19,
+      "community": 11,
       "norm_label": "verifies joblib model serialization, reload, and error handling for missing file"
     },
     {
@@ -4041,7 +4095,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L261",
       "id": "unit_test_ml_pipeline_rationale_261",
-      "community": 7,
+      "community": 18,
       "norm_label": "verifies that model predictions:     1. match shape (n, 24)     2. are finite nu"
     },
     {
@@ -4050,7 +4104,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L282",
       "id": "unit_test_ml_pipeline_rationale_282",
-      "community": 17,
+      "community": 14,
       "norm_label": "verifies mae, rmse, and wape with special handling of zero denominators."
     },
     {
@@ -4059,7 +4113,7 @@
       "source_file": "tests/unit/test_ml_pipeline.py",
       "source_location": "L304",
       "id": "unit_test_ml_pipeline_rationale_304",
-      "community": 15,
+      "community": 12,
       "norm_label": "verifies that persistence baseline, seasonal-naive, and regression models     ca"
     },
     {
@@ -4068,7 +4122,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L1",
       "id": "tests_unit_test_occupancy_calculator_py",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_occupancy_calculator.py"
     },
     {
@@ -4077,7 +4131,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L10",
       "id": "unit_test_occupancy_calculator_test_deterministic_census_reconstruction",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_deterministic_census_reconstruction()"
     },
     {
@@ -4086,7 +4140,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L99",
       "id": "unit_test_occupancy_calculator_test_no_double_counting_with_duplicates",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_no_double_counting_with_duplicates()"
     },
     {
@@ -4095,7 +4149,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L134",
       "id": "unit_test_occupancy_calculator_test_transfer_preserves_total_count",
-      "community": 8,
+      "community": 2,
       "norm_label": "test_transfer_preserves_total_count()"
     },
     {
@@ -4104,7 +4158,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L185",
       "id": "unit_test_occupancy_calculator_test_capacity_exceedance_representation",
-      "community": 8,
+      "community": 2,
       "norm_label": "test_capacity_exceedance_representation()"
     },
     {
@@ -4113,7 +4167,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L218",
       "id": "unit_test_occupancy_calculator_test_out_of_order_events",
-      "community": 38,
+      "community": 2,
       "norm_label": "test_out_of_order_events()"
     },
     {
@@ -4122,7 +4176,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L279",
       "id": "unit_test_occupancy_calculator_test_unmatched_discharge_does_not_crash",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_unmatched_discharge_does_not_crash()"
     },
     {
@@ -4131,7 +4185,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L299",
       "id": "unit_test_occupancy_calculator_test_correction_events_supersede_original",
-      "community": 37,
+      "community": 2,
       "norm_label": "test_correction_events_supersede_original()"
     },
     {
@@ -4140,7 +4194,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L339",
       "id": "unit_test_occupancy_calculator_test_complex_out_of_order_duplicates_and_orphans",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_complex_out_of_order_duplicates_and_orphans()"
     },
     {
@@ -4149,7 +4203,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L395",
       "id": "unit_test_occupancy_calculator_test_reprocessing_same_raw_history_is_strictly_idempotent",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_reprocessing_same_raw_history_is_strictly_idempotent()"
     },
     {
@@ -4158,7 +4212,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L427",
       "id": "unit_test_occupancy_calculator_test_transfer_origin_mismatch_handled_gracefully",
-      "community": 36,
+      "community": 2,
       "norm_label": "test_transfer_origin_mismatch_handled_gracefully()"
     },
     {
@@ -4167,7 +4221,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L471",
       "id": "unit_test_occupancy_calculator_test_repeated_admission_without_discharge",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_repeated_admission_without_discharge()"
     },
     {
@@ -4176,7 +4230,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L508",
       "id": "unit_test_occupancy_calculator_test_unmatched_discharge_does_not_corrupt_census",
-      "community": 8,
+      "community": 2,
       "norm_label": "test_unmatched_discharge_does_not_corrupt_census()"
     },
     {
@@ -4185,7 +4239,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L532",
       "id": "unit_test_occupancy_calculator_test_corrections_arriving_in_later_batches_supersede_original",
-      "community": 35,
+      "community": 2,
       "norm_label": "test_corrections_arriving_in_later_batches_supersede_original()"
     },
     {
@@ -4194,7 +4248,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L573",
       "id": "unit_test_occupancy_calculator_test_stays_crossing_processing_window",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_stays_crossing_processing_window()"
     },
     {
@@ -4203,7 +4257,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L603",
       "id": "unit_test_occupancy_calculator_test_persist_occupancy_manifest_rename_failure_raises_ioerror",
-      "community": 8,
+      "community": 2,
       "norm_label": "test_persist_occupancy_manifest_rename_failure_raises_ioerror()"
     },
     {
@@ -4212,7 +4266,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L629",
       "id": "unit_test_occupancy_calculator_test_persist_occupancy_primary_parquet_rename_failure_raises_ioerror",
-      "community": 11,
+      "community": 2,
       "norm_label": "test_persist_occupancy_primary_parquet_rename_failure_raises_ioerror()"
     },
     {
@@ -4221,7 +4275,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L1",
       "id": "unit_test_occupancy_calculator_rationale_1",
-      "community": 11,
+      "community": 2,
       "norm_label": "unit tests for occupancy calculation and double-counting prevention."
     },
     {
@@ -4230,7 +4284,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L11",
       "id": "unit_test_occupancy_calculator_rationale_11",
-      "community": 11,
+      "community": 2,
       "norm_label": "carefully crafted test verifying exact census timeline:     patient 1:       10:"
     },
     {
@@ -4239,7 +4293,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L100",
       "id": "unit_test_occupancy_calculator_rationale_100",
-      "community": 11,
+      "community": 2,
       "norm_label": "verifies that feeding duplicate events (with the same event_id)     does not inf"
     },
     {
@@ -4248,7 +4302,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L135",
       "id": "unit_test_occupancy_calculator_rationale_135",
-      "community": 8,
+      "community": 2,
       "norm_label": "verifies that a cross-unit transfer atomically preserves total active patient co"
     },
     {
@@ -4257,7 +4311,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L186",
       "id": "unit_test_occupancy_calculator_rationale_186",
-      "community": 8,
+      "community": 2,
       "norm_label": "verifies that when demand exceeds capacity, physical occupancy is not falsely cl"
     },
     {
@@ -4266,7 +4320,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L219",
       "id": "unit_test_occupancy_calculator_rationale_219",
-      "community": 38,
+      "community": 2,
       "norm_label": "verifies that supplying events in shuffled or reverse chronological order     pr"
     },
     {
@@ -4275,7 +4329,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L280",
       "id": "unit_test_occupancy_calculator_rationale_280",
-      "community": 11,
+      "community": 2,
       "norm_label": "verifies that a discharge event arriving without a matching prior admission"
     },
     {
@@ -4284,7 +4338,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L300",
       "id": "unit_test_occupancy_calculator_rationale_300",
-      "community": 37,
+      "community": 2,
       "norm_label": "verifies that when a correction event arrives superseding an earlier event,"
     },
     {
@@ -4293,7 +4347,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L340",
       "id": "unit_test_occupancy_calculator_rationale_340",
-      "community": 11,
+      "community": 2,
       "norm_label": "verifies deterministic behavior with a stress stream containing:     - multiple"
     },
     {
@@ -4302,7 +4356,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L396",
       "id": "unit_test_occupancy_calculator_rationale_396",
-      "community": 11,
+      "community": 2,
       "norm_label": "verifies that computing occupancy across identical raw history multiple times"
     },
     {
@@ -4311,7 +4365,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L428",
       "id": "unit_test_occupancy_calculator_rationale_428",
-      "community": 36,
+      "community": 2,
       "norm_label": "verifies that when a transfer event specifies from_unit='sicu' but internal stat"
     },
     {
@@ -4320,7 +4374,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L472",
       "id": "unit_test_occupancy_calculator_rationale_472",
-      "community": 11,
+      "community": 2,
       "norm_label": "verifies that a duplicate/repeated admission for the same encounter without an i"
     },
     {
@@ -4329,7 +4383,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L509",
       "id": "unit_test_occupancy_calculator_rationale_509",
-      "community": 8,
+      "community": 2,
       "norm_label": "verifies that an orphan/unmatched discharge for an encounter never admitted"
     },
     {
@@ -4338,7 +4392,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L533",
       "id": "unit_test_occupancy_calculator_rationale_533",
-      "community": 35,
+      "community": 2,
       "norm_label": "verifies that a correction event supersedes the original erroneous admission"
     },
     {
@@ -4347,7 +4401,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L574",
       "id": "unit_test_occupancy_calculator_rationale_574",
-      "community": 11,
+      "community": 2,
       "norm_label": "verifies that when a patient is admitted before start_hour, replaying lake histo"
     },
     {
@@ -4356,7 +4410,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L604",
       "id": "unit_test_occupancy_calculator_rationale_604",
-      "community": 8,
+      "community": 2,
       "norm_label": "verifies that if hdfs manifest rename returns false, persist_occupancy_to_hdfs()"
     },
     {
@@ -4365,7 +4419,7 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L630",
       "id": "unit_test_occupancy_calculator_rationale_630",
-      "community": 11,
+      "community": 2,
       "norm_label": "verifies that if the primary parquet file rename returns false, persist_occupanc"
     },
     {
@@ -4374,7 +4428,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L1",
       "id": "tests_unit_test_schemas_py",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_schemas.py"
     },
     {
@@ -4383,7 +4437,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L11",
       "id": "unit_test_schemas_test_valid_admission_event",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_valid_admission_event()"
     },
     {
@@ -4392,7 +4446,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L27",
       "id": "unit_test_schemas_test_admission_missing_to_unit_fails",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_admission_missing_to_unit_fails()"
     },
     {
@@ -4401,7 +4455,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L40",
       "id": "unit_test_schemas_test_admission_with_from_unit_fails",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_admission_with_from_unit_fails()"
     },
     {
@@ -4410,7 +4464,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L54",
       "id": "unit_test_schemas_test_valid_discharge_event",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_valid_discharge_event()"
     },
     {
@@ -4419,7 +4473,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L68",
       "id": "unit_test_schemas_test_discharge_with_to_unit_fails",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_discharge_with_to_unit_fails()"
     },
     {
@@ -4428,7 +4482,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L82",
       "id": "unit_test_schemas_test_valid_transfer_event",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_valid_transfer_event()"
     },
     {
@@ -4437,7 +4491,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L97",
       "id": "unit_test_schemas_test_transfer_with_identical_units_fails",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_transfer_with_identical_units_fails()"
     },
     {
@@ -4446,7 +4500,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L111",
       "id": "unit_test_schemas_test_correction_event_validation",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_correction_event_validation()"
     },
     {
@@ -4455,7 +4509,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L144",
       "id": "unit_test_schemas_test_serialization_roundtrip",
-      "community": 10,
+      "community": 1,
       "norm_label": "test_serialization_roundtrip()"
     },
     {
@@ -4464,7 +4518,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L1",
       "id": "unit_test_schemas_rationale_1",
-      "community": 10,
+      "community": 1,
       "norm_label": "unit tests for icu adt event schema validation."
     },
     {
@@ -4473,7 +4527,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L1",
       "id": "tests_unit_test_simulator_py",
-      "community": 4,
+      "community": 8,
       "norm_label": "test_simulator.py"
     },
     {
@@ -4482,7 +4536,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L10",
       "id": "unit_test_simulator_test_simulation_determinism",
-      "community": 4,
+      "community": 8,
       "norm_label": "test_simulation_determinism()"
     },
     {
@@ -4491,7 +4545,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L29",
       "id": "unit_test_simulator_test_timeline_consistency",
-      "community": 4,
+      "community": 8,
       "norm_label": "test_timeline_consistency()"
     },
     {
@@ -4500,7 +4554,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L59",
       "id": "unit_test_simulator_test_surge_scenario_impact",
-      "community": 4,
+      "community": 8,
       "norm_label": "test_surge_scenario_impact()"
     },
     {
@@ -4509,7 +4563,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L1",
       "id": "unit_test_simulator_rationale_1",
-      "community": 4,
+      "community": 8,
       "norm_label": "unit tests for synthetic event simulation."
     },
     {
@@ -4544,7 +4598,7 @@
       "file_type": "rationale",
       "source_file": "src/api/service.py",
       "source_location": "L664",
-      "community": 1,
+      "community": 3,
       "norm_label": "provides access to the global forecastingservice instance.",
       "id": "api_service_rationale_664"
     },
@@ -4553,7 +4607,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L75",
-      "community": 2,
+      "community": 4,
       "norm_label": "forecast result for a specific future hour.",
       "id": "api_schemas_rationale_75"
     },
@@ -4562,7 +4616,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L86",
-      "community": 2,
+      "community": 5,
       "norm_label": "complete prediction response from the forecasting service.",
       "id": "api_schemas_rationale_86"
     },
@@ -4571,7 +4625,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L127",
-      "community": 2,
+      "community": 4,
       "norm_label": "service liveness probe response.",
       "id": "api_schemas_rationale_127"
     },
@@ -4580,7 +4634,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L136",
-      "community": 2,
+      "community": 4,
       "norm_label": "service readiness probe response.",
       "id": "api_schemas_rationale_136"
     },
@@ -4589,7 +4643,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L148",
-      "community": 2,
+      "community": 4,
       "norm_label": "icu unit capacity metadata.",
       "id": "api_schemas_rationale_148"
     },
@@ -4598,7 +4652,7 @@
       "file_type": "rationale",
       "source_file": "src/api/service.py",
       "source_location": "L156",
-      "community": 2,
+      "community": 4,
       "norm_label": "returns the configured icu units and staffed capacities.",
       "id": "api_service_rationale_156"
     },
@@ -4607,7 +4661,7 @@
       "file_type": "rationale",
       "source_file": "src/api/service.py",
       "source_location": "L163",
-      "community": 2,
+      "community": 4,
       "norm_label": "returns metadata regarding active models and benchmarks.",
       "id": "api_service_rationale_163"
     },
@@ -4652,7 +4706,7 @@
       "file_type": "rationale",
       "source_file": "src/api/service.py",
       "source_location": "L560",
-      "community": 1,
+      "community": 3,
       "norm_label": "provides access to the global forecastingservice instance.",
       "id": "api_service_rationale_560"
     },
@@ -4661,7 +4715,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L70",
-      "community": 2,
+      "community": 4,
       "norm_label": "forecast result for a specific future hour.",
       "id": "api_schemas_rationale_70"
     },
@@ -4670,7 +4724,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L81",
-      "community": 2,
+      "community": 5,
       "norm_label": "complete prediction response from the forecasting service.",
       "id": "api_schemas_rationale_81"
     },
@@ -4679,7 +4733,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L102",
-      "community": 2,
+      "community": 4,
       "norm_label": "service liveness probe response.",
       "id": "api_schemas_rationale_102"
     },
@@ -4688,7 +4742,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L111",
-      "community": 2,
+      "community": 4,
       "norm_label": "service readiness probe response.",
       "id": "api_schemas_rationale_111"
     },
@@ -4697,7 +4751,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L123",
-      "community": 2,
+      "community": 4,
       "norm_label": "icu unit capacity metadata.",
       "id": "api_schemas_rationale_123"
     },
@@ -4706,7 +4760,7 @@
       "file_type": "rationale",
       "source_file": "src/api/schemas.py",
       "source_location": "L130",
-      "community": 2,
+      "community": 4,
       "norm_label": "information regarding the active forecasting model and baselines.",
       "id": "api_schemas_rationale_130"
     },
@@ -4733,7 +4787,7 @@
       "file_type": "rationale",
       "source_file": "src/api/service.py",
       "source_location": "L102",
-      "community": 2,
+      "community": 4,
       "norm_label": "returns the configured icu units and staffed capacities.",
       "id": "api_service_rationale_102"
     },
@@ -4742,7 +4796,7 @@
       "file_type": "rationale",
       "source_file": "src/api/service.py",
       "source_location": "L109",
-      "community": 2,
+      "community": 4,
       "norm_label": "returns metadata regarding active models and benchmarks.",
       "id": "api_service_rationale_109"
     },
@@ -4778,7 +4832,7 @@
       "file_type": "rationale",
       "source_file": "src/api/service.py",
       "source_location": "L381",
-      "community": 1,
+      "community": 3,
       "norm_label": "provides access to the global forecastingservice instance.",
       "id": "api_service_rationale_381"
     },
@@ -4787,7 +4841,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L163",
-      "community": 13,
+      "community": 1,
       "norm_label": "synchronously commit kafka consumer offsets.",
       "id": "storage_kafka_sink_rationale_163"
     },
@@ -4796,7 +4850,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L172",
-      "community": 13,
+      "community": 1,
       "norm_label": "polls kafka for messages up to max_messages or until idle_timeout expires,",
       "id": "storage_kafka_sink_rationale_172"
     },
@@ -4805,7 +4859,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L209",
-      "community": 25,
+      "community": 1,
       "norm_label": "closes the kafka consumer safely.",
       "id": "storage_kafka_sink_rationale_209"
     },
@@ -4814,7 +4868,7 @@
       "file_type": "rationale",
       "source_file": "src/ml/pipeline.py",
       "source_location": "L347",
-      "community": 19,
+      "community": 11,
       "norm_label": "safely loads a previously fitted baseforecaster model from disk.      security w",
       "id": "ml_pipeline_rationale_347"
     },
@@ -4823,7 +4877,7 @@
       "file_type": "rationale",
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L194",
-      "community": 8,
+      "community": 2,
       "norm_label": "persists reconstructed hourly census dataframe to hdfs as parquet         using",
       "id": "processing_occupancy_calculator_rationale_194"
     },
@@ -4832,7 +4886,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L186",
-      "community": 3,
+      "community": 19,
       "norm_label": "read parquet file from hdfs into a pandas dataframe.",
       "id": "storage_hdfs_client_rationale_186"
     },
@@ -4841,7 +4895,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L168",
-      "community": 13,
+      "community": 1,
       "norm_label": "polls kafka for messages up to max_messages or until idle_timeout expires,",
       "id": "storage_kafka_sink_rationale_168"
     },
@@ -4850,7 +4904,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L205",
-      "community": 25,
+      "community": 1,
       "norm_label": "closes the kafka consumer safely.",
       "id": "storage_kafka_sink_rationale_205"
     }
@@ -5327,6 +5381,122 @@
       "weight": 1.0,
       "source": "scripts_train_eval_forecaster_main",
       "target": "ml_pipeline_save_pipeline_artifacts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_py",
+      "target": "scripts_verify_e2e_pipeline_validate_reconstruction_and_manifest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_py",
+      "target": "scripts_verify_e2e_pipeline_validate_manifest_edge_cases",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_py",
+      "target": "scripts_verify_e2e_pipeline_validate_api_endpoints",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_py",
+      "target": "scripts_verify_e2e_pipeline_validate_dashboard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_rationale_1",
+      "target": "scripts_verify_e2e_pipeline_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_validate_reconstruction_and_manifest",
+      "target": "src_config_get_settings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_validate_reconstruction_and_manifest",
+      "target": "storage_hdfs_client_hdfsclient"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_validate_reconstruction_and_manifest",
+      "target": "processing_occupancy_calculator_occupancycalculator"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_validate_manifest_edge_cases",
+      "target": "src_config_get_settings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_validate_manifest_edge_cases",
+      "target": "api_service_forecastingservice"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "scripts/verify_e2e_pipeline.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "scripts_verify_e2e_pipeline_validate_manifest_edge_cases",
+      "target": "storage_hdfs_client_hdfsclient"
     },
     {
       "relation": "contains",
@@ -7135,9 +7305,9 @@
       "source_file": "src/api/service.py",
       "source_location": "L364",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_service_rationale_364",
-      "target": "api_service_forecastingservice_validate_and_normalize_history",
-      "confidence_score": 1.0
+      "target": "api_service_forecastingservice_validate_and_normalize_history"
     },
     {
       "relation": "rationale_for",
@@ -7176,9 +7346,9 @@
       "source_file": "src/api/service.py",
       "source_location": "L459",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_service_rationale_459",
-      "target": "api_service_forecastingservice_prepare_inference_features",
-      "confidence_score": 1.0
+      "target": "api_service_forecastingservice_prepare_inference_features"
     },
     {
       "relation": "calls",
@@ -7227,9 +7397,9 @@
       "source_file": "src/api/service.py",
       "source_location": "L500",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_service_rationale_500",
-      "target": "api_service_forecastingservice_predict",
-      "confidence_score": 1.0
+      "target": "api_service_forecastingservice_predict"
     },
     {
       "relation": "calls",
@@ -7278,9 +7448,9 @@
       "source_file": "src/api/service.py",
       "source_location": "L713",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "api_service_rationale_713",
-      "target": "api_service_get_forecasting_service",
-      "confidence_score": 1.0
+      "target": "api_service_get_forecasting_service"
     },
     {
       "relation": "calls",
@@ -12215,9 +12385,9 @@
       "source_file": "tests/unit/test_api_schemas_and_service.py",
       "source_location": "L500",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_api_schemas_and_service_py",
-      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_stale_manifest_falls_back_to_newer_data",
-      "confidence_score": 1.0
+      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_stale_manifest_falls_back_to_newer_data"
     },
     {
       "relation": "contains",
@@ -12225,9 +12395,9 @@
       "source_file": "tests/unit/test_api_schemas_and_service.py",
       "source_location": "L561",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_api_schemas_and_service_py",
-      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_invalid_manifest_target_falls_back",
-      "confidence_score": 1.0
+      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_invalid_manifest_target_falls_back"
     },
     {
       "relation": "contains",
@@ -12235,9 +12405,9 @@
       "source_file": "tests/unit/test_api_schemas_and_service.py",
       "source_location": "L608",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_api_schemas_and_service_py",
-      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_manifest_target_missing_timestamp_falls_back",
-      "confidence_score": 1.0
+      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_manifest_target_missing_timestamp_falls_back"
     },
     {
       "relation": "rationale_for",
@@ -12495,9 +12665,9 @@
       "source_file": "tests/unit/test_api_schemas_and_service.py",
       "source_location": "L501",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_api_schemas_and_service_rationale_501",
-      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_stale_manifest_falls_back_to_newer_data",
-      "confidence_score": 1.0
+      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_stale_manifest_falls_back_to_newer_data"
     },
     {
       "relation": "rationale_for",
@@ -12505,9 +12675,9 @@
       "source_file": "tests/unit/test_api_schemas_and_service.py",
       "source_location": "L562",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_api_schemas_and_service_rationale_562",
-      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_invalid_manifest_target_falls_back",
-      "confidence_score": 1.0
+      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_invalid_manifest_target_falls_back"
     },
     {
       "relation": "rationale_for",
@@ -12515,9 +12685,9 @@
       "source_file": "tests/unit/test_api_schemas_and_service.py",
       "source_location": "L609",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_api_schemas_and_service_rationale_609",
-      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_manifest_target_missing_timestamp_falls_back",
-      "confidence_score": 1.0
+      "target": "unit_test_api_schemas_and_service_test_load_history_from_store_manifest_target_missing_timestamp_falls_back"
     },
     {
       "relation": "contains",
@@ -12985,9 +13155,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L603",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_persist_occupancy_manifest_rename_failure_raises_ioerror",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_persist_occupancy_manifest_rename_failure_raises_ioerror"
     },
     {
       "relation": "contains",
@@ -12995,9 +13165,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L629",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_persist_occupancy_primary_parquet_rename_failure_raises_ioerror",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_persist_occupancy_primary_parquet_rename_failure_raises_ioerror"
     },
     {
       "relation": "rationale_for",
@@ -13155,9 +13325,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L604",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_604",
-      "target": "unit_test_occupancy_calculator_test_persist_occupancy_manifest_rename_failure_raises_ioerror",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_persist_occupancy_manifest_rename_failure_raises_ioerror"
     },
     {
       "relation": "rationale_for",
@@ -13165,9 +13335,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L630",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_630",
-      "target": "unit_test_occupancy_calculator_test_persist_occupancy_primary_parquet_rename_failure_raises_ioerror",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_persist_occupancy_primary_parquet_rename_failure_raises_ioerror"
     },
     {
       "relation": "contains",
@@ -13311,5 +13481,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "48459b3c1b4bb573a7b2bccc74a9a68d12a92451"
+  "built_at_commit": "204630535924814c7d1b8e55f1e5370316745368"
 }
