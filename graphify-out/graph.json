@@ -189,7 +189,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L1",
       "id": "scripts_run_streaming_pipeline_py",
-      "community": 23,
+      "community": 22,
       "norm_label": "run_streaming_pipeline.py"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L27",
       "id": "scripts_run_streaming_pipeline_parse_args",
-      "community": 23,
+      "community": 22,
       "norm_label": "parse_args()"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L35",
       "id": "scripts_run_streaming_pipeline_main",
-      "community": 23,
+      "community": 22,
       "norm_label": "main()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L1",
       "id": "scripts_run_streaming_pipeline_rationale_1",
-      "community": 23,
+      "community": 22,
       "norm_label": "demonstration script for phase 2: live streaming ingestion and kafka-to-hdfs pip"
     },
     {
@@ -324,7 +324,7 @@
       "source_file": "src/__init__.py",
       "source_location": "L1",
       "id": "src_init_py",
-      "community": 25,
+      "community": 24,
       "norm_label": "__init__.py"
     },
     {
@@ -333,7 +333,7 @@
       "source_file": "src/__init__.py",
       "source_location": "L1",
       "id": "src_init_rationale_1",
-      "community": 25,
+      "community": 24,
       "norm_label": "icu bed demand forecasting system package."
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "src/api/__init__.py",
       "source_location": "L1",
       "id": "src_api_init_py",
-      "community": 26,
+      "community": 25,
       "norm_label": "__init__.py"
     },
     {
@@ -774,7 +774,7 @@
       "source_file": "src/api/__init__.py",
       "source_location": "L1",
       "id": "api_init_rationale_1",
-      "community": 26,
+      "community": 25,
       "norm_label": "fastapi prediction service package for icu bed demand forecasting."
     },
     {
@@ -891,7 +891,7 @@
       "source_file": "src/dashboard/__init__.py",
       "source_location": "L1",
       "id": "src_dashboard_init_py",
-      "community": 27,
+      "community": 26,
       "norm_label": "__init__.py"
     },
     {
@@ -900,7 +900,7 @@
       "source_file": "src/dashboard/__init__.py",
       "source_location": "L1",
       "id": "dashboard_init_rationale_1",
-      "community": 27,
+      "community": 26,
       "norm_label": "streamlit operational dashboard for icu bed demand forecasting."
     },
     {
@@ -1323,7 +1323,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L32",
       "id": "ml_models_rationale_32",
-      "community": 32,
+      "community": 31,
       "norm_label": "fits the multi-horizon forecaster on training features and targets."
     },
     {
@@ -1332,7 +1332,7 @@
       "source_file": "src/ml/models.py",
       "source_location": "L37",
       "id": "ml_models_rationale_37",
-      "community": 33,
+      "community": 32,
       "norm_label": "internal predict returning raw 2d array of shape (n, horizons)."
     },
     {
@@ -1485,7 +1485,7 @@
       "source_file": "src/ml/__init__.py",
       "source_location": "L1",
       "id": "src_ml_init_py",
-      "community": 28,
+      "community": 27,
       "norm_label": "__init__.py"
     },
     {
@@ -1494,7 +1494,7 @@
       "source_file": "src/ml/__init__.py",
       "source_location": "L1",
       "id": "ml_init_rationale_1",
-      "community": 28,
+      "community": 27,
       "norm_label": "machine learning subpackage for icu occupancy forecasting. exposes feature engin"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L28",
       "id": "processing_occupancy_calculator_occupancycalculator_reconstruct",
-      "community": 22,
+      "community": 4,
       "norm_label": ".reconstruct()"
     },
     {
@@ -1539,7 +1539,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L223",
       "id": "processing_occupancy_calculator_occupancycalculator_persist_occupancy_to_hdfs",
-      "community": 22,
+      "community": 4,
       "norm_label": ".persist_occupancy_to_hdfs()"
     },
     {
@@ -1575,7 +1575,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L34",
       "id": "processing_occupancy_calculator_rationale_34",
-      "community": 22,
+      "community": 4,
       "norm_label": "reconstructs hourly occupancy time series across all known units.          :para"
     },
     {
@@ -1584,7 +1584,7 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L230",
       "id": "processing_occupancy_calculator_rationale_230",
-      "community": 22,
+      "community": 4,
       "norm_label": "persists reconstructed hourly census dataframe to hdfs as parquet         using"
     },
     {
@@ -1593,7 +1593,7 @@
       "source_file": "src/processing/__init__.py",
       "source_location": "L1",
       "id": "src_processing_init_py",
-      "community": 29,
+      "community": 28,
       "norm_label": "__init__.py"
     },
     {
@@ -1602,7 +1602,7 @@
       "source_file": "src/processing/__init__.py",
       "source_location": "L1",
       "id": "processing_init_rationale_1",
-      "community": 29,
+      "community": 28,
       "norm_label": "processing module exports."
     },
     {
@@ -1611,7 +1611,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L1",
       "id": "src_producer_kafka_producer_py",
-      "community": 9,
+      "community": 10,
       "norm_label": "kafka_producer.py"
     },
     {
@@ -1620,7 +1620,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L16",
       "id": "producer_kafka_producer_icukafkaproducer",
-      "community": 9,
+      "community": 10,
       "norm_label": "icukafkaproducer"
     },
     {
@@ -1629,7 +1629,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L22",
       "id": "producer_kafka_producer_icukafkaproducer_init",
-      "community": 9,
+      "community": 10,
       "norm_label": ".__init__()"
     },
     {
@@ -1638,7 +1638,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L47",
       "id": "producer_kafka_producer_icukafkaproducer_delivery_report",
-      "community": 9,
+      "community": 10,
       "norm_label": "._delivery_report()"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L64",
       "id": "producer_kafka_producer_icukafkaproducer_get_partition_key",
-      "community": 9,
+      "community": 10,
       "norm_label": "._get_partition_key()"
     },
     {
@@ -1656,7 +1656,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L80",
       "id": "producer_kafka_producer_icukafkaproducer_send_event",
-      "community": 9,
+      "community": 10,
       "norm_label": ".send_event()"
     },
     {
@@ -1665,7 +1665,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L98",
       "id": "producer_kafka_producer_icukafkaproducer_publish_stream",
-      "community": 9,
+      "community": 10,
       "norm_label": ".publish_stream()"
     },
     {
@@ -1674,7 +1674,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L140",
       "id": "producer_kafka_producer_icukafkaproducer_flush",
-      "community": 9,
+      "community": 10,
       "norm_label": ".flush()"
     },
     {
@@ -1683,7 +1683,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L144",
       "id": "producer_kafka_producer_icukafkaproducer_close",
-      "community": 9,
+      "community": 10,
       "norm_label": ".close()"
     },
     {
@@ -1692,7 +1692,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L1",
       "id": "producer_kafka_producer_rationale_1",
-      "community": 9,
+      "community": 10,
       "norm_label": "resilient kafka event producer. publishes icu adt events to kafka topic with par"
     },
     {
@@ -1701,7 +1701,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L17",
       "id": "producer_kafka_producer_rationale_17",
-      "community": 9,
+      "community": 10,
       "norm_label": "publishes serialized icuevent records to apache kafka with delivery confirmation"
     },
     {
@@ -1710,7 +1710,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L48",
       "id": "producer_kafka_producer_rationale_48",
-      "community": 9,
+      "community": 10,
       "norm_label": "internal callback tracking delivery success and failures."
     },
     {
@@ -1719,7 +1719,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L65",
       "id": "producer_kafka_producer_rationale_65",
-      "community": 9,
+      "community": 10,
       "norm_label": "determines the partition routing key.         - 'encounter': guarantees all tran"
     },
     {
@@ -1728,7 +1728,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L81",
       "id": "producer_kafka_producer_rationale_81",
-      "community": 9,
+      "community": 10,
       "norm_label": "publishes a single validated icuevent to kafka."
     },
     {
@@ -1737,7 +1737,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L105",
       "id": "producer_kafka_producer_rationale_105",
-      "community": 9,
+      "community": 10,
       "norm_label": "publishes an iterable of events with optional rate throttling and event limiting"
     },
     {
@@ -1746,7 +1746,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L141",
       "id": "producer_kafka_producer_rationale_141",
-      "community": 9,
+      "community": 10,
       "norm_label": "wait for all outstanding messages to be delivered."
     },
     {
@@ -1755,7 +1755,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L145",
       "id": "producer_kafka_producer_rationale_145",
-      "community": 9,
+      "community": 10,
       "norm_label": "flush remaining messages and close producer."
     },
     {
@@ -1890,7 +1890,7 @@
       "source_file": "src/producer/__init__.py",
       "source_location": "L1",
       "id": "src_producer_init_py",
-      "community": 30,
+      "community": 29,
       "norm_label": "__init__.py"
     },
     {
@@ -1899,7 +1899,7 @@
       "source_file": "src/producer/__init__.py",
       "source_location": "L1",
       "id": "producer_init_rationale_1",
-      "community": 30,
+      "community": 29,
       "norm_label": "producer module exports."
     },
     {
@@ -2025,7 +2025,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L91",
       "id": "schema_events_rationale_91",
-      "community": 34,
+      "community": 33,
       "norm_label": "ensure timestamp has explicit timezone awareness in utc."
     },
     {
@@ -2034,7 +2034,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L98",
       "id": "schema_events_rationale_98",
-      "community": 35,
+      "community": 34,
       "norm_label": "validates clinical unit routing consistency:         - admission must specify to"
     },
     {
@@ -2106,7 +2106,7 @@
       "source_file": "src/schema/__init__.py",
       "source_location": "L1",
       "id": "src_schema_init_py",
-      "community": 36,
+      "community": 35,
       "norm_label": "__init__.py"
     },
     {
@@ -2430,7 +2430,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L1",
       "id": "src_storage_kafka_sink_py",
-      "community": 10,
+      "community": 9,
       "norm_label": "kafka_sink.py"
     },
     {
@@ -2439,7 +2439,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L21",
       "id": "storage_kafka_sink_kafkahdfssink",
-      "community": 10,
+      "community": 9,
       "norm_label": "kafkahdfssink"
     },
     {
@@ -2448,7 +2448,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L27",
       "id": "storage_kafka_sink_kafkahdfssink_init",
-      "community": 10,
+      "community": 9,
       "norm_label": ".__init__()"
     },
     {
@@ -2457,7 +2457,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L62",
       "id": "storage_kafka_sink_kafkahdfssink_parse_message",
-      "community": 10,
+      "community": 9,
       "norm_label": "._parse_message()"
     },
     {
@@ -2466,7 +2466,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L85",
       "id": "storage_kafka_sink_kafkahdfssink_process_batch",
-      "community": 10,
+      "community": 9,
       "norm_label": ".process_batch()"
     },
     {
@@ -2475,7 +2475,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L162",
       "id": "storage_kafka_sink_kafkahdfssink_commit_offsets",
-      "community": 10,
+      "community": 9,
       "norm_label": "._commit_offsets()"
     },
     {
@@ -2484,7 +2484,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L166",
       "id": "storage_kafka_sink_kafkahdfssink_poll_and_sink",
-      "community": 10,
+      "community": 9,
       "norm_label": ".poll_and_sink()"
     },
     {
@@ -2493,7 +2493,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L208",
       "id": "storage_kafka_sink_kafkahdfssink_close",
-      "community": 10,
+      "community": 9,
       "norm_label": ".close()"
     },
     {
@@ -2502,7 +2502,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L1",
       "id": "storage_kafka_sink_rationale_1",
-      "community": 10,
+      "community": 9,
       "norm_label": "kafka-to-hdfs sink pipeline. consumes events in bounded micro-batches from apach"
     },
     {
@@ -2511,7 +2511,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L22",
       "id": "storage_kafka_sink_rationale_22",
-      "community": 10,
+      "community": 9,
       "norm_label": "micro-batch consumer that lands kafka events into partitioned hdfs lake storage"
     },
     {
@@ -2520,7 +2520,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L63",
       "id": "storage_kafka_sink_rationale_63",
-      "community": 10,
+      "community": 9,
       "norm_label": "parses and validates a kafka message payload.         returns (valid_event, none"
     },
     {
@@ -2529,7 +2529,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L86",
       "id": "storage_kafka_sink_rationale_86",
-      "community": 10,
+      "community": 9,
       "norm_label": "processes a bounded batch of kafka messages:         1. validates and segregates"
     },
     {
@@ -2538,7 +2538,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L163",
       "id": "storage_kafka_sink_rationale_163",
-      "community": 10,
+      "community": 9,
       "norm_label": "synchronously commit kafka consumer offsets."
     },
     {
@@ -2547,7 +2547,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L172",
       "id": "storage_kafka_sink_rationale_172",
-      "community": 10,
+      "community": 9,
       "norm_label": "polls kafka for messages up to max_messages or until idle_timeout expires,"
     },
     {
@@ -2556,7 +2556,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L209",
       "id": "storage_kafka_sink_rationale_209",
-      "community": 10,
+      "community": 9,
       "norm_label": "closes the kafka consumer safely."
     },
     {
@@ -2565,7 +2565,7 @@
       "source_file": "src/storage/__init__.py",
       "source_location": "L1",
       "id": "src_storage_init_py",
-      "community": 31,
+      "community": 30,
       "norm_label": "__init__.py"
     },
     {
@@ -2574,7 +2574,7 @@
       "source_file": "src/storage/__init__.py",
       "source_location": "L1",
       "id": "storage_init_rationale_1",
-      "community": 31,
+      "community": 30,
       "norm_label": "storage module exports."
     },
     {
@@ -2583,7 +2583,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L1",
       "id": "tests_conftest_py",
-      "community": 24,
+      "community": 23,
       "norm_label": "conftest.py"
     },
     {
@@ -2592,7 +2592,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L10",
       "id": "tests_conftest_sample_units",
-      "community": 24,
+      "community": 23,
       "norm_label": "sample_units()"
     },
     {
@@ -2601,7 +2601,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L21",
       "id": "tests_conftest_base_timestamp",
-      "community": 24,
+      "community": 23,
       "norm_label": "base_timestamp()"
     },
     {
@@ -2610,7 +2610,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L1",
       "id": "tests_conftest_rationale_1",
-      "community": 24,
+      "community": 23,
       "norm_label": "shared pytest fixtures."
     },
     {
@@ -3950,7 +3950,7 @@
       "file_type": "rationale",
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L194",
-      "community": 22,
+      "community": 4,
       "norm_label": "persists reconstructed hourly census dataframe to hdfs as parquet         using",
       "id": "processing_occupancy_calculator_rationale_194"
     },
@@ -3968,7 +3968,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L168",
-      "community": 10,
+      "community": 9,
       "norm_label": "polls kafka for messages up to max_messages or until idle_timeout expires,",
       "id": "storage_kafka_sink_rationale_168"
     },
@@ -3977,7 +3977,7 @@
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L205",
-      "community": 10,
+      "community": 9,
       "norm_label": "closes the kafka consumer safely.",
       "id": "storage_kafka_sink_rationale_205"
     }
@@ -3989,9 +3989,9 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_check_ports_py",
-      "target": "scripts_check_ports_check_port",
-      "confidence_score": 1.0
+      "target": "scripts_check_ports_check_port"
     },
     {
       "relation": "contains",
@@ -3999,9 +3999,9 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_check_ports_py",
-      "target": "scripts_check_ports_main",
-      "confidence_score": 1.0
+      "target": "scripts_check_ports_main"
     },
     {
       "relation": "rationale_for",
@@ -4009,9 +4009,9 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_check_ports_rationale_1",
-      "target": "scripts_check_ports_py",
-      "confidence_score": 1.0
+      "target": "scripts_check_ports_py"
     },
     {
       "relation": "calls",
@@ -4020,9 +4020,9 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_check_ports_main",
-      "target": "scripts_check_ports_check_port",
-      "confidence_score": 1.0
+      "target": "scripts_check_ports_check_port"
     },
     {
       "relation": "rationale_for",
@@ -4030,9 +4030,9 @@
       "source_file": "scripts/check_ports.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_check_ports_rationale_18",
-      "target": "scripts_check_ports_check_port",
-      "confidence_score": 1.0
+      "target": "scripts_check_ports_check_port"
     },
     {
       "relation": "calls",
@@ -10756,5 +10756,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dd97b0b52cd56394b415ba1deb4aca63e280a2d0"
+  "built_at_commit": "ec8ba9ea865d5089c4dcd64d1966475623e3d987"
 }

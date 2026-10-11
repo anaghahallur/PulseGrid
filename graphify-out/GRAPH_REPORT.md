@@ -1,16 +1,16 @@
-# Graph Report - bda proj  (2026-10-11)
+# Graph Report - bda proj  (2026-10-12)
 
 ## Corpus Check
 - 41 files · ~25,470 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 442 nodes · 655 edges · 37 communities (25 shown, 12 thin omitted)
+- 442 nodes · 655 edges · 36 communities (24 shown, 12 thin omitted)
 - Extraction: 72% EXTRACTED · 28% INFERRED · 0% AMBIGUOUS · INFERRED: 185 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dd97b0b5`
+- Built from commit: `ec8ba9ea`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -50,7 +50,6 @@
 - [[_COMMUNITY_Community 32|Community 32]]
 - [[_COMMUNITY_Community 33|Community 33]]
 - [[_COMMUNITY_Community 34|Community 34]]
-- [[_COMMUNITY_Community 35|Community 35]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `ICUEvent` - 37 edges
@@ -76,7 +75,7 @@
 - `main()` --calls--> `OccupancyCalculator`  [INFERRED]
   scripts/generate_synthetic_data.py → src/processing/occupancy_calculator.py
 
-## Communities (37 total, 12 thin omitted)
+## Communities (36 total, 12 thin omitted)
 
 ### Community 0 - "Community 0"
 Cohesion: 0.05
@@ -95,8 +94,8 @@ Cohesion: 0.08
 Nodes (28): create_app(), lifespan(), FastAPI Application Entrypoint for ICU Bed Demand Forecasting. Provides health,, Application lifespan context manager.     Loads and validates the trained model, Factory function to build and configure the FastAPI application., get_forecasting_service(), Inference Service for ICU Bed Demand Forecasting. Loads trained forecasters, val, Provides access to the global ForecastingService instance. (+20 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.1
-Nodes (23): OccupancyCalculator, Hourly Occupancy Reconstruction Engine. Reconstructs exact instantaneous unit ce, State machine that processes patient ADT events to reconstruct hourly census., :param unit_capacities: Mapping of unit identifier to total bed capacity., Unit tests for occupancy calculation and double-counting prevention., Verifies that feeding duplicate events (with the same event_id)     does not inf, Carefully crafted test verifying exact census timeline:     Patient 1:       10:, Verifies that a cross-unit transfer atomically preserves total active patient co (+15 more)
+Cohesion: 0.08
+Nodes (26): OccupancyCalculator, Hourly Occupancy Reconstruction Engine. Reconstructs exact instantaneous unit ce, State machine that processes patient ADT events to reconstruct hourly census., Persists reconstructed hourly census DataFrame to HDFS as Parquet         using, :param unit_capacities: Mapping of unit identifier to total bed capacity., Persists reconstructed hourly census DataFrame to HDFS as Parquet         using, Reconstructs hourly occupancy time series across all known units.          :para, Unit tests for occupancy calculation and double-counting prevention. (+18 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.09
@@ -115,12 +114,12 @@ Cohesion: 0.2
 Nodes (15): Generates chronologically ordered ICU events across the simulation window., ICUEvent, Convert event to serialized dictionary with ISO string timestamps and UUID strin, Validated representation of an ICU Patient Transition Event.     Serves as the c, str, Unit tests for ICU ADT event schema validation., test_admission_missing_to_unit_fails(), test_admission_with_from_unit_fails() (+7 more)
 
 ### Community 9 - "Community 9"
-Cohesion: 0.15
-Nodes (9): ICUKafkaProducer, Resilient Kafka Event Producer. Publishes ICU ADT events to Kafka topic with par, Publishes an iterable of events with optional rate throttling and event limiting, Wait for all outstanding messages to be delivered., Flush remaining messages and close producer., Publishes serialized ICUEvent records to Apache Kafka with delivery confirmation, Internal callback tracking delivery success and failures., Determines the partition routing key.         - 'encounter': Guarantees all tran (+1 more)
-
-### Community 10 - "Community 10"
 Cohesion: 0.14
 Nodes (10): KafkaHDFSSink, Kafka-to-HDFS Sink Pipeline. Consumes events in bounded micro-batches from Apach, Synchronously commit Kafka consumer offsets., Polls Kafka for messages up to max_messages or until idle_timeout expires,, Polls Kafka for messages up to max_messages or until idle_timeout expires,, Closes the Kafka consumer safely., Closes the Kafka consumer safely., Micro-batch consumer that lands Kafka events into partitioned HDFS lake storage (+2 more)
+
+### Community 10 - "Community 10"
+Cohesion: 0.15
+Nodes (9): ICUKafkaProducer, Resilient Kafka Event Producer. Publishes ICU ADT events to Kafka topic with par, Publishes an iterable of events with optional rate throttling and event limiting, Wait for all outstanding messages to be delivered., Flush remaining messages and close producer., Publishes serialized ICUEvent records to Apache Kafka with delivery confirmation, Internal callback tracking delivery success and failures., Determines the partition routing key.         - 'encounter': Guarantees all tran (+1 more)
 
 ### Community 11 - "Community 11"
 Cohesion: 0.15
@@ -167,10 +166,6 @@ Cohesion: 0.5
 Nodes (4): check_port(), main(), CLI utility to audit, verify, and report port assignments for ICU Bed Demand For, Returns True if the port is open/listening on the given host.
 
 ### Community 22 - "Community 22"
-Cohesion: 0.3
-Nodes (3): Persists reconstructed hourly census DataFrame to HDFS as Parquet         using, Persists reconstructed hourly census DataFrame to HDFS as Parquet         using, Reconstructs hourly occupancy time series across all known units.          :para
-
-### Community 23 - "Community 23"
 Cohesion: 0.67
 Nodes (3): main(), parse_args(), Demonstration script for Phase 2: Live Streaming Ingestion and Kafka-to-HDFS Pip
 
@@ -186,7 +181,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.243) - this node is a cross-community bridge._
 - **Why does `ForecastingService` connect `Community 0` to `Community 1`, `Community 2`, `Community 3`?**
   _High betweenness centrality (0.175) - this node is a cross-community bridge._
-- **Why does `HDFSClient` connect `Community 12` to `Community 6`, `Community 10`, `Community 11`, `Community 14`, `Community 18`, `Community 19`, `Community 23`?**
+- **Why does `HDFSClient` connect `Community 12` to `Community 6`, `Community 9`, `Community 11`, `Community 14`, `Community 18`, `Community 19`, `Community 22`?**
   _High betweenness centrality (0.138) - this node is a cross-community bridge._
 - **Are the 33 inferred relationships involving `ICUEvent` (e.g. with `OccupancyCalculator` and `ICUKafkaProducer`) actually correct?**
   _`ICUEvent` has 33 INFERRED edges - model-reasoned connections that need verification._
