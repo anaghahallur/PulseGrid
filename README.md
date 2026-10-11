@@ -9,7 +9,16 @@ This project forecasts ICU bed occupancy for the next 24 hours using historical 
 - **Phase 1: Foundation & Data Pipelines** — Docker Compose infra (Kafka, ZooKeeper, Hadoop NameNode, DataNode), Pydantic ADT schemas, deterministic synthetic event generator, and MIMIC-IV demo CSV ingestion.
 - **Phase 2 & 2.1: Streaming Ingestion & Lake Storage** — Kafka producer, Kafka-to-HDFS atomic micro-batch sink (`/raw/icu_events`), dead-letter quarantine, and stateful hourly occupancy reconstruction (`/processed/icu_occupancy_hourly`) with duplicate event deduplication.
 - **Phase 3: Machine Learning & Occupancy Forecasting** — Unit-isolated leakage-safe feature engineering (lags, rolling stats, cyclical calendar harmonics), direct multi-horizon regression models, 24-hour target buffer gap, and model evaluation against baselines.
-- **Phase 4: Serving & Operational Visuals (Future)** — Prediction REST API (FastAPI) and interactive clinical capacity dashboard (Streamlit & Plotly).
+- **Phase 4: Serving & Operational Visuals** — Prediction REST API (FastAPI) with health/readiness probes and interactive clinical capacity dashboard (Streamlit & Plotly).
+
+---
+
+## AI Agent & Contributor Guidance
+This repository includes an [`agent/`](file:///c:/building%20projs/bda%20proj/agent) directory containing dedicated architectural guidelines, runbooks, and constraints for AI pair programming:
+- [`agent/README.md`](file:///c:/building%20projs/bda%20proj/agent/README.md): Onboarding and project tree map.
+- [`agent/ARCHITECTURE.md`](file:///c:/building%20projs/bda%20proj/agent/ARCHITECTURE.md): Component interactions, data flows, and state diagrams.
+- [`agent/WORKFLOWS.md`](file:///c:/building%20projs/bda%20proj/agent/WORKFLOWS.md): Step-by-step developer and testing commands.
+- [`agent/RULES.md`](file:///c:/building%20projs/bda%20proj/agent/RULES.md): Clinical disclaimers, leakage safeguards, and test standards.
 
 ---
 
@@ -50,11 +59,16 @@ uv pip install -e ".[ml,test]"
 # Or: pip install -e ".[ml,test]"
 ```
 
-#### C. Prediction Serving & Dashboard (Phase 4 — Future)
-Serving dependencies (`fastapi`, `uvicorn`, `streamlit`, `plotly`) are documented separately for the upcoming serving/dashboard phase:
+#### C. Prediction Serving & Dashboard (Phase 4)
+To run the FastAPI service and Streamlit dashboard (`fastapi`, `uvicorn`, `streamlit`, `plotly`):
 ```powershell
 uv pip install -e ".[serving]"
 # Or: pip install -e ".[serving]"
+```
+
+To install all dependency groups at once:
+```powershell
+uv pip install -e ".[test,ml,serving]"
 ```
 
 ---
@@ -81,15 +95,29 @@ Trains direct multi-horizon models (Ridge, HistGradientBoosting) against Persist
 python scripts/train_eval_forecaster.py --data-path data/synthetic/simulated_hourly_occupancy.parquet --output-dir models --seed 42
 ```
 
-### 4. (Optional) Ingest MIMIC-IV Clinical Demo Data
+### 4. Launch FastAPI Prediction Service
+Starts the REST API with lifespan-cached model artifacts on port 8000:
+```powershell
+uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
+```
+Interactive API docs available at `http://localhost:8000/docs`.
+
+### 5. Launch Streamlit Operational Dashboard
+Starts the interactive visualization dashboard on port 8501:
+```powershell
+streamlit run src/dashboard/app.py --server.port 8501
+```
+View dashboard at `http://localhost:8501`.
+
+### 6. (Optional) Ingest MIMIC-IV Clinical Demo Data
 Ingests and validates schema alignment against PhysioNet demo records:
 ```powershell
 python scripts/ingest_mimic_data.py --source demo
 ```
 
-### 5. Run Automated Tests
+### 7. Run Automated Tests
 ```powershell
-pytest
+pytest -v
 ```
 
 ---
