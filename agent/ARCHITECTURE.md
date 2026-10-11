@@ -62,14 +62,17 @@ flowchart TD
 - **Windowing Limitation & Cumulative Replay:** `OccupancyCalculator` reconstructs census by replaying cumulative raw events from HDFS. If events are sliced into isolated time windows without pre-window history, stays crossing window boundaries would be omitted. Global lake replay is the chosen architectural model.
 
 ### C. HDFS Processed Census to Inference Handoff
-- **Primary Source (`HDFS_PROCESSED_LAKE`):** Inference checks `/processed/icu_occupancy_hourly` in HDFS. If populated and healthy, it loads the newest processed census Parquet DataFrame.
+- **Primary Source (`HDFS_PROCESSED_LAKE`):** Inference checks `/processed/icu_occupancy_hourly` in HDFS.
+  - **Timestamp-Based Dataset Selection:** Datasets are selected via atomic `latest_manifest.json` or by reading candidate files and evaluating maximum data timestamps (`cand_df['timestamp'].max()`). Never relies on naive alphabetical filename sorting.
 - **Offline Fallback (`LOCAL_SYNTHETIC_STORE`):** If HDFS is offline or unpopulated, cleanly falls back to canonical local Parquet store (`data/synthetic/simulated_hourly_occupancy.parquet`).
-- **Data Provenance & Freshness Surfacing:**
-  - `data_source`: Indicates whether observations originated from HDFS, local Parquet, or custom client payload.
-  - `is_live_stream`: Boolean flag indicating if data was refreshed from the active streaming pipeline.
-  - `source_age_hours`: Hours elapsed since the newest historical observation.
-  - `simulation_time_label`: Explicitly labels whether data is live streaming or an academic synthetic simulation replay.
-  - `STALE_STREAM_WARNING`: Raised if live stream data has not been updated for $>2$ hours.
+- **Decoupled Data Provenance & Streaming Freshness:**
+  - `data_source`: Indicates physical storage source (`HDFS_PROCESSED_LAKE`, `LOCAL_SYNTHETIC_STORE`, `CLIENT_PAYLOAD`).
+  - `is_live_stream`: True strictly when data originates from `HDFS_PROCESSED_LAKE`, is not future-dated, and has `source_age_hours <= 2.0`. Mere file existence in HDFS does not claim active live streaming.
+  - `source_timestamp`: Newest observation timestamp in the history.
+  - `source_age_hours`: Exact hours elapsed since the newest observation. Negative source age is preserved for future scenarios and **never clamped to zero**.
+  - `CLOCK_SKEW_TOLERANCE`: 5 minutes (300 seconds) tolerated for minor host clock drift.
+  - `simulation_time_label`: Explicitly labels live lake stream, synthetic simulation benchmark, or future scenario.
+  - `STALE_STREAM_WARNING`: Raised if HDFS lake data is older than 2 hours.
 
 ### D. Multi-Horizon Forecasting Engine
 - **Strategy:** Direct Multi-Output regression for horizons $h \in [1..24]$. Independent linear estimators are learned per lead time.

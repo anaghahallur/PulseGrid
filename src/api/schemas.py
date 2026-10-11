@@ -59,6 +59,10 @@ class PredictionRequest(BaseModel):
         gt=0,
         description="Optional explicit scenario capacity (> 0) for operational surge or contraction what-if analysis.",
     )
+    reject_future_data: bool = Field(
+        default=False,
+        description="If True, rejects forecast origins beyond server time + clock skew tolerance with a 422 validation error.",
+    )
 
     @field_validator("unit_id")
     @classmethod
@@ -97,7 +101,10 @@ class PredictionResponse(BaseModel):
     )
     is_live_stream: bool = Field(
         default=False,
-        description="True strictly if data was refreshed from active HDFS streaming census lake",
+        description=(
+            "True strictly if data was refreshed from active HDFS streaming census lake AND is currently fresh "
+            "(<= 2h old). False if offline synthetic store or stale HDFS lake snapshot."
+        ),
     )
     source_timestamp: Optional[datetime] = Field(
         default=None,

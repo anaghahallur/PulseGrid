@@ -302,3 +302,196 @@ def test_service_rejects_metadata_mismatched_horizons(tmp_path):
     test_service = ForecastingService(model_path=str(fake_model_path), metadata_path=str(fake_meta_path))
     assert test_service.load_model() is False
     assert "Horizon count mismatch" in test_service.error_detail
+
+
+def test_clock_skew_tolerance_accepts_slight_future_origin(monkeypatch):
+    """Verifies that an origin up to 5 minutes in the future is accepted within clock-skew tolerance."""
+    service = ForecastingService()
+    # Mock server clock to 19:58:00 UTC
+    mock_now = datetime(2026, 10, 11, 19, 58, 0, tzinfo=timezone.utc)
+    monkeypatch.setattr(service, "get_current_time", lambda: mock_now)
+
+    # Origin is at 20:00:00 UTC (2 minutes in future, within 5-min tolerance)
+    origin_aligned = datetime(2026, 10, 11, 20, 0, 0, tzinfo=timezone.utc)
+    records = [
+        HourlyCensusRecord(timestamp=origin_aligned, occupied_beds=8.0, capacity=12)
+    ]
+    req = PredictionRequest(
+        unit_id="MICU",
+        model_name="persistence",
+        history=records,
+        reject_future_data=True,
+    )
+    res = service.predict(req)
+    assert res.source_age_hours == 0.0
+    assert not any("FUTURE_DATED" in w for w in res.warnings)
+
+
+def test_future_dated_forecast_origin_rejected_when_configured():
+    """Verifies that an origin beyond clock skew tolerance raises ValueError when reject_future_data is True."""
+    service = ForecastingService()
+    future_time = (datetime.now(timezone.utc) + timedelta(hours=5)).replace(minute=0, second=0, microsecond=0)
+    records = [
+        HourlyCensusRecord(timestamp=future_time, occupied_beds=8.0, capacity=12)
+    ]
+    req = PredictionRequest(
+        unit_id="MICU",
+        model_name="persistence",
+        history=records,
+        reject_future_data=True,
+    )
+    with pytest.raises(ValueError, match="Future-dated forecast origin"):
+        service.predict(req)
+
+
+def test_future_dated_forecast_origin_negative_age_unclamped_and_warns():
+    """
+    Verifies that when reject_future_data is False, future origin preserves negative source age
+    (never silently clamped to 0.0) and emits a prominent FUTURE_DATED_DATA_WARNING.
+    """
+    service = ForecastingService()
+    now = datetime.now(timezone.utc)
+    future_time = (now + timedelta(hours=4)).replace(minute=0, second=0, microsecond=0)
+    records = [
+        HourlyCensusRecord(timestamp=future_time, occupied_beds=8.0, capacity=12)
+    ]
+    req = PredictionRequest(
+        unit_id="MICU",
+        model_name="persistence",
+        history=records,
+        reject_future_data=False,
+    )
+    res = service.predict(req)
+    # source_age_hours must NOT be clamped to 0.0!
+    assert res.source_age_hours is not None
+    assert res.source_age_hours < 0.0
+    assert any("FUTURE_DATED_DATA_WARNING" in w for w in res.warnings)
+    # Future data cannot be marked as active live stream
+    assert res.is_live_stream is False
+
+
+def test_load_history_from_store_picks_newest_timestamp_over_alphabetical_filename(monkeypatch):
+    """
+    Verifies that load_history_from_store chooses the dataset with the newest data timestamps,
+    even when alphabetical filename sorting disagrees (e.g., 'z_old.parquet' vs 'a_new.parquet').
+    """
+    import pandas as pd
+    from unittest.mock import MagicMock
+
+    # Create two DataFrames:
+    # Older data with 'z' prefix (Oct 1..2)
+    start_old = datetime(2026, 10, 1, 0, 0, 0, tzinfo=timezone.utc)
+    old_ts = [start_old + timedelta(hours=h) for h in range(30)]
+    df_old = pd.DataFrame({
+        "timestamp": old_ts,
+        "unit_id": "MICU",
+        "occupied_beds": 10.0,
+        "capacity": 24,
+    })
+
+    # Newer data with 'a' prefix (Oct 10..11)
+    start_new = datetime(2026, 10, 10, 0, 0, 0, tzinfo=timezone.utc)
+    new_ts = [start_new + timedelta(hours=h) for h in range(30)]
+    df_new = pd.DataFrame({
+        "timestamp": new_ts,
+        "unit_id": "MICU",
+        "occupied_beds": 14.0,
+        "capacity": 24,
+    })
+
+    mock_hdfs = MagicMock()
+    mock_hdfs.is_healthy.return_value = True
+    mock_hdfs.exists.return_value = False  # No manifest, force timestamp inspection
+    mock_hdfs.find_files.return_value = ["/processed/z_old_run.parquet", "/processed/a_new_run.parquet"]
+
+    def fake_read_parquet(path):
+        if "z_old" in path:
+            return df_old
+        if "a_new" in path:
+            return df_new
+        raise FileNotFoundError(path)
+
+    mock_hdfs.read_parquet.side_effect = fake_read_parquet
+
+    service = ForecastingService()
+    monkeypatch.setattr("src.api.service.HDFSClient", lambda **kwargs: mock_hdfs)
+
+    records, data_source, is_live = service.load_history_from_store(unit_id="MICU", lookback_hours=24)
+    assert data_source == "HDFS_PROCESSED_LAKE"
+    # The origin record must be from df_new (Oct 11), NOT df_old (Oct 2)
+    newest_ts = max(r.timestamp for r in records)
+    assert newest_ts.day >= 10
+    assert newest_ts.month == 10
+
+
+def test_load_history_from_store_resolves_latest_manifest(monkeypatch):
+    """Verifies that load_history_from_store respects latest_manifest.json when present."""
+    import json
+    import pandas as pd
+    from unittest.mock import MagicMock
+
+    start_ts = datetime(2026, 10, 5, 0, 0, 0, tzinfo=timezone.utc)
+    ts_list = [start_ts + timedelta(hours=h) for h in range(30)]
+    df_manifest_target = pd.DataFrame({
+        "timestamp": ts_list,
+        "unit_id": "SICU",
+        "occupied_beds": 7.0,
+        "capacity": 10,
+    })
+
+    manifest_payload = json.dumps({
+        "latest_file": "/processed/icu_occupancy_hourly/manifest_selected.parquet",
+        "max_timestamp": "2026-10-06T05:00:00Z",
+    }).encode("utf-8")
+
+    mock_hdfs = MagicMock()
+    mock_hdfs.is_healthy.return_value = True
+
+    def fake_exists(path):
+        return True
+
+    def fake_read_file(path):
+        return manifest_payload
+
+    def fake_read_parquet(path):
+        return df_manifest_target
+
+    mock_hdfs.exists.side_effect = fake_exists
+    mock_hdfs.read_file.side_effect = fake_read_file
+    mock_hdfs.read_parquet.side_effect = fake_read_parquet
+
+    service = ForecastingService()
+    monkeypatch.setattr("src.api.service.HDFSClient", lambda **kwargs: mock_hdfs)
+
+    records, data_source, is_live = service.load_history_from_store(unit_id="SICU", lookback_hours=24)
+    assert data_source == "HDFS_PROCESSED_LAKE"
+    assert len(records) == 25
+    assert records[-1].timestamp.day >= 5
+
+
+def test_is_live_stream_decoupled_from_hdfs_storage(monkeypatch):
+    """
+    Verifies that a Parquet file existing in HDFS does NOT imply is_live_stream is True
+    if the data is stale (> 2 hours old).
+    """
+    service = ForecastingService()
+    now = datetime.now(timezone.utc)
+    # Stale data: 10 hours old
+    stale_ts = (now - timedelta(hours=10)).replace(minute=0, second=0, microsecond=0)
+    stale_records = [
+        HourlyCensusRecord(timestamp=stale_ts, occupied_beds=5.0, capacity=10)
+    ]
+
+    monkeypatch.setattr(
+        service,
+        "load_history_from_store",
+        lambda unit_id, lookback_hours: (stale_records, "HDFS_PROCESSED_LAKE", True),
+    )
+
+    req = PredictionRequest(unit_id="MICU", model_name="persistence", history=None)
+    res = service.predict(req)
+    assert res.data_source == "HDFS_PROCESSED_LAKE"
+    # Must NOT be marked live stream since 10h > 2h!
+    assert res.is_live_stream is False
+    assert res.source_age_hours is not None and res.source_age_hours >= 10.0
+    assert any("STALE_STREAM_WARNING" in w for w in res.warnings)

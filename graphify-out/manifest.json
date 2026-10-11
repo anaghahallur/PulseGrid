@@ -32,20 +32,20 @@
     "hash": "7c8c7a6676dcddf993fa38f586fe8b0f"
   },
   "C:\\building projs\\bda proj\\src\\api\\schemas.py": {
-    "mtime": 1791747751.4715466,
-    "hash": "939320d950cde9c16b93e4d8fb05128c"
+    "mtime": 1791748857.6071556,
+    "hash": "eedc07c481b6ee3403153ed4af968ef9"
   },
   "C:\\building projs\\bda proj\\src\\api\\service.py": {
-    "mtime": 1791747842.2600634,
-    "hash": "bd941aa3c03bbf2dce41e7f59492c1fa"
+    "mtime": 1791749180.3546326,
+    "hash": "a1836a719b6ec8ca9a88b3e82bf6dc34"
   },
   "C:\\building projs\\bda proj\\src\\api\\__init__.py": {
     "mtime": 1791741251.2214396,
     "hash": "dfbcb34954c3804852258c7e0ea5bbaa"
   },
   "C:\\building projs\\bda proj\\src\\dashboard\\app.py": {
-    "mtime": 1791747903.1948092,
-    "hash": "50df976f69c96b65e139167174a6e4e0"
+    "mtime": 1791749010.2732236,
+    "hash": "0c4f21ded2eef4ec389a00effdd51961"
   },
   "C:\\building projs\\bda proj\\src\\dashboard\\__init__.py": {
     "mtime": 1791741316.0148287,
@@ -72,8 +72,8 @@
     "hash": "a00ec2f730a04357f51bb31ae3f1bb1b"
   },
   "C:\\building projs\\bda proj\\src\\processing\\occupancy_calculator.py": {
-    "mtime": 1791732817.2702205,
-    "hash": "0eb179e1f64195aab28060c56a191229"
+    "mtime": 1791748873.903883,
+    "hash": "398f58f447a1fd82cfac2e87b62f24ce"
   },
   "C:\\building projs\\bda proj\\src\\processing\\__init__.py": {
     "mtime": 1791730030.853642,
@@ -120,8 +120,8 @@
     "hash": "4ce99335ef06b0428dbe296f475b650b"
   },
   "C:\\building projs\\bda proj\\tests\\integration\\test_api_endpoints.py": {
-    "mtime": 1791748167.3992753,
-    "hash": "156f85364240c9ddcf75515c1a1c53a7"
+    "mtime": 1791749233.1001792,
+    "hash": "a26c42e3ea4999372ce749fb4b1d1fb5"
   },
   "C:\\building projs\\bda proj\\tests\\integration\\test_end_to_end_pipeline.py": {
     "mtime": 1791731680.6283846,
@@ -140,8 +140,8 @@
     "hash": "056c7bb5eae9c264042ad33d8b57751f"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_api_schemas_and_service.py": {
-    "mtime": 1791747986.526513,
-    "hash": "612086f5692a4885af7b7739029c5667"
+    "mtime": 1791749214.460193,
+    "hash": "cfc310860a58b1d98677e1d5d45c74a5"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_dashboard.py": {
     "mtime": 1791741490.3455052,
@@ -172,16 +172,16 @@
     "hash": "fc865167d2905533c08ae16ccaa9d0dc"
   },
   "C:\\building projs\\bda proj\\agent\\ARCHITECTURE.md": {
-    "mtime": 1791748241.2057168,
-    "hash": "ac81023967a06002687b6b3fb6d318d8"
+    "mtime": 1791749312.9602952,
+    "hash": "056949db0769c43264407efd3459801d"
   },
   "C:\\building projs\\bda proj\\agent\\README.md": {
     "mtime": 1791741361.2645566,
     "hash": "b0531b686f8a1cd4170cbbbbdc91af47"
   },
   "C:\\building projs\\bda proj\\agent\\RULES.md": {
-    "mtime": 1791748209.9276643,
-    "hash": "17435e7127ac0b4e681208c630b3a430"
+    "mtime": 1791749287.0710893,
+    "hash": "86ada9bad177097943b57fe801451079"
   },
   "C:\\building projs\\bda proj\\agent\\WORKFLOWS.md": {
     "mtime": 1791748272.044905,

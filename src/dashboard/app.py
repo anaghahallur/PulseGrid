@@ -211,21 +211,38 @@ def main():
                 "Review historical data continuity or model selection."
             )
 
-        # Provenance and Data Freshness Banner
+        # Provenance and Data Freshness Callouts (Strictly Decoupled)
         is_live = prediction_data.get("is_live_stream", False)
         data_src = prediction_data.get("data_source", "LOCAL_SYNTHETIC_STORE")
         origin_str = prediction_data.get("forecast_origin", "")
         age_hours = prediction_data.get("source_age_hours")
 
+        # Determine freshness status label
+        if age_hours is not None and age_hours < 0:
+            freshness_label = f"Future-Dated Scenario ({abs(age_hours):.1f}h ahead of server clock)"
+        elif age_hours is not None and age_hours <= 2.0:
+            freshness_label = f"Fresh ({age_hours:.1f}h age)"
+        elif age_hours is not None:
+            freshness_label = f"Stale ({age_hours:.1f}h age)"
+        else:
+            freshness_label = "Unknown age"
+
         if is_live:
             st.success(
-                f"⚡ **LIVE STREAMING LAKE DATA:** Forecast origin: `{origin_str}` | Source: `{data_src}` "
-                f"(Refreshed from active Kafka-to-HDFS streaming pipeline)"
+                f"🟢 **ACTIVE LIVE STREAMING LAKE:** Forecast origin: `{origin_str}` | Provenance: `{data_src}` | "
+                f"Freshness: `{freshness_label}` (Pipeline actively ingesting to HDFS; recent data confirmed)."
+            )
+        elif data_src == "HDFS_PROCESSED_LAKE":
+            st.warning(
+                f"🟡 **PERSISTED HDFS LAKE (INACTIVE / STALE STREAM):** Forecast origin: `{origin_str}` | "
+                f"Provenance: `{data_src}` | Freshness: `{freshness_label}` "
+                f"(Parquet snapshot in HDFS; ingestion is not currently refreshing live events)."
             )
         else:
             st.info(
-                f"🏛️ **HISTORICAL SYNTHETIC SIMULATION REPLAY:** Forecast origin: `{origin_str}` | Source: `{data_src}` "
-                f"| Age: `{age_hours}h` (Static synthetic benchmark dataset; not active live clinical telemetry)"
+                f"🏛️ **OFFLINE SYNTHETIC BENCHMARK STORE:** Forecast origin: `{origin_str}` | "
+                f"Provenance: `{data_src}` | Freshness: `{freshness_label}` "
+                f"(Static simulation benchmark dataset; not connected to live hospital streaming telemetry)."
             )
 
         # Top KPI Metrics

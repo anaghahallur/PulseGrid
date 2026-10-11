@@ -218,3 +218,73 @@ def test_unhandled_exception_returns_sanitized_500(client, monkeypatch):
     assert "internal_cluster" not in resp.text
     assert "TypeError" not in resp.text
 
+
+def test_predict_api_rejects_future_dated_history_when_configured(client):
+    """
+    Verifies that calling /predict with future-dated history and reject_future_data=True
+    returns HTTP 422 with a descriptive validation error.
+    """
+    now = datetime.now(timezone.utc)
+    future_time = (now + timedelta(hours=6)).replace(minute=0, second=0, microsecond=0)
+    history = [
+        {"timestamp": future_time.isoformat(), "occupied_beds": 10.0, "capacity": 20}
+    ]
+    payload = {
+        "unit_id": "MICU",
+        "model_name": "persistence",
+        "history": history,
+        "reject_future_data": True,
+    }
+    resp = client.post("/predict", json=payload)
+    assert resp.status_code == 422
+    assert "Future-dated forecast origin" in resp.json()["detail"]
+
+
+def test_predict_api_preserves_negative_source_age_for_future_history_when_allowed(client):
+    """
+    Verifies that calling /predict with future-dated history and reject_future_data=False
+    returns HTTP 200, preserves negative source_age_hours (unclamped), and includes future warnings.
+    """
+    now = datetime.now(timezone.utc)
+    future_time = (now + timedelta(hours=5)).replace(minute=0, second=0, microsecond=0)
+    history = [
+        {"timestamp": future_time.isoformat(), "occupied_beds": 12.0, "capacity": 20}
+    ]
+    payload = {
+        "unit_id": "MICU",
+        "model_name": "persistence",
+        "history": history,
+        "reject_future_data": False,
+    }
+    resp = client.post("/predict", json=payload)
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["source_age_hours"] < 0.0
+    assert any("FUTURE_DATED_DATA_WARNING" in w for w in data["warnings"])
+    assert data["is_live_stream"] is False
+
+
+def test_predict_api_respects_clock_skew_tolerance(client, monkeypatch):
+    """
+    Verifies that an origin 2 minutes ahead of server clock is accepted under
+    5-minute clock-skew tolerance and treated as current (age 0.0h).
+    """
+    service = get_forecasting_service()
+    mock_now = datetime(2026, 10, 11, 19, 58, 0, tzinfo=timezone.utc)
+    monkeypatch.setattr(service, "get_current_time", lambda: mock_now)
+
+    slight_future = datetime(2026, 10, 11, 20, 0, 0, tzinfo=timezone.utc)
+    history = [
+        {"timestamp": slight_future.isoformat(), "occupied_beds": 9.0, "capacity": 20}
+    ]
+    payload = {
+        "unit_id": "MICU",
+        "model_name": "persistence",
+        "history": history,
+        "reject_future_data": True,
+    }
+    resp = client.post("/predict", json=payload)
+    assert resp.status_code == 200
+    data = resp.json()
+    assert data["source_age_hours"] == 0.0
+

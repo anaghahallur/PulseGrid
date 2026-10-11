@@ -54,6 +54,10 @@ class ForecastingService:
 
         self.settings = get_settings()
 
+    def get_current_time(self) -> datetime:
+        """Returns the current UTC time. Isolated for deterministic testing and clock-skew evaluation."""
+        return datetime.now(timezone.utc)
+
     def load_model(self) -> bool:
         """
         Loads the trained model artifact and validates its metadata.
@@ -202,12 +206,45 @@ class ForecastingService:
                 timeout=5,
             )
             if hdfs.is_healthy():
-                processed_files = hdfs.find_files(self.settings.hdfs_processed_path, suffix=".parquet")
-                valid_files = [f for f in processed_files if not os.path.basename(f).startswith(".")]
-                if valid_files:
-                    valid_files.sort()
-                    latest_file = valid_files[-1]
-                    logger.info("Attempting to load processed census from HDFS: %s", latest_file)
+                target_dir = self.settings.hdfs_processed_path.rstrip("/")
+                latest_file: Optional[str] = None
+
+                # 1. Check atomic latest-output manifest first
+                manifest_path = f"{target_dir}/latest_manifest.json"
+                try:
+                    if hdfs.exists(manifest_path):
+                        m_content = hdfs.read_file(manifest_path).decode("utf-8")
+                        m_data = json.loads(m_content)
+                        cand = m_data.get("latest_file")
+                        if cand and hdfs.exists(cand):
+                            latest_file = cand
+                            logger.info("Selected newest HDFS dataset via manifest: %s", latest_file)
+                except Exception as me:
+                    logger.debug("Latest manifest check skipped: %s", me)
+
+                # 2. If no manifest, select dataset by evaluating actual data timestamps (never naive alphabetical filename!)
+                if not latest_file:
+                    processed_files = hdfs.find_files(target_dir, suffix=".parquet")
+                    valid_files = [f for f in processed_files if not os.path.basename(f).startswith(".")]
+                    if valid_files:
+                        best_file = None
+                        best_max_ts = None
+                        for cand in valid_files:
+                            try:
+                                cand_df = hdfs.read_parquet(cand)
+                                if isinstance(cand_df, pd.DataFrame) and not cand_df.empty and "timestamp" in cand_df.columns:
+                                    cand_max = pd.to_datetime(cand_df["timestamp"]).max()
+                                    if best_max_ts is None or cand_max > best_max_ts:
+                                        best_max_ts = cand_max
+                                        best_file = cand
+                            except Exception as ce:
+                                logger.warning("Could not inspect timestamp for %s: %s", cand, ce)
+
+                        latest_file = best_file or valid_files[0]
+                        logger.info("Selected HDFS dataset by newest data timestamp (%s): %s", best_max_ts, latest_file)
+
+                if latest_file:
+                    logger.info("Loading processed census from HDFS: %s", latest_file)
                     df_hdfs = hdfs.read_parquet(latest_file)
                     if isinstance(df_hdfs, pd.DataFrame) and not df_hdfs.empty and "unit_id" in df_hdfs.columns:
                         unit_df = df_hdfs[df_hdfs["unit_id"] == unit_id].sort_values("timestamp").reset_index(drop=True)
@@ -273,6 +310,7 @@ class ForecastingService:
         min_required_hours: int,
         unit_id: str,
         scenario_capacity: Optional[int] = None,
+        reject_future: bool = False,
     ) -> Tuple[pd.DataFrame, datetime, float, int]:
         """
         Rigorously validates and normalizes historical observations across all forecasting paths.
@@ -284,6 +322,7 @@ class ForecastingService:
         5. Exact hourly continuity (gap == 1 hour; never silently zero-filled).
         6. Minimum historical observation count for the chosen model.
         7. Physical capacity validation (scenario or server default, must be > 0).
+        8. Clock-skew tolerance and future-dated rejection if reject_future is True.
         """
         if not records:
             raise ValueError("History cannot be empty.")
@@ -334,6 +373,18 @@ class ForecastingService:
         origin_timestamp = origin_row["timestamp"].to_pydatetime()
         current_occupancy = float(origin_row["occupied_beds"])
 
+        # 7. Check future-dated forecast origin if rejection is enabled
+        if reject_future:
+            now_utc = self.get_current_time()
+            skew_seconds = (origin_timestamp - now_utc).total_seconds()
+            if skew_seconds > 300.0:  # 5-minute clock-skew tolerance
+                future_hours = round(skew_seconds / 3600.0, 2)
+                raise ValueError(
+                    f"Future-dated forecast origin detected: {origin_timestamp.isoformat()} is "
+                    f"{future_hours}h in the future relative to server clock ({now_utc.isoformat()}). "
+                    "Exceeds 5-minute clock-skew tolerance."
+                )
+
         # Determine authoritative capacity
         if scenario_capacity is not None:
             if scenario_capacity <= 0:
@@ -354,6 +405,7 @@ class ForecastingService:
         unit_id: str,
         records: List[HourlyCensusRecord],
         scenario_capacity: Optional[int] = None,
+        reject_future: bool = False,
     ) -> Tuple[pd.DataFrame, float, datetime, int]:
         """
         Validates historical continuity and reconstructs the exact 54 features expected by the trained Ridge model.
@@ -364,6 +416,7 @@ class ForecastingService:
             min_required_hours=169,
             unit_id=unit_id,
             scenario_capacity=scenario_capacity,
+            reject_future=reject_future,
         )
 
         # Extract latest slice of exactly 169 records ending at origin t
@@ -411,16 +464,11 @@ class ForecastingService:
 
         # 1. Obtain history
         data_source = "CLIENT_PAYLOAD"
-        is_live_stream = False
         records = request.history
 
         if records is None:
             try:
-                records, data_source, is_live_stream = self.load_history_from_store(unit_id, lookback_hours=168)
-                if is_live_stream:
-                    warnings.append("History refreshed live from HDFS processed census lake.")
-                else:
-                    warnings.append("History was loaded from local synthetic store (offline benchmark replay).")
+                records, data_source, _ = self.load_history_from_store(unit_id, lookback_hours=168)
             except Exception as e:
                 raise ValueError(f"Could not load historical data for unit '{unit_id}': {str(e)}")
 
@@ -437,6 +485,7 @@ class ForecastingService:
                 min_required_hours=1,
                 unit_id=unit_id,
                 scenario_capacity=request.scenario_capacity,
+                reject_future=request.reject_future_data,
             )
             dummy_x = pd.DataFrame({"occ_current": [current_occupancy]})
             preds_array = self.persistence_baseline.predict(dummy_x)[0]
@@ -449,6 +498,7 @@ class ForecastingService:
                 min_required_hours=25,
                 unit_id=unit_id,
                 scenario_capacity=request.scenario_capacity,
+                reject_future=request.reject_future_data,
             )
             lags_dict = {"occ_current": [current_occupancy]}
             for lag in range(1, 25):
@@ -465,6 +515,7 @@ class ForecastingService:
                     unit_id=unit_id,
                     records=records,
                     scenario_capacity=request.scenario_capacity,
+                    reject_future=request.reject_future_data,
                 )
                 raw_preds = self.model.predict(X_infer)
                 preds_array = raw_preds[0]
@@ -476,6 +527,7 @@ class ForecastingService:
                         min_required_hours=1,
                         unit_id=unit_id,
                         scenario_capacity=request.scenario_capacity,
+                        reject_future=request.reject_future_data,
                     )
                     dummy_x = pd.DataFrame({"occ_current": [current_occupancy]})
                     preds_array = self.persistence_baseline.predict(dummy_x)[0]
@@ -492,21 +544,73 @@ class ForecastingService:
                 f"Unknown model_name '{target_model}'. Allowed models: 'direct_ridge', 'persistence', 'seasonal_naive'."
             )
 
-        # 3. Source Age and Simulation-Time Labeling
-        now_utc = datetime.now(timezone.utc)
-        source_age_hours = round(max(0.0, (now_utc - origin_timestamp).total_seconds() / 3600.0), 2)
+        # 3. Source Age, Clock Skew, and Simulation-Time Labeling
+        now_utc = self.get_current_time()
+        diff_seconds = (now_utc - origin_timestamp).total_seconds()
+        # Define clock-skew tolerance (5 minutes = 300 seconds)
+        CLOCK_SKEW_TOLERANCE_SECONDS = 300.0
 
-        if is_live_stream:
+        if diff_seconds < -CLOCK_SKEW_TOLERANCE_SECONDS:
+            is_future_dated = True
+            # Preserves actual negative source age; DOES NOT clamp to 0.0!
+            source_age_hours = round(diff_seconds / 3600.0, 2)
+        elif diff_seconds < 0.0:
+            # Within 5-minute clock-skew tolerance: treat as current
+            is_future_dated = False
+            source_age_hours = 0.0
+        else:
+            is_future_dated = False
+            source_age_hours = round(diff_seconds / 3600.0, 2)
+
+        # Explicit rejection if reject_future_data is configured
+        if request.reject_future_data and is_future_dated:
+            raise ValueError(
+                f"Future-dated forecast origin rejected: {origin_timestamp.isoformat()} is "
+                f"{abs(source_age_hours):.2f}h in the future relative to server time {now_utc.isoformat()} "
+                f"(exceeds clock skew tolerance of 5 minutes)."
+            )
+
+        # Separate Provenance and Freshness:
+        # A file existing in HDFS does NOT imply active live streaming unless it is fresh (<= 2h old)
+        # and NOT future-dated.
+        is_live_stream = (data_source == "HDFS_PROCESSED_LAKE") and (not is_future_dated) and (0.0 <= source_age_hours <= 2.0)
+
+        if data_source == "HDFS_PROCESSED_LAKE":
             simulation_label = "STREAMING_LIVE_LAKE"
-            if source_age_hours > 2.0:
+            if is_future_dated:
                 warnings.append(
-                    f"STALE_STREAM_WARNING: Newest census event in HDFS is {source_age_hours:.1f} hours old."
+                    f"FUTURE_DATED_DATA_WARNING: Forecast origin {origin_timestamp.isoformat()} in HDFS is "
+                    f"{abs(source_age_hours):.2f}h in the future relative to server time ({now_utc.isoformat()}). "
+                    "Negative source age is preserved; data cannot be considered fresh live stream."
+                )
+            elif is_live_stream:
+                warnings.append("History refreshed live from active HDFS streaming census lake (fresh data <= 2h old).")
+            else:
+                warnings.append(
+                    f"STALE_STREAM_WARNING: Newest census event in HDFS is {source_age_hours:.1f} hours old. "
+                    "Ingestion pipeline is not actively streaming fresh records."
+                )
+        elif data_source == "LOCAL_SYNTHETIC_STORE":
+            simulation_label = "SYNTHETIC_SIMULATION_BENCHMARK"
+            if is_future_dated:
+                warnings.append(
+                    f"FUTURE_DATED_DATA_WARNING: Offline synthetic benchmark forecast origin {origin_timestamp.isoformat()} "
+                    f"is {abs(source_age_hours):.2f}h in the future relative to server time ({now_utc.isoformat()}). "
+                    f"Negative source age preserved ({source_age_hours}h); not live telemetry."
+                )
+            else:
+                warnings.append(
+                    "HISTORICAL_REPLAY: Forecast origin is from synthetic benchmark simulation, not active streaming telemetry."
                 )
         else:
+            # CLIENT_PAYLOAD
             simulation_label = "SYNTHETIC_SIMULATION_BENCHMARK"
-            warnings.append(
-                "HISTORICAL_REPLAY: Forecast origin is from synthetic benchmark simulation, not active streaming telemetry."
-            )
+            if is_future_dated:
+                warnings.append(
+                    f"FUTURE_DATED_DATA_WARNING: Client-provided forecast origin {origin_timestamp.isoformat()} "
+                    f"is {abs(source_age_hours):.2f}h in the future relative to server clock ({now_utc.isoformat()}). "
+                    f"Negative source age preserved ({source_age_hours}h)."
+                )
 
         # 4. Format Horizon Predictions
         horizon_preds: List[HorizonPrediction] = []

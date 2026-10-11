@@ -8,10 +8,18 @@ All AI agents and contributors working in this repository MUST adhere to the fol
 - **NEVER claim clinical validity:** All models, metrics, and dashboards are evaluated strictly on synthetic ADT event simulations. They establish engineering and ML pipeline validity, NOT real-world medical safety.
 - **Always label synthetic data:** All public endpoints, dashboard screens, and reports must clearly designate results as synthetic demonstrations (`SIMULATION_DATA`).
 - **Data Provenance & Live vs Replay Distinction:**
-  - Clearly distinguish between live streaming lake data (`HDFS_PROCESSED_LAKE`, `is_live_stream=True`) and static benchmark replays (`LOCAL_SYNTHETIC_STORE`, `is_live_stream=False`).
-  - Do NOT claim live forecasting unless the data source was actively refreshed and verified from HDFS.
+  - Clearly distinguish between data provenance (`data_source`: `HDFS_PROCESSED_LAKE`, `LOCAL_SYNTHETIC_STORE`, `CLIENT_PAYLOAD`) and streaming freshness (`is_live_stream`, `source_age_hours`).
+  - **Decoupled Live Stream Semantics:** Mere existence of a Parquet file in HDFS does NOT imply active live streaming. `is_live_stream` is True **strictly** when data originates from `HDFS_PROCESSED_LAKE`, is not future-dated, and has `source_age_hours <= 2.0`. Older files are labeled as persisted stale snapshots with `STALE_STREAM_WARNING`.
   - Surface `source_timestamp`, `source_age_hours`, and `simulation_time_label` on all inference responses.
-  - Issue `STALE_STREAM_WARNING` if live lake data has not received new events for > 2 hours.
+- **Clock-Skew Tolerance & Future-Dated Data Rules:**
+  - **Clock-Skew Tolerance:** A 5-minute tolerance (300 seconds) accommodates host/NTP time drift. Origins within 5 minutes in the future are treated as current (`source_age_hours = 0.0`).
+  - **Never Clamp Negative Source Age:** When origin is in the future beyond 5 minutes, negative source age is preserved (`source_age_hours < 0`) and NEVER silently clamped to 0.0 or labeled fresh.
+  - **Rejection vs Warning:**
+    - If `reject_future_data=True`: Rejects with a 422 validation error (`ValueError: Future-dated forecast origin detected`).
+    - If `reject_future_data=False`: Emits `FUTURE_DATED_DATA_WARNING`, preserves negative age, and marks `is_live_stream=False`.
+- **HDFS Dataset Selection (Data Timestamps & Atomic Manifest):**
+  - In `load_history_from_store()`, datasets must NEVER be selected by alphabetical filename sorting (`valid_files[-1]`).
+  - Selection resolves the atomic `latest_manifest.json` or inspects actual data timestamps (`cand_df['timestamp'].max()`) across files to guarantee the newest chronological dataset is chosen.
 - **Zero Secrets / Protected Health Information (PHI):** Never commit real patient records, PhysioNet credentials, `.env` secrets, or raw clinical datasets.
 
 ---
