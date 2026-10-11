@@ -24,7 +24,7 @@ from src.api.schemas import PredictionRequest
 
 # Configuration
 settings = get_settings()
-API_BASE_URL = os.environ.get("API_URL", "http://localhost:8000")
+API_BASE_URL = os.environ.get("API_URL", f"http://localhost:{settings.fastapi_port}")
 
 
 def check_api_health() -> Tuple[bool, str]:

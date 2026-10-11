@@ -115,10 +115,42 @@ Ingests and validates schema alignment against PhysioNet demo records:
 python scripts/ingest_mimic_data.py --source demo
 ```
 
-### 7. Run Automated Tests
+### 7. Audit Assigned Ports
+Inspect port assignments and check whether all containers and services are ready:
+```powershell
+python scripts/check_ports.py
+```
+
+### 8. Run Automated Tests
 ```powershell
 pytest -v
 ```
+
+---
+
+## Port Management & Service Allocation Matrix
+
+This project coordinates multiple distributed infrastructure containers and application servers. All ports are centrally managed via `.env` and `src/config.py`:
+
+| Service / Container | Assigned Port | Protocol / Transport | Purpose | Configuration Key |
+| :--- | :--- | :--- | :--- | :--- |
+| **Confluent ZooKeeper** | `2181` | TCP / ZK Client | Kafka metadata & broker consensus | `docker-compose.yml` (`2181:2181`) |
+| **Apache Kafka Broker** | `9092` | TCP / PLAINTEXT | Real-time ADT event streaming | `KAFKA_BOOTSTRAP_SERVERS` |
+| **Hadoop NameNode (WebHDFS)** | `9870` | HTTP / REST | WebHDFS data lake API & DFS UI | `HDFS_NAMENODE_URL` |
+| **Hadoop NameNode (RPC)** | `9000` | TCP / Hadoop IPC | Cluster inter-process communication | `HDFS_NAMENODE_RPC` |
+| **Hadoop DataNode** | `9864` | HTTP / Stream | Raw/processed block HTTP reads/writes | `docker-compose.yml` (`9864:9864`) |
+| **FastAPI Prediction Engine** | `8000` | HTTP / ASGI | Multi-horizon inference API & OpenAPI docs | `FASTAPI_PORT` |
+| **Streamlit Dashboard** | `8501` | HTTP / Web | Interactive clinical operational UI | `STREAMLIT_PORT` |
+
+### How to Reassign Ports
+If port 8000 or 8501 is occupied by another application on your system, you can reassign them without changing code:
+1. Copy `.env.example` to `.env` (if not already done).
+2. Update the port variables, e.g.:
+   ```dotenv
+   FASTAPI_PORT=8080
+   STREAMLIT_PORT=8502
+   ```
+3. Run `python scripts/check_ports.py` to confirm the new ports are free.
 
 ---
 

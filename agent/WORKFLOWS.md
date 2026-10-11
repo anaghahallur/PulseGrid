@@ -30,6 +30,9 @@ docker compose up -d
 # Check container status and health
 docker compose ps
 
+# Audit port assignments and verify container socket connectivity
+python scripts/check_ports.py
+
 # View container logs if troubleshooting
 docker compose logs kafka --tail 50
 docker compose logs namenode --tail 50
