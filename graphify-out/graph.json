@@ -9,7 +9,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L1",
       "id": "scripts_generate_synthetic_data_py",
-      "community": 3,
+      "community": 5,
       "norm_label": "generate_synthetic_data.py"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L19",
       "id": "scripts_generate_synthetic_data_parse_args",
-      "community": 3,
+      "community": 5,
       "norm_label": "parse_args()"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L55",
       "id": "scripts_generate_synthetic_data_main",
-      "community": 3,
+      "community": 5,
       "norm_label": "main()"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L1",
       "id": "scripts_generate_synthetic_data_rationale_1",
-      "community": 3,
+      "community": 5,
       "norm_label": "standalone cli script to generate reproducible synthetic icu event datasets and"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L1",
       "id": "scripts_ingest_mimic_data_py",
-      "community": 7,
+      "community": 8,
       "norm_label": "ingest_mimic_data.py"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L48",
       "id": "scripts_ingest_mimic_data_compute_sha256",
-      "community": 7,
+      "community": 8,
       "norm_label": "compute_sha256()"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L57",
       "id": "scripts_ingest_mimic_data_download_file",
-      "community": 7,
+      "community": 8,
       "norm_label": "download_file()"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L75",
       "id": "scripts_ingest_mimic_data_verify_checksums",
-      "community": 7,
+      "community": 8,
       "norm_label": "verify_checksums()"
     },
     {
@@ -81,7 +81,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L109",
       "id": "scripts_ingest_mimic_data_parse_mimic_events",
-      "community": 7,
+      "community": 6,
       "norm_label": "parse_mimic_events()"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L214",
       "id": "scripts_ingest_mimic_data_main",
-      "community": 7,
+      "community": 8,
       "norm_label": "main()"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L1",
       "id": "scripts_ingest_mimic_data_rationale_1",
-      "community": 7,
+      "community": 8,
       "norm_label": "reproducible ingestion script for mimic-iv clinical database demo 2.2. downloads"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L49",
       "id": "scripts_ingest_mimic_data_rationale_49",
-      "community": 7,
+      "community": 8,
       "norm_label": "compute sha-256 hash of a local file."
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L58",
       "id": "scripts_ingest_mimic_data_rationale_58",
-      "community": 7,
+      "community": 8,
       "norm_label": "download a file with http streaming."
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L76",
       "id": "scripts_ingest_mimic_data_rationale_76",
-      "community": 7,
+      "community": 8,
       "norm_label": "verify downloaded files against sha256sums.txt if available."
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L110",
       "id": "scripts_ingest_mimic_data_rationale_110",
-      "community": 7,
+      "community": 6,
       "norm_label": "parses transfers.csv.gz to extract structured patient icu transition events."
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L1",
       "id": "scripts_run_streaming_pipeline_py",
-      "community": 10,
+      "community": 3,
       "norm_label": "run_streaming_pipeline.py"
     },
     {
@@ -153,7 +153,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L27",
       "id": "scripts_run_streaming_pipeline_parse_args",
-      "community": 10,
+      "community": 3,
       "norm_label": "parse_args()"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L35",
       "id": "scripts_run_streaming_pipeline_main",
-      "community": 10,
+      "community": 3,
       "norm_label": "main()"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L1",
       "id": "scripts_run_streaming_pipeline_rationale_1",
-      "community": 10,
+      "community": 3,
       "norm_label": "demonstration script for phase 2: live streaming ingestion and kafka-to-hdfs pip"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "src/config.py",
       "source_location": "L1",
       "id": "src_config_py",
-      "community": 9,
+      "community": 3,
       "norm_label": "config.py"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "src/config.py",
       "source_location": "L12",
       "id": "src_config_settings",
-      "community": 9,
+      "community": 3,
       "norm_label": "settings"
     },
     {
@@ -198,7 +198,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basesettings",
-      "community": 9,
+      "community": 3,
       "norm_label": "basesettings"
     },
     {
@@ -207,7 +207,7 @@
       "source_file": "src/config.py",
       "source_location": "L92",
       "id": "src_config_get_settings",
-      "community": 0,
+      "community": 3,
       "norm_label": "get_settings()"
     },
     {
@@ -216,7 +216,7 @@
       "source_file": "src/config.py",
       "source_location": "L1",
       "id": "src_config_rationale_1",
-      "community": 9,
+      "community": 3,
       "norm_label": "application configuration module using pydantic settings. loads environment vari"
     },
     {
@@ -225,7 +225,7 @@
       "source_file": "src/config.py",
       "source_location": "L13",
       "id": "src_config_rationale_13",
-      "community": 9,
+      "community": 3,
       "norm_label": "system-wide configuration settings with environment override support."
     },
     {
@@ -234,7 +234,7 @@
       "source_file": "src/config.py",
       "source_location": "L93",
       "id": "src_config_rationale_93",
-      "community": 0,
+      "community": 3,
       "norm_label": "retrieve cached application settings instance."
     },
     {
@@ -243,7 +243,7 @@
       "source_file": "src/__init__.py",
       "source_location": "L1",
       "id": "src_init_py",
-      "community": 12,
+      "community": 10,
       "norm_label": "__init__.py"
     },
     {
@@ -252,7 +252,7 @@
       "source_file": "src/__init__.py",
       "source_location": "L1",
       "id": "src_init_rationale_1",
-      "community": 12,
+      "community": 10,
       "norm_label": "icu bed demand forecasting system package."
     },
     {
@@ -295,7 +295,7 @@
       "label": ".persist_occupancy_to_hdfs()",
       "file_type": "code",
       "source_file": "src/processing/occupancy_calculator.py",
-      "source_location": "L187",
+      "source_location": "L223",
       "id": "processing_occupancy_calculator_occupancycalculator_persist_occupancy_to_hdfs",
       "community": 1,
       "norm_label": ".persist_occupancy_to_hdfs()"
@@ -340,8 +340,8 @@
       "label": "Persists reconstructed hourly census DataFrame to HDFS as Parquet         using",
       "file_type": "rationale",
       "source_file": "src/processing/occupancy_calculator.py",
-      "source_location": "L194",
-      "id": "processing_occupancy_calculator_rationale_194",
+      "source_location": "L230",
+      "id": "processing_occupancy_calculator_rationale_230",
       "community": 1,
       "norm_label": "persists reconstructed hourly census dataframe to hdfs as parquet         using"
     },
@@ -351,7 +351,7 @@
       "source_file": "src/processing/__init__.py",
       "source_location": "L1",
       "id": "src_processing_init_py",
-      "community": 13,
+      "community": 11,
       "norm_label": "__init__.py"
     },
     {
@@ -360,7 +360,7 @@
       "source_file": "src/processing/__init__.py",
       "source_location": "L1",
       "id": "processing_init_rationale_1",
-      "community": 13,
+      "community": 11,
       "norm_label": "processing module exports."
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L1",
       "id": "src_producer_kafka_producer_py",
-      "community": 2,
+      "community": 4,
       "norm_label": "kafka_producer.py"
     },
     {
@@ -378,7 +378,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L16",
       "id": "producer_kafka_producer_icukafkaproducer",
-      "community": 2,
+      "community": 4,
       "norm_label": "icukafkaproducer"
     },
     {
@@ -387,7 +387,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L22",
       "id": "producer_kafka_producer_icukafkaproducer_init",
-      "community": 2,
+      "community": 4,
       "norm_label": ".__init__()"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L47",
       "id": "producer_kafka_producer_icukafkaproducer_delivery_report",
-      "community": 2,
+      "community": 4,
       "norm_label": "._delivery_report()"
     },
     {
@@ -405,7 +405,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L64",
       "id": "producer_kafka_producer_icukafkaproducer_get_partition_key",
-      "community": 2,
+      "community": 4,
       "norm_label": "._get_partition_key()"
     },
     {
@@ -414,7 +414,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L80",
       "id": "producer_kafka_producer_icukafkaproducer_send_event",
-      "community": 2,
+      "community": 4,
       "norm_label": ".send_event()"
     },
     {
@@ -423,7 +423,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L98",
       "id": "producer_kafka_producer_icukafkaproducer_publish_stream",
-      "community": 2,
+      "community": 4,
       "norm_label": ".publish_stream()"
     },
     {
@@ -432,7 +432,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L140",
       "id": "producer_kafka_producer_icukafkaproducer_flush",
-      "community": 2,
+      "community": 4,
       "norm_label": ".flush()"
     },
     {
@@ -441,7 +441,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L144",
       "id": "producer_kafka_producer_icukafkaproducer_close",
-      "community": 2,
+      "community": 4,
       "norm_label": ".close()"
     },
     {
@@ -450,7 +450,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L1",
       "id": "producer_kafka_producer_rationale_1",
-      "community": 2,
+      "community": 4,
       "norm_label": "resilient kafka event producer. publishes icu adt events to kafka topic with par"
     },
     {
@@ -459,7 +459,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L17",
       "id": "producer_kafka_producer_rationale_17",
-      "community": 2,
+      "community": 4,
       "norm_label": "publishes serialized icuevent records to apache kafka with delivery confirmation"
     },
     {
@@ -468,7 +468,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L48",
       "id": "producer_kafka_producer_rationale_48",
-      "community": 2,
+      "community": 4,
       "norm_label": "internal callback tracking delivery success and failures."
     },
     {
@@ -477,7 +477,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L65",
       "id": "producer_kafka_producer_rationale_65",
-      "community": 2,
+      "community": 4,
       "norm_label": "determines the partition routing key.         - 'encounter': guarantees all tran"
     },
     {
@@ -486,7 +486,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L81",
       "id": "producer_kafka_producer_rationale_81",
-      "community": 2,
+      "community": 4,
       "norm_label": "publishes a single validated icuevent to kafka."
     },
     {
@@ -495,7 +495,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L105",
       "id": "producer_kafka_producer_rationale_105",
-      "community": 2,
+      "community": 4,
       "norm_label": "publishes an iterable of events with optional rate throttling and event limiting"
     },
     {
@@ -504,7 +504,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L141",
       "id": "producer_kafka_producer_rationale_141",
-      "community": 2,
+      "community": 4,
       "norm_label": "wait for all outstanding messages to be delivered."
     },
     {
@@ -513,7 +513,7 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L145",
       "id": "producer_kafka_producer_rationale_145",
-      "community": 2,
+      "community": 4,
       "norm_label": "flush remaining messages and close producer."
     },
     {
@@ -522,7 +522,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L1",
       "id": "src_producer_simulator_py",
-      "community": 3,
+      "community": 5,
       "norm_label": "simulator.py"
     },
     {
@@ -531,7 +531,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L16",
       "id": "producer_simulator_icusimulator",
-      "community": 3,
+      "community": 5,
       "norm_label": "icusimulator"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L22",
       "id": "producer_simulator_icusimulator_init",
-      "community": 3,
+      "community": 5,
       "norm_label": ".__init__()"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L76",
       "id": "producer_simulator_icusimulator_get_arrival_multiplier",
-      "community": 3,
+      "community": 5,
       "norm_label": "._get_arrival_multiplier()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L104",
       "id": "producer_simulator_icusimulator_sample_los_hours",
-      "community": 3,
+      "community": 5,
       "norm_label": "._sample_los_hours()"
     },
     {
@@ -567,7 +567,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L116",
       "id": "producer_simulator_icusimulator_generate_events",
-      "community": 4,
+      "community": 6,
       "norm_label": ".generate_events()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L222",
       "id": "producer_simulator_icusimulator_export_jsonl",
-      "community": 3,
+      "community": 5,
       "norm_label": ".export_jsonl()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L1",
       "id": "producer_simulator_rationale_1",
-      "community": 3,
+      "community": 5,
       "norm_label": "deterministic synthetic icu event generator. produces high-fidelity patient admi"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L17",
       "id": "producer_simulator_rationale_17",
-      "community": 3,
+      "community": 5,
       "norm_label": "simulates patient flow through an icu network with configurable capacities,"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L33",
       "id": "producer_simulator_rationale_33",
-      "community": 3,
+      "community": 5,
       "norm_label": "initialize the simulator.          :param start_date: starting datetime (utc)."
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L77",
       "id": "producer_simulator_rationale_77",
-      "community": 3,
+      "community": 5,
       "norm_label": "computes diurnal and day-of-week arrival rate multiplier.         hospital admis"
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L105",
       "id": "producer_simulator_rationale_105",
-      "community": 3,
+      "community": 5,
       "norm_label": "samples icu length of stay from a log-normal distribution.         clinical icu"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L121",
       "id": "producer_simulator_rationale_121",
-      "community": 4,
+      "community": 6,
       "norm_label": "generates chronologically ordered icu events across the simulation window."
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L223",
       "id": "producer_simulator_rationale_223",
-      "community": 3,
+      "community": 5,
       "norm_label": "saves simulated events to json lines format.          :param filepath: target pa"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "src/producer/__init__.py",
       "source_location": "L1",
       "id": "src_producer_init_py",
-      "community": 14,
+      "community": 12,
       "norm_label": "__init__.py"
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "src/producer/__init__.py",
       "source_location": "L1",
       "id": "producer_init_rationale_1",
-      "community": 14,
+      "community": 12,
       "norm_label": "producer module exports."
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L1",
       "id": "src_schema_events_py",
-      "community": 5,
+      "community": 7,
       "norm_label": "events.py"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L13",
       "id": "schema_events_eventtype",
-      "community": 5,
+      "community": 7,
       "norm_label": "eventtype"
     },
     {
@@ -684,7 +684,7 @@
       "source_file": "",
       "source_location": "",
       "id": "str",
-      "community": 4,
+      "community": 6,
       "norm_label": "str"
     },
     {
@@ -693,7 +693,7 @@
       "source_file": "",
       "source_location": "",
       "id": "enum",
-      "community": 5,
+      "community": 7,
       "norm_label": "enum"
     },
     {
@@ -702,7 +702,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L20",
       "id": "schema_events_datasource",
-      "community": 5,
+      "community": 7,
       "norm_label": "datasource"
     },
     {
@@ -711,7 +711,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L27",
       "id": "schema_events_icuevent",
-      "community": 4,
+      "community": 6,
       "norm_label": "icuevent"
     },
     {
@@ -720,7 +720,7 @@
       "source_file": "",
       "source_location": "",
       "id": "basemodel",
-      "community": 5,
+      "community": 7,
       "norm_label": "basemodel"
     },
     {
@@ -729,7 +729,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L90",
       "id": "schema_events_ensure_utc",
-      "community": 5,
+      "community": 7,
       "norm_label": "ensure_utc()"
     },
     {
@@ -738,7 +738,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L97",
       "id": "schema_events_validate_transition_integrity",
-      "community": 5,
+      "community": 7,
       "norm_label": "validate_transition_integrity()"
     },
     {
@@ -747,7 +747,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L134",
       "id": "schema_events_icuevent_to_dict",
-      "community": 4,
+      "community": 6,
       "norm_label": ".to_dict()"
     },
     {
@@ -756,7 +756,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L1",
       "id": "schema_events_rationale_1",
-      "community": 5,
+      "community": 7,
       "norm_label": "event schemas and validation rules for icu admission, transfer, and discharge (a"
     },
     {
@@ -765,7 +765,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L14",
       "id": "schema_events_rationale_14",
-      "community": 5,
+      "community": 7,
       "norm_label": "categorical types of patient bed events."
     },
     {
@@ -774,7 +774,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L21",
       "id": "schema_events_rationale_21",
-      "community": 5,
+      "community": 7,
       "norm_label": "provenance tracking for events."
     },
     {
@@ -783,7 +783,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L28",
       "id": "schema_events_rationale_28",
-      "community": 4,
+      "community": 6,
       "norm_label": "validated representation of an icu patient transition event.     serves as the c"
     },
     {
@@ -792,7 +792,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L91",
       "id": "schema_events_rationale_91",
-      "community": 16,
+      "community": 14,
       "norm_label": "ensure timestamp has explicit timezone awareness in utc."
     },
     {
@@ -801,7 +801,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L98",
       "id": "schema_events_rationale_98",
-      "community": 17,
+      "community": 15,
       "norm_label": "validates clinical unit routing consistency:         - admission must specify to"
     },
     {
@@ -810,7 +810,7 @@
       "source_file": "src/schema/events.py",
       "source_location": "L135",
       "id": "schema_events_rationale_135",
-      "community": 4,
+      "community": 6,
       "norm_label": "convert event to serialized dictionary with iso string timestamps and uuid strin"
     },
     {
@@ -819,7 +819,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L1",
       "id": "src_schema_occupancy_py",
-      "community": 5,
+      "community": 7,
       "norm_label": "occupancy.py"
     },
     {
@@ -828,7 +828,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L12",
       "id": "schema_occupancy_hourlyoccupancy",
-      "community": 5,
+      "community": 7,
       "norm_label": "hourlyoccupancy"
     },
     {
@@ -837,7 +837,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L81",
       "id": "schema_occupancy_hourlyoccupancy_to_dict",
-      "community": 5,
+      "community": 7,
       "norm_label": ".to_dict()"
     },
     {
@@ -846,7 +846,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L1",
       "id": "schema_occupancy_rationale_1",
-      "community": 5,
+      "community": 7,
       "norm_label": "hourly occupancy census schemas for icu units. represents aggregated ground-trut"
     },
     {
@@ -855,7 +855,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L13",
       "id": "schema_occupancy_rationale_13",
-      "community": 5,
+      "community": 7,
       "norm_label": "ground-truth census record for a specific icu unit at a specific hour boundary."
     },
     {
@@ -864,7 +864,7 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L82",
       "id": "schema_occupancy_rationale_82",
-      "community": 5,
+      "community": 7,
       "norm_label": "serialize occupancy model to dictionary."
     },
     {
@@ -873,7 +873,7 @@
       "source_file": "src/schema/__init__.py",
       "source_location": "L1",
       "id": "src_schema_init_py",
-      "community": 18,
+      "community": 16,
       "norm_label": "__init__.py"
     },
     {
@@ -900,7 +900,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L21",
       "id": "storage_hdfs_client_hdfsclient_init",
-      "community": 0,
+      "community": 3,
       "norm_label": ".__init__()"
     },
     {
@@ -909,7 +909,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L34",
       "id": "storage_hdfs_client_hdfsclient_remap_redirect",
-      "community": 6,
+      "community": 0,
       "norm_label": "._remap_redirect()"
     },
     {
@@ -936,7 +936,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L65",
       "id": "storage_hdfs_client_hdfsclient_write_file",
-      "community": 6,
+      "community": 0,
       "norm_label": ".write_file()"
     },
     {
@@ -945,7 +945,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L94",
       "id": "storage_hdfs_client_hdfsclient_read_file",
-      "community": 6,
+      "community": 0,
       "norm_label": ".read_file()"
     },
     {
@@ -990,7 +990,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L158",
       "id": "storage_hdfs_client_hdfsclient_write_jsonl",
-      "community": 6,
+      "community": 0,
       "norm_label": ".write_jsonl()"
     },
     {
@@ -999,25 +999,43 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L164",
       "id": "storage_hdfs_client_hdfsclient_read_jsonl",
-      "community": 6,
+      "community": 0,
       "norm_label": ".read_jsonl()"
+    },
+    {
+      "label": ".find_files()",
+      "file_type": "code",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L174",
+      "id": "storage_hdfs_client_hdfsclient_find_files",
+      "community": 0,
+      "norm_label": ".find_files()"
+    },
+    {
+      "label": ".read_all_jsonl()",
+      "file_type": "code",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L200",
+      "id": "storage_hdfs_client_hdfsclient_read_all_jsonl",
+      "community": 0,
+      "norm_label": ".read_all_jsonl()"
     },
     {
       "label": ".write_parquet()",
       "file_type": "code",
       "source_file": "src/storage/hdfs_client.py",
-      "source_location": "L174",
+      "source_location": "L210",
       "id": "storage_hdfs_client_hdfsclient_write_parquet",
-      "community": 6,
+      "community": 0,
       "norm_label": ".write_parquet()"
     },
     {
       "label": ".read_parquet()",
       "file_type": "code",
       "source_file": "src/storage/hdfs_client.py",
-      "source_location": "L185",
+      "source_location": "L221",
       "id": "storage_hdfs_client_hdfsclient_read_parquet",
-      "community": 6,
+      "community": 0,
       "norm_label": ".read_parquet()"
     },
     {
@@ -1044,7 +1062,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L35",
       "id": "storage_hdfs_client_rationale_35",
-      "community": 6,
+      "community": 0,
       "norm_label": "remaps internal docker container hostnames in datanode redirects to localhost"
     },
     {
@@ -1071,7 +1089,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L66",
       "id": "storage_hdfs_client_rationale_66",
-      "community": 6,
+      "community": 0,
       "norm_label": "write bytes payload to hdfs using 2-step webhdfs protocol."
     },
     {
@@ -1080,7 +1098,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L95",
       "id": "storage_hdfs_client_rationale_95",
-      "community": 6,
+      "community": 0,
       "norm_label": "read file bytes from hdfs."
     },
     {
@@ -1125,7 +1143,7 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L159",
       "id": "storage_hdfs_client_rationale_159",
-      "community": 6,
+      "community": 0,
       "norm_label": "write list of dictionaries as newline-delimited json to hdfs."
     },
     {
@@ -1134,25 +1152,43 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L165",
       "id": "storage_hdfs_client_rationale_165",
-      "community": 6,
+      "community": 0,
       "norm_label": "read newline-delimited json file from hdfs into list of dictionaries."
+    },
+    {
+      "label": "Recursively lists all file paths under base_path matching suffix.         Ignore",
+      "file_type": "rationale",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L175",
+      "id": "storage_hdfs_client_rationale_175",
+      "community": 0,
+      "norm_label": "recursively lists all file paths under base_path matching suffix.         ignore"
+    },
+    {
+      "label": "Recursively finds and reads all JSONL files under base_path into a combined list",
+      "file_type": "rationale",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L201",
+      "id": "storage_hdfs_client_rationale_201",
+      "community": 0,
+      "norm_label": "recursively finds and reads all jsonl files under base_path into a combined list"
     },
     {
       "label": "Serialize a pandas DataFrame to Parquet and write to HDFS.",
       "file_type": "rationale",
       "source_file": "src/storage/hdfs_client.py",
-      "source_location": "L175",
-      "id": "storage_hdfs_client_rationale_175",
-      "community": 6,
+      "source_location": "L211",
+      "id": "storage_hdfs_client_rationale_211",
+      "community": 0,
       "norm_label": "serialize a pandas dataframe to parquet and write to hdfs."
     },
     {
       "label": "Read Parquet file from HDFS into a pandas DataFrame.",
       "file_type": "rationale",
       "source_file": "src/storage/hdfs_client.py",
-      "source_location": "L186",
-      "id": "storage_hdfs_client_rationale_186",
-      "community": 6,
+      "source_location": "L222",
+      "id": "storage_hdfs_client_rationale_222",
+      "community": 0,
       "norm_label": "read parquet file from hdfs into a pandas dataframe."
     },
     {
@@ -1161,7 +1197,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L1",
       "id": "src_storage_kafka_sink_py",
-      "community": 0,
+      "community": 2,
       "norm_label": "kafka_sink.py"
     },
     {
@@ -1170,7 +1206,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L21",
       "id": "storage_kafka_sink_kafkahdfssink",
-      "community": 0,
+      "community": 2,
       "norm_label": "kafkahdfssink"
     },
     {
@@ -1179,7 +1215,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L27",
       "id": "storage_kafka_sink_kafkahdfssink_init",
-      "community": 0,
+      "community": 2,
       "norm_label": ".__init__()"
     },
     {
@@ -1188,7 +1224,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L62",
       "id": "storage_kafka_sink_kafkahdfssink_parse_message",
-      "community": 8,
+      "community": 2,
       "norm_label": "._parse_message()"
     },
     {
@@ -1197,25 +1233,34 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L85",
       "id": "storage_kafka_sink_kafkahdfssink_process_batch",
-      "community": 8,
+      "community": 2,
       "norm_label": ".process_batch()"
+    },
+    {
+      "label": "._commit_offsets()",
+      "file_type": "code",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L162",
+      "id": "storage_kafka_sink_kafkahdfssink_commit_offsets",
+      "community": 2,
+      "norm_label": "._commit_offsets()"
     },
     {
       "label": ".poll_and_sink()",
       "file_type": "code",
       "source_file": "src/storage/kafka_sink.py",
-      "source_location": "L162",
+      "source_location": "L166",
       "id": "storage_kafka_sink_kafkahdfssink_poll_and_sink",
-      "community": 8,
+      "community": 2,
       "norm_label": ".poll_and_sink()"
     },
     {
       "label": ".close()",
       "file_type": "code",
       "source_file": "src/storage/kafka_sink.py",
-      "source_location": "L204",
+      "source_location": "L208",
       "id": "storage_kafka_sink_kafkahdfssink_close",
-      "community": 0,
+      "community": 2,
       "norm_label": ".close()"
     },
     {
@@ -1224,7 +1269,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L1",
       "id": "storage_kafka_sink_rationale_1",
-      "community": 0,
+      "community": 2,
       "norm_label": "kafka-to-hdfs sink pipeline. consumes events in bounded micro-batches from apach"
     },
     {
@@ -1233,7 +1278,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L22",
       "id": "storage_kafka_sink_rationale_22",
-      "community": 0,
+      "community": 2,
       "norm_label": "micro-batch consumer that lands kafka events into partitioned hdfs lake storage"
     },
     {
@@ -1242,7 +1287,7 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L63",
       "id": "storage_kafka_sink_rationale_63",
-      "community": 8,
+      "community": 2,
       "norm_label": "parses and validates a kafka message payload.         returns (valid_event, none"
     },
     {
@@ -1251,25 +1296,34 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L86",
       "id": "storage_kafka_sink_rationale_86",
-      "community": 8,
+      "community": 2,
       "norm_label": "processes a bounded batch of kafka messages:         1. validates and segregates"
+    },
+    {
+      "label": "Synchronously commit Kafka consumer offsets.",
+      "file_type": "rationale",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L163",
+      "id": "storage_kafka_sink_rationale_163",
+      "community": 2,
+      "norm_label": "synchronously commit kafka consumer offsets."
     },
     {
       "label": "Polls Kafka for messages up to max_messages or until idle_timeout expires,",
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
-      "source_location": "L168",
-      "id": "storage_kafka_sink_rationale_168",
-      "community": 8,
+      "source_location": "L172",
+      "id": "storage_kafka_sink_rationale_172",
+      "community": 2,
       "norm_label": "polls kafka for messages up to max_messages or until idle_timeout expires,"
     },
     {
       "label": "Closes the Kafka consumer safely.",
       "file_type": "rationale",
       "source_file": "src/storage/kafka_sink.py",
-      "source_location": "L205",
-      "id": "storage_kafka_sink_rationale_205",
-      "community": 0,
+      "source_location": "L209",
+      "id": "storage_kafka_sink_rationale_209",
+      "community": 2,
       "norm_label": "closes the kafka consumer safely."
     },
     {
@@ -1278,7 +1332,7 @@
       "source_file": "src/storage/__init__.py",
       "source_location": "L1",
       "id": "src_storage_init_py",
-      "community": 15,
+      "community": 13,
       "norm_label": "__init__.py"
     },
     {
@@ -1287,7 +1341,7 @@
       "source_file": "src/storage/__init__.py",
       "source_location": "L1",
       "id": "storage_init_rationale_1",
-      "community": 15,
+      "community": 13,
       "norm_label": "storage module exports."
     },
     {
@@ -1296,7 +1350,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L1",
       "id": "tests_conftest_py",
-      "community": 11,
+      "community": 9,
       "norm_label": "conftest.py"
     },
     {
@@ -1305,7 +1359,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L10",
       "id": "tests_conftest_sample_units",
-      "community": 11,
+      "community": 9,
       "norm_label": "sample_units()"
     },
     {
@@ -1314,7 +1368,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L21",
       "id": "tests_conftest_base_timestamp",
-      "community": 11,
+      "community": 9,
       "norm_label": "base_timestamp()"
     },
     {
@@ -1323,7 +1377,7 @@
       "source_file": "tests/conftest.py",
       "source_location": "L1",
       "id": "tests_conftest_rationale_1",
-      "community": 11,
+      "community": 9,
       "norm_label": "shared pytest fixtures."
     },
     {
@@ -1332,7 +1386,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L1",
       "id": "tests_integration_test_end_to_end_pipeline_py",
-      "community": 0,
+      "community": 3,
       "norm_label": "test_end_to_end_pipeline.py"
     },
     {
@@ -1341,7 +1395,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L21",
       "id": "integration_test_end_to_end_pipeline_test_kafka_to_hdfs_sink_full_cycle",
-      "community": 0,
+      "community": 3,
       "norm_label": "test_kafka_to_hdfs_sink_full_cycle()"
     },
     {
@@ -1350,7 +1404,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L93",
       "id": "integration_test_end_to_end_pipeline_test_malformed_event_quarantine_to_dead_letter",
-      "community": 0,
+      "community": 3,
       "norm_label": "test_malformed_event_quarantine_to_dead_letter()"
     },
     {
@@ -1359,7 +1413,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L140",
       "id": "integration_test_end_to_end_pipeline_test_occupancy_persistence_to_hdfs_and_readback",
-      "community": 0,
+      "community": 3,
       "norm_label": "test_occupancy_persistence_to_hdfs_and_readback()"
     },
     {
@@ -1368,7 +1422,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L1",
       "id": "integration_test_end_to_end_pipeline_rationale_1",
-      "community": 0,
+      "community": 3,
       "norm_label": "integration tests for the complete live event ingestion pipeline: kafka producer"
     },
     {
@@ -1377,7 +1431,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L22",
       "id": "integration_test_end_to_end_pipeline_rationale_22",
-      "community": 0,
+      "community": 3,
       "norm_label": "verifies that:     1. published events are consumed by kafkahdfssink.     2. sto"
     },
     {
@@ -1386,7 +1440,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L94",
       "id": "integration_test_end_to_end_pipeline_rationale_94",
-      "community": 0,
+      "community": 3,
       "norm_label": "verifies that malformed, corrupted, or non-json messages sent to kafka     are i"
     },
     {
@@ -1395,7 +1449,7 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L141",
       "id": "integration_test_end_to_end_pipeline_rationale_141",
-      "community": 0,
+      "community": 3,
       "norm_label": "verifies that reconstructed occupancy dataframes are persisted to hdfs as parque"
     },
     {
@@ -1404,7 +1458,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L1",
       "id": "tests_integration_test_failure_recovery_py",
-      "community": 0,
+      "community": 4,
       "norm_label": "test_failure_recovery.py"
     },
     {
@@ -1413,7 +1467,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L22",
       "id": "integration_test_failure_recovery_test_hdfs_failure_aborts_offset_commit",
-      "community": 0,
+      "community": 4,
       "norm_label": "test_hdfs_failure_aborts_offset_commit()"
     },
     {
@@ -1422,7 +1476,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L93",
       "id": "integration_test_failure_recovery_test_sink_restart_does_not_duplicate_acknowledged_events",
-      "community": 0,
+      "community": 4,
       "norm_label": "test_sink_restart_does_not_duplicate_acknowledged_events()"
     },
     {
@@ -1431,7 +1485,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L1",
       "id": "integration_test_failure_recovery_rationale_1",
-      "community": 0,
+      "community": 4,
       "norm_label": "integration tests for kafka-hdfs failure recovery, offset semantics, and idempot"
     },
     {
@@ -1440,7 +1494,7 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L23",
       "id": "integration_test_failure_recovery_rationale_23",
-      "community": 0,
+      "community": 4,
       "norm_label": "simulates an hdfs write/rename failure during batch processing.     asserts that"
     },
     {
@@ -1449,8 +1503,125 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L94",
       "id": "integration_test_failure_recovery_rationale_94",
-      "community": 0,
+      "community": 4,
       "norm_label": "verifies that once a micro-batch is finalized and offsets are committed,     res"
+    },
+    {
+      "label": "test_pipeline_reliability_audit.py",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L1",
+      "id": "tests_integration_test_pipeline_reliability_audit_py",
+      "community": 2,
+      "norm_label": "test_pipeline_reliability_audit.py"
+    },
+    {
+      "label": "hdfs_client()",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L22",
+      "id": "integration_test_pipeline_reliability_audit_hdfs_client",
+      "community": 2,
+      "norm_label": "hdfs_client()"
+    },
+    {
+      "label": "kafka_settings()",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L30",
+      "id": "integration_test_pipeline_reliability_audit_kafka_settings",
+      "community": 3,
+      "norm_label": "kafka_settings()"
+    },
+    {
+      "label": "_create_mock_message()",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L34",
+      "id": "integration_test_pipeline_reliability_audit_create_mock_message",
+      "community": 2,
+      "norm_label": "_create_mock_message()"
+    },
+    {
+      "label": "test_multi_date_partition_hdfs_failure_aborts_offset_commit()",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L45",
+      "id": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
+      "community": 2,
+      "norm_label": "test_multi_date_partition_hdfs_failure_aborts_offset_commit()"
+    },
+    {
+      "label": "test_post_finalization_crash_replay_and_downstream_dedup()",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L106",
+      "id": "integration_test_pipeline_reliability_audit_test_post_finalization_crash_replay_and_downstream_dedup",
+      "community": 2,
+      "norm_label": "test_post_finalization_crash_replay_and_downstream_dedup()"
+    },
+    {
+      "label": "test_quarantine_segregation_in_mixed_microbatch()",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L200",
+      "id": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
+      "community": 2,
+      "norm_label": "test_quarantine_segregation_in_mixed_microbatch()"
+    },
+    {
+      "label": "test_occupancy_calculator_cold_restart_reconstruction()",
+      "file_type": "code",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L278",
+      "id": "integration_test_pipeline_reliability_audit_test_occupancy_calculator_cold_restart_reconstruction",
+      "community": 2,
+      "norm_label": "test_occupancy_calculator_cold_restart_reconstruction()"
+    },
+    {
+      "label": "Pipeline Reliability Audit Integration Tests for Phase 2.1. Verifies failure sce",
+      "file_type": "rationale",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L1",
+      "id": "integration_test_pipeline_reliability_audit_rationale_1",
+      "community": 2,
+      "norm_label": "pipeline reliability audit integration tests for phase 2.1. verifies failure sce"
+    },
+    {
+      "label": "Scenario: A micro-batch contains events spanning multiple date partitions.     F",
+      "file_type": "rationale",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L46",
+      "id": "integration_test_pipeline_reliability_audit_rationale_46",
+      "community": 2,
+      "norm_label": "scenario: a micro-batch contains events spanning multiple date partitions.     f"
+    },
+    {
+      "label": "Scenario: HDFS finalization succeeds, but process crashes before the Kafka offse",
+      "file_type": "rationale",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L107",
+      "id": "integration_test_pipeline_reliability_audit_rationale_107",
+      "community": 2,
+      "norm_label": "scenario: hdfs finalization succeeds, but process crashes before the kafka offse"
+    },
+    {
+      "label": "Scenario: A micro-batch arrives with a mix of valid events, malformed JSON,",
+      "file_type": "rationale",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L201",
+      "id": "integration_test_pipeline_reliability_audit_rationale_201",
+      "community": 2,
+      "norm_label": "scenario: a micro-batch arrives with a mix of valid events, malformed json,"
+    },
+    {
+      "label": "Scenario: Calculator processes raw HDFS events and persists Parquet.     Process",
+      "file_type": "rationale",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L279",
+      "id": "integration_test_pipeline_reliability_audit_rationale_279",
+      "community": 2,
+      "norm_label": "scenario: calculator processes raw hdfs events and persists parquet.     process"
     },
     {
       "label": "test_storage_streaming.py",
@@ -1458,7 +1629,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L1",
       "id": "tests_integration_test_storage_streaming_py",
-      "community": 2,
+      "community": 3,
       "norm_label": "test_storage_streaming.py"
     },
     {
@@ -1467,7 +1638,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L14",
       "id": "integration_test_storage_streaming_test_hdfs_connectivity_and_rw",
-      "community": 0,
+      "community": 3,
       "norm_label": "test_hdfs_connectivity_and_rw()"
     },
     {
@@ -1476,7 +1647,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L40",
       "id": "integration_test_storage_streaming_test_kafka_producer_publish",
-      "community": 2,
+      "community": 3,
       "norm_label": "test_kafka_producer_publish()"
     },
     {
@@ -1485,7 +1656,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L1",
       "id": "integration_test_storage_streaming_rationale_1",
-      "community": 2,
+      "community": 3,
       "norm_label": "integration tests for kafka streaming and hadoop hdfs storage."
     },
     {
@@ -1494,7 +1665,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L15",
       "id": "integration_test_storage_streaming_rationale_15",
-      "community": 0,
+      "community": 3,
       "norm_label": "verify webhdfs read and write cycle."
     },
     {
@@ -1503,7 +1674,7 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L41",
       "id": "integration_test_storage_streaming_rationale_41",
-      "community": 2,
+      "community": 3,
       "norm_label": "verify kafka producer connection and message emission."
     },
     {
@@ -1570,6 +1741,33 @@
       "norm_label": "test_unmatched_discharge_does_not_crash()"
     },
     {
+      "label": "test_correction_events_supersede_original()",
+      "file_type": "code",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L299",
+      "id": "unit_test_occupancy_calculator_test_correction_events_supersede_original",
+      "community": 1,
+      "norm_label": "test_correction_events_supersede_original()"
+    },
+    {
+      "label": "test_complex_out_of_order_duplicates_and_orphans()",
+      "file_type": "code",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L339",
+      "id": "unit_test_occupancy_calculator_test_complex_out_of_order_duplicates_and_orphans",
+      "community": 1,
+      "norm_label": "test_complex_out_of_order_duplicates_and_orphans()"
+    },
+    {
+      "label": "test_reprocessing_same_raw_history_is_strictly_idempotent()",
+      "file_type": "code",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L395",
+      "id": "unit_test_occupancy_calculator_test_reprocessing_same_raw_history_is_strictly_idempotent",
+      "community": 1,
+      "norm_label": "test_reprocessing_same_raw_history_is_strictly_idempotent()"
+    },
+    {
       "label": "Unit tests for occupancy calculation and double-counting prevention.",
       "file_type": "rationale",
       "source_file": "tests/unit/test_occupancy_calculator.py",
@@ -1633,12 +1831,39 @@
       "norm_label": "verifies that a discharge event arriving without a matching prior admission"
     },
     {
+      "label": "Verifies that when a correction event arrives superseding an earlier event,",
+      "file_type": "rationale",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L300",
+      "id": "unit_test_occupancy_calculator_rationale_300",
+      "community": 1,
+      "norm_label": "verifies that when a correction event arrives superseding an earlier event,"
+    },
+    {
+      "label": "Verifies deterministic behavior with a stress stream containing:     - Multiple",
+      "file_type": "rationale",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L340",
+      "id": "unit_test_occupancy_calculator_rationale_340",
+      "community": 1,
+      "norm_label": "verifies deterministic behavior with a stress stream containing:     - multiple"
+    },
+    {
+      "label": "Verifies that computing occupancy across identical raw history multiple times",
+      "file_type": "rationale",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L396",
+      "id": "unit_test_occupancy_calculator_rationale_396",
+      "community": 1,
+      "norm_label": "verifies that computing occupancy across identical raw history multiple times"
+    },
+    {
       "label": "test_schemas.py",
       "file_type": "code",
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L1",
       "id": "tests_unit_test_schemas_py",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_schemas.py"
     },
     {
@@ -1647,7 +1872,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L11",
       "id": "unit_test_schemas_test_valid_admission_event",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_valid_admission_event()"
     },
     {
@@ -1656,7 +1881,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L27",
       "id": "unit_test_schemas_test_admission_missing_to_unit_fails",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_admission_missing_to_unit_fails()"
     },
     {
@@ -1665,7 +1890,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L40",
       "id": "unit_test_schemas_test_admission_with_from_unit_fails",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_admission_with_from_unit_fails()"
     },
     {
@@ -1674,7 +1899,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L54",
       "id": "unit_test_schemas_test_valid_discharge_event",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_valid_discharge_event()"
     },
     {
@@ -1683,7 +1908,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L68",
       "id": "unit_test_schemas_test_discharge_with_to_unit_fails",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_discharge_with_to_unit_fails()"
     },
     {
@@ -1692,7 +1917,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L82",
       "id": "unit_test_schemas_test_valid_transfer_event",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_valid_transfer_event()"
     },
     {
@@ -1701,7 +1926,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L97",
       "id": "unit_test_schemas_test_transfer_with_identical_units_fails",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_transfer_with_identical_units_fails()"
     },
     {
@@ -1710,7 +1935,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L111",
       "id": "unit_test_schemas_test_correction_event_validation",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_correction_event_validation()"
     },
     {
@@ -1719,7 +1944,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L144",
       "id": "unit_test_schemas_test_serialization_roundtrip",
-      "community": 4,
+      "community": 6,
       "norm_label": "test_serialization_roundtrip()"
     },
     {
@@ -1728,7 +1953,7 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L1",
       "id": "unit_test_schemas_rationale_1",
-      "community": 4,
+      "community": 6,
       "norm_label": "unit tests for icu adt event schema validation."
     },
     {
@@ -1737,7 +1962,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L1",
       "id": "tests_unit_test_simulator_py",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_simulator.py"
     },
     {
@@ -1746,7 +1971,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L10",
       "id": "unit_test_simulator_test_simulation_determinism",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_simulation_determinism()"
     },
     {
@@ -1755,7 +1980,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L29",
       "id": "unit_test_simulator_test_timeline_consistency",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_timeline_consistency()"
     },
     {
@@ -1764,7 +1989,7 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L59",
       "id": "unit_test_simulator_test_surge_scenario_impact",
-      "community": 3,
+      "community": 5,
       "norm_label": "test_surge_scenario_impact()"
     },
     {
@@ -1773,8 +1998,44 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L1",
       "id": "unit_test_simulator_rationale_1",
-      "community": 3,
+      "community": 5,
       "norm_label": "unit tests for synthetic event simulation."
+    },
+    {
+      "label": "Persists reconstructed hourly census DataFrame to HDFS as Parquet         using",
+      "file_type": "rationale",
+      "source_file": "src/processing/occupancy_calculator.py",
+      "source_location": "L194",
+      "community": 1,
+      "norm_label": "persists reconstructed hourly census dataframe to hdfs as parquet         using",
+      "id": "processing_occupancy_calculator_rationale_194"
+    },
+    {
+      "label": "Read Parquet file from HDFS into a pandas DataFrame.",
+      "file_type": "rationale",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L186",
+      "community": 0,
+      "norm_label": "read parquet file from hdfs into a pandas dataframe.",
+      "id": "storage_hdfs_client_rationale_186"
+    },
+    {
+      "label": "Polls Kafka for messages up to max_messages or until idle_timeout expires,",
+      "file_type": "rationale",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L168",
+      "community": 2,
+      "norm_label": "polls kafka for messages up to max_messages or until idle_timeout expires,",
+      "id": "storage_kafka_sink_rationale_168"
+    },
+    {
+      "label": "Closes the Kafka consumer safely.",
+      "file_type": "rationale",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L205",
+      "community": 2,
+      "norm_label": "closes the kafka consumer safely.",
+      "id": "storage_kafka_sink_rationale_205"
     }
   ],
   "links": [
@@ -1784,9 +2045,9 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_generate_synthetic_data_py",
-      "target": "scripts_generate_synthetic_data_parse_args",
-      "confidence_score": 1.0
+      "target": "scripts_generate_synthetic_data_parse_args"
     },
     {
       "relation": "contains",
@@ -1794,9 +2055,9 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_generate_synthetic_data_py",
-      "target": "scripts_generate_synthetic_data_main",
-      "confidence_score": 1.0
+      "target": "scripts_generate_synthetic_data_main"
     },
     {
       "relation": "rationale_for",
@@ -1804,9 +2065,9 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_generate_synthetic_data_rationale_1",
-      "target": "scripts_generate_synthetic_data_py",
-      "confidence_score": 1.0
+      "target": "scripts_generate_synthetic_data_py"
     },
     {
       "relation": "calls",
@@ -1815,9 +2076,9 @@
       "source_file": "scripts/generate_synthetic_data.py",
       "source_location": "L56",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_generate_synthetic_data_main",
-      "target": "scripts_generate_synthetic_data_parse_args",
-      "confidence_score": 1.0
+      "target": "scripts_generate_synthetic_data_parse_args"
     },
     {
       "relation": "calls",
@@ -1858,9 +2119,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_py",
-      "target": "scripts_ingest_mimic_data_compute_sha256",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_compute_sha256"
     },
     {
       "relation": "contains",
@@ -1868,9 +2129,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_py",
-      "target": "scripts_ingest_mimic_data_download_file",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_download_file"
     },
     {
       "relation": "contains",
@@ -1878,9 +2139,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_py",
-      "target": "scripts_ingest_mimic_data_verify_checksums",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_verify_checksums"
     },
     {
       "relation": "contains",
@@ -1888,9 +2149,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_py",
-      "target": "scripts_ingest_mimic_data_parse_mimic_events",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_parse_mimic_events"
     },
     {
       "relation": "contains",
@@ -1898,9 +2159,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L214",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_py",
-      "target": "scripts_ingest_mimic_data_main",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_main"
     },
     {
       "relation": "rationale_for",
@@ -1908,9 +2169,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_rationale_1",
-      "target": "scripts_ingest_mimic_data_py",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_py"
     },
     {
       "relation": "calls",
@@ -1919,9 +2180,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_verify_checksums",
-      "target": "scripts_ingest_mimic_data_compute_sha256",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_compute_sha256"
     },
     {
       "relation": "rationale_for",
@@ -1929,9 +2190,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_rationale_49",
-      "target": "scripts_ingest_mimic_data_compute_sha256",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_compute_sha256"
     },
     {
       "relation": "calls",
@@ -1940,9 +2201,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L255",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_main",
-      "target": "scripts_ingest_mimic_data_download_file",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_download_file"
     },
     {
       "relation": "rationale_for",
@@ -1950,9 +2211,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_rationale_58",
-      "target": "scripts_ingest_mimic_data_download_file",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_download_file"
     },
     {
       "relation": "calls",
@@ -1961,9 +2222,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L257",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_main",
-      "target": "scripts_ingest_mimic_data_verify_checksums",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_verify_checksums"
     },
     {
       "relation": "rationale_for",
@@ -1971,9 +2232,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_rationale_76",
-      "target": "scripts_ingest_mimic_data_verify_checksums",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_verify_checksums"
     },
     {
       "relation": "calls",
@@ -1982,9 +2243,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L268",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_main",
-      "target": "scripts_ingest_mimic_data_parse_mimic_events",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_parse_mimic_events"
     },
     {
       "relation": "rationale_for",
@@ -1992,9 +2253,9 @@
       "source_file": "scripts/ingest_mimic_data.py",
       "source_location": "L110",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_ingest_mimic_data_rationale_110",
-      "target": "scripts_ingest_mimic_data_parse_mimic_events",
-      "confidence_score": 1.0
+      "target": "scripts_ingest_mimic_data_parse_mimic_events"
     },
     {
       "relation": "calls",
@@ -2024,9 +2285,9 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_run_streaming_pipeline_py",
-      "target": "scripts_run_streaming_pipeline_parse_args",
-      "confidence_score": 1.0
+      "target": "scripts_run_streaming_pipeline_parse_args"
     },
     {
       "relation": "contains",
@@ -2034,9 +2295,9 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_run_streaming_pipeline_py",
-      "target": "scripts_run_streaming_pipeline_main",
-      "confidence_score": 1.0
+      "target": "scripts_run_streaming_pipeline_main"
     },
     {
       "relation": "rationale_for",
@@ -2044,9 +2305,9 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_run_streaming_pipeline_rationale_1",
-      "target": "scripts_run_streaming_pipeline_py",
-      "confidence_score": 1.0
+      "target": "scripts_run_streaming_pipeline_py"
     },
     {
       "relation": "calls",
@@ -2055,9 +2316,9 @@
       "source_file": "scripts/run_streaming_pipeline.py",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_run_streaming_pipeline_main",
-      "target": "scripts_run_streaming_pipeline_parse_args",
-      "confidence_score": 1.0
+      "target": "scripts_run_streaming_pipeline_parse_args"
     },
     {
       "relation": "calls",
@@ -2131,9 +2392,9 @@
       "source_file": "src/config.py",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_py",
-      "target": "src_config_settings",
-      "confidence_score": 1.0
+      "target": "src_config_settings"
     },
     {
       "relation": "contains",
@@ -2141,9 +2402,9 @@
       "source_file": "src/config.py",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_py",
-      "target": "src_config_get_settings",
-      "confidence_score": 1.0
+      "target": "src_config_get_settings"
     },
     {
       "relation": "rationale_for",
@@ -2151,9 +2412,9 @@
       "source_file": "src/config.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_rationale_1",
-      "target": "src_config_py",
-      "confidence_score": 1.0
+      "target": "src_config_py"
     },
     {
       "relation": "inherits",
@@ -2161,9 +2422,9 @@
       "source_file": "src/config.py",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_settings",
-      "target": "basesettings",
-      "confidence_score": 1.0
+      "target": "basesettings"
     },
     {
       "relation": "calls",
@@ -2172,9 +2433,9 @@
       "source_file": "src/config.py",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_get_settings",
-      "target": "src_config_settings",
-      "confidence_score": 1.0
+      "target": "src_config_settings"
     },
     {
       "relation": "rationale_for",
@@ -2182,9 +2443,9 @@
       "source_file": "src/config.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_rationale_13",
-      "target": "src_config_settings",
-      "confidence_score": 1.0
+      "target": "src_config_settings"
     },
     {
       "relation": "rationale_for",
@@ -2192,9 +2453,9 @@
       "source_file": "src/config.py",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_config_rationale_93",
-      "target": "src_config_get_settings",
-      "confidence_score": 1.0
+      "target": "src_config_get_settings"
     },
     {
       "relation": "calls",
@@ -2289,6 +2550,17 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_kafka_settings",
+      "target": "src_config_get_settings"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L16",
       "weight": 1.0,
@@ -2312,9 +2584,9 @@
       "source_file": "src/__init__.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_init_rationale_1",
-      "target": "src_init_py",
-      "confidence_score": 1.0
+      "target": "src_init_py"
     },
     {
       "relation": "contains",
@@ -2322,9 +2594,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_processing_occupancy_calculator_py",
-      "target": "processing_occupancy_calculator_occupancycalculator",
-      "confidence_score": 1.0
+      "target": "processing_occupancy_calculator_occupancycalculator"
     },
     {
       "relation": "rationale_for",
@@ -2332,9 +2604,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_occupancy_calculator_rationale_1",
-      "target": "src_processing_occupancy_calculator_py",
-      "confidence_score": 1.0
+      "target": "src_processing_occupancy_calculator_py"
     },
     {
       "relation": "method",
@@ -2342,9 +2614,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_occupancy_calculator_occupancycalculator",
-      "target": "processing_occupancy_calculator_occupancycalculator_init",
-      "confidence_score": 1.0
+      "target": "processing_occupancy_calculator_occupancycalculator_init"
     },
     {
       "relation": "method",
@@ -2352,9 +2624,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_occupancy_calculator_occupancycalculator",
-      "target": "processing_occupancy_calculator_occupancycalculator_reconstruct",
-      "confidence_score": 1.0
+      "target": "processing_occupancy_calculator_occupancycalculator_reconstruct"
     },
     {
       "relation": "method",
@@ -2362,9 +2634,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L187",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_occupancy_calculator_occupancycalculator",
-      "target": "processing_occupancy_calculator_occupancycalculator_persist_occupancy_to_hdfs",
-      "confidence_score": 1.0
+      "target": "processing_occupancy_calculator_occupancycalculator_persist_occupancy_to_hdfs"
     },
     {
       "relation": "rationale_for",
@@ -2372,9 +2644,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_occupancy_calculator_rationale_16",
-      "target": "processing_occupancy_calculator_occupancycalculator",
-      "confidence_score": 1.0
+      "target": "processing_occupancy_calculator_occupancycalculator"
     },
     {
       "relation": "uses",
@@ -2382,9 +2654,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L11",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "processing_occupancy_calculator_occupancycalculator",
-      "target": "schema_events_datasource",
-      "confidence_score": 0.5
+      "target": "schema_events_datasource"
     },
     {
       "relation": "uses",
@@ -2392,9 +2664,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L11",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "processing_occupancy_calculator_occupancycalculator",
-      "target": "schema_events_eventtype",
-      "confidence_score": 0.5
+      "target": "schema_events_eventtype"
     },
     {
       "relation": "uses",
@@ -2402,9 +2674,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L11",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "processing_occupancy_calculator_occupancycalculator",
-      "target": "schema_events_icuevent",
-      "confidence_score": 0.5
+      "target": "schema_events_icuevent"
     },
     {
       "relation": "uses",
@@ -2412,9 +2684,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L12",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "processing_occupancy_calculator_occupancycalculator",
-      "target": "schema_occupancy_hourlyoccupancy",
-      "confidence_score": 0.5
+      "target": "schema_occupancy_hourlyoccupancy"
     },
     {
       "relation": "calls",
@@ -2425,6 +2697,28 @@
       "source_location": "L170",
       "weight": 1.0,
       "source": "integration_test_end_to_end_pipeline_test_occupancy_persistence_to_hdfs_and_readback",
+      "target": "processing_occupancy_calculator_occupancycalculator"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L189",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_post_finalization_crash_replay_and_downstream_dedup",
+      "target": "processing_occupancy_calculator_occupancycalculator"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L304",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_occupancy_calculator_cold_restart_reconstruction",
       "target": "processing_occupancy_calculator_occupancycalculator"
     },
     {
@@ -2494,14 +2788,47 @@
       "target": "processing_occupancy_calculator_occupancycalculator"
     },
     {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L328",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_test_correction_events_supersede_original",
+      "target": "processing_occupancy_calculator_occupancycalculator"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L376",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_test_complex_out_of_order_duplicates_and_orphans",
+      "target": "processing_occupancy_calculator_occupancycalculator"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L416",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_test_reprocessing_same_raw_history_is_strictly_idempotent",
+      "target": "processing_occupancy_calculator_occupancycalculator"
+    },
+    {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_occupancy_calculator_rationale_22",
-      "target": "processing_occupancy_calculator_occupancycalculator_init",
-      "confidence_score": 1.0
+      "target": "processing_occupancy_calculator_occupancycalculator_init"
     },
     {
       "relation": "rationale_for",
@@ -2509,9 +2836,9 @@
       "source_file": "src/processing/occupancy_calculator.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_occupancy_calculator_rationale_34",
-      "target": "processing_occupancy_calculator_occupancycalculator_reconstruct",
-      "confidence_score": 1.0
+      "target": "processing_occupancy_calculator_occupancycalculator_reconstruct"
     },
     {
       "relation": "calls",
@@ -2528,11 +2855,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "src/processing/occupancy_calculator.py",
-      "source_location": "L194",
+      "source_location": "L230",
       "weight": 1.0,
-      "source": "processing_occupancy_calculator_rationale_194",
+      "source": "processing_occupancy_calculator_rationale_230",
       "target": "processing_occupancy_calculator_occupancycalculator_persist_occupancy_to_hdfs",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/processing/occupancy_calculator.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "processing_occupancy_calculator_rationale_194",
+      "target": "processing_occupancy_calculator_occupancycalculator_persist_occupancy_to_hdfs"
     },
     {
       "relation": "rationale_for",
@@ -2540,9 +2877,9 @@
       "source_file": "src/processing/__init__.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "processing_init_rationale_1",
-      "target": "src_processing_init_py",
-      "confidence_score": 1.0
+      "target": "src_processing_init_py"
     },
     {
       "relation": "contains",
@@ -2550,9 +2887,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_producer_kafka_producer_py",
-      "target": "producer_kafka_producer_icukafkaproducer",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer"
     },
     {
       "relation": "rationale_for",
@@ -2560,9 +2897,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_1",
-      "target": "src_producer_kafka_producer_py",
-      "confidence_score": 1.0
+      "target": "src_producer_kafka_producer_py"
     },
     {
       "relation": "method",
@@ -2570,9 +2907,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "producer_kafka_producer_icukafkaproducer_init",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_init"
     },
     {
       "relation": "method",
@@ -2580,9 +2917,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "producer_kafka_producer_icukafkaproducer_delivery_report",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_delivery_report"
     },
     {
       "relation": "method",
@@ -2590,9 +2927,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "producer_kafka_producer_icukafkaproducer_get_partition_key",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_get_partition_key"
     },
     {
       "relation": "method",
@@ -2600,9 +2937,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "producer_kafka_producer_icukafkaproducer_send_event",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_send_event"
     },
     {
       "relation": "method",
@@ -2610,9 +2947,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "producer_kafka_producer_icukafkaproducer_publish_stream",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_publish_stream"
     },
     {
       "relation": "method",
@@ -2620,9 +2957,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L140",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "producer_kafka_producer_icukafkaproducer_flush",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_flush"
     },
     {
       "relation": "method",
@@ -2630,9 +2967,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "producer_kafka_producer_icukafkaproducer_close",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_close"
     },
     {
       "relation": "rationale_for",
@@ -2640,9 +2977,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_17",
-      "target": "producer_kafka_producer_icukafkaproducer",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer"
     },
     {
       "relation": "uses",
@@ -2650,9 +2987,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L13",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "producer_kafka_producer_icukafkaproducer",
-      "target": "schema_events_icuevent",
-      "confidence_score": 0.5
+      "target": "schema_events_icuevent"
     },
     {
       "relation": "calls",
@@ -2704,9 +3041,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_48",
-      "target": "producer_kafka_producer_icukafkaproducer_delivery_report",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_delivery_report"
     },
     {
       "relation": "calls",
@@ -2726,9 +3063,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer_send_event",
-      "target": "producer_kafka_producer_icukafkaproducer_get_partition_key",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_get_partition_key"
     },
     {
       "relation": "rationale_for",
@@ -2736,9 +3073,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_65",
-      "target": "producer_kafka_producer_icukafkaproducer_get_partition_key",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_get_partition_key"
     },
     {
       "relation": "calls",
@@ -2747,9 +3084,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer_send_event",
-      "target": "producer_kafka_producer_icukafkaproducer_flush",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_flush"
     },
     {
       "relation": "calls",
@@ -2758,9 +3095,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L122",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer_publish_stream",
-      "target": "producer_kafka_producer_icukafkaproducer_send_event",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_send_event"
     },
     {
       "relation": "rationale_for",
@@ -2768,9 +3105,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_81",
-      "target": "producer_kafka_producer_icukafkaproducer_send_event",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_send_event"
     },
     {
       "relation": "calls",
@@ -2779,9 +3116,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L128",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer_publish_stream",
-      "target": "producer_kafka_producer_icukafkaproducer_flush",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_flush"
     },
     {
       "relation": "rationale_for",
@@ -2789,9 +3126,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_105",
-      "target": "producer_kafka_producer_icukafkaproducer_publish_stream",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_publish_stream"
     },
     {
       "relation": "calls",
@@ -2800,9 +3137,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_icukafkaproducer_close",
-      "target": "producer_kafka_producer_icukafkaproducer_flush",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_flush"
     },
     {
       "relation": "rationale_for",
@@ -2810,9 +3147,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_141",
-      "target": "producer_kafka_producer_icukafkaproducer_flush",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_flush"
     },
     {
       "relation": "rationale_for",
@@ -2820,9 +3157,9 @@
       "source_file": "src/producer/kafka_producer.py",
       "source_location": "L145",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_kafka_producer_rationale_145",
-      "target": "producer_kafka_producer_icukafkaproducer_close",
-      "confidence_score": 1.0
+      "target": "producer_kafka_producer_icukafkaproducer_close"
     },
     {
       "relation": "contains",
@@ -2830,9 +3167,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_producer_simulator_py",
-      "target": "producer_simulator_icusimulator",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator"
     },
     {
       "relation": "rationale_for",
@@ -2840,9 +3177,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_rationale_1",
-      "target": "src_producer_simulator_py",
-      "confidence_score": 1.0
+      "target": "src_producer_simulator_py"
     },
     {
       "relation": "method",
@@ -2850,9 +3187,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator",
-      "target": "producer_simulator_icusimulator_init",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_init"
     },
     {
       "relation": "method",
@@ -2860,9 +3197,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator",
-      "target": "producer_simulator_icusimulator_get_arrival_multiplier",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_get_arrival_multiplier"
     },
     {
       "relation": "method",
@@ -2870,9 +3207,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator",
-      "target": "producer_simulator_icusimulator_sample_los_hours",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_sample_los_hours"
     },
     {
       "relation": "method",
@@ -2880,9 +3217,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator",
-      "target": "producer_simulator_icusimulator_generate_events",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_generate_events"
     },
     {
       "relation": "method",
@@ -2890,9 +3227,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L222",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator",
-      "target": "producer_simulator_icusimulator_export_jsonl",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_export_jsonl"
     },
     {
       "relation": "rationale_for",
@@ -2900,9 +3237,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_rationale_17",
-      "target": "producer_simulator_icusimulator",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator"
     },
     {
       "relation": "uses",
@@ -2910,9 +3247,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L13",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "producer_simulator_icusimulator",
-      "target": "schema_events_datasource",
-      "confidence_score": 0.5
+      "target": "schema_events_datasource"
     },
     {
       "relation": "uses",
@@ -2920,9 +3257,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L13",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "producer_simulator_icusimulator",
-      "target": "schema_events_eventtype",
-      "confidence_score": 0.5
+      "target": "schema_events_eventtype"
     },
     {
       "relation": "uses",
@@ -2930,9 +3267,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L13",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "producer_simulator_icusimulator",
-      "target": "schema_events_icuevent",
-      "confidence_score": 0.5
+      "target": "schema_events_icuevent"
     },
     {
       "relation": "calls",
@@ -2973,9 +3310,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_rationale_33",
-      "target": "producer_simulator_icusimulator_init",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_init"
     },
     {
       "relation": "calls",
@@ -2984,9 +3321,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator_generate_events",
-      "target": "producer_simulator_icusimulator_get_arrival_multiplier",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_get_arrival_multiplier"
     },
     {
       "relation": "rationale_for",
@@ -2994,9 +3331,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_rationale_77",
-      "target": "producer_simulator_icusimulator_get_arrival_multiplier",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_get_arrival_multiplier"
     },
     {
       "relation": "calls",
@@ -3005,9 +3342,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L171",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator_generate_events",
-      "target": "producer_simulator_icusimulator_sample_los_hours",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_sample_los_hours"
     },
     {
       "relation": "rationale_for",
@@ -3015,9 +3352,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_rationale_105",
-      "target": "producer_simulator_icusimulator_sample_los_hours",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_sample_los_hours"
     },
     {
       "relation": "calls",
@@ -3026,9 +3363,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L231",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_icusimulator_export_jsonl",
-      "target": "producer_simulator_icusimulator_generate_events",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_generate_events"
     },
     {
       "relation": "rationale_for",
@@ -3036,9 +3373,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_rationale_121",
-      "target": "producer_simulator_icusimulator_generate_events",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_generate_events"
     },
     {
       "relation": "calls",
@@ -3068,9 +3405,9 @@
       "source_file": "src/producer/simulator.py",
       "source_location": "L223",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_simulator_rationale_223",
-      "target": "producer_simulator_icusimulator_export_jsonl",
-      "confidence_score": 1.0
+      "target": "producer_simulator_icusimulator_export_jsonl"
     },
     {
       "relation": "rationale_for",
@@ -3078,9 +3415,9 @@
       "source_file": "src/producer/__init__.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "producer_init_rationale_1",
-      "target": "src_producer_init_py",
-      "confidence_score": 1.0
+      "target": "src_producer_init_py"
     },
     {
       "relation": "imports_from",
@@ -3089,9 +3426,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schema_events_py",
-      "target": "enum",
-      "confidence_score": 1.0
+      "target": "enum"
     },
     {
       "relation": "contains",
@@ -3099,9 +3436,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schema_events_py",
-      "target": "schema_events_eventtype",
-      "confidence_score": 1.0
+      "target": "schema_events_eventtype"
     },
     {
       "relation": "contains",
@@ -3109,9 +3446,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schema_events_py",
-      "target": "schema_events_datasource",
-      "confidence_score": 1.0
+      "target": "schema_events_datasource"
     },
     {
       "relation": "contains",
@@ -3119,9 +3456,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schema_events_py",
-      "target": "schema_events_icuevent",
-      "confidence_score": 1.0
+      "target": "schema_events_icuevent"
     },
     {
       "relation": "contains",
@@ -3129,9 +3466,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schema_events_py",
-      "target": "schema_events_ensure_utc",
-      "confidence_score": 1.0
+      "target": "schema_events_ensure_utc"
     },
     {
       "relation": "contains",
@@ -3139,9 +3476,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schema_events_py",
-      "target": "schema_events_validate_transition_integrity",
-      "confidence_score": 1.0
+      "target": "schema_events_validate_transition_integrity"
     },
     {
       "relation": "rationale_for",
@@ -3149,9 +3486,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_rationale_1",
-      "target": "src_schema_events_py",
-      "confidence_score": 1.0
+      "target": "src_schema_events_py"
     },
     {
       "relation": "inherits",
@@ -3159,9 +3496,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_eventtype",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "inherits",
@@ -3169,9 +3506,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_eventtype",
-      "target": "enum",
-      "confidence_score": 1.0
+      "target": "enum"
     },
     {
       "relation": "rationale_for",
@@ -3179,9 +3516,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_rationale_14",
-      "target": "schema_events_eventtype",
-      "confidence_score": 1.0
+      "target": "schema_events_eventtype"
     },
     {
       "relation": "inherits",
@@ -3189,9 +3526,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_datasource",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "calls",
@@ -3200,9 +3537,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_icuevent_to_dict",
-      "target": "str",
-      "confidence_score": 1.0
+      "target": "str"
     },
     {
       "relation": "calls",
@@ -3224,6 +3561,28 @@
       "source_location": "L69",
       "weight": 1.0,
       "source": "integration_test_failure_recovery_test_hdfs_failure_aborts_offset_commit",
+      "target": "str"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
+      "target": "str"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
       "target": "str"
     },
     {
@@ -3287,9 +3646,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_datasource",
-      "target": "enum",
-      "confidence_score": 1.0
+      "target": "enum"
     },
     {
       "relation": "rationale_for",
@@ -3297,9 +3656,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_rationale_21",
-      "target": "schema_events_datasource",
-      "confidence_score": 1.0
+      "target": "schema_events_datasource"
     },
     {
       "relation": "uses",
@@ -3307,9 +3666,9 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L9",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "schema_occupancy_hourlyoccupancy",
-      "target": "schema_events_datasource",
-      "confidence_score": 0.5
+      "target": "schema_events_datasource"
     },
     {
       "relation": "inherits",
@@ -3317,9 +3676,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_icuevent",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "method",
@@ -3327,9 +3686,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L134",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_icuevent",
-      "target": "schema_events_icuevent_to_dict",
-      "confidence_score": 1.0
+      "target": "schema_events_icuevent_to_dict"
     },
     {
       "relation": "rationale_for",
@@ -3337,9 +3696,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_rationale_28",
-      "target": "schema_events_icuevent",
-      "confidence_score": 1.0
+      "target": "schema_events_icuevent"
     },
     {
       "relation": "uses",
@@ -3347,9 +3706,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L17",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "storage_kafka_sink_kafkahdfssink",
-      "target": "schema_events_icuevent",
-      "confidence_score": 0.5
+      "target": "schema_events_icuevent"
     },
     {
       "relation": "calls",
@@ -3393,6 +3752,50 @@
       "source_location": "L112",
       "weight": 1.0,
       "source": "integration_test_failure_recovery_test_sink_restart_does_not_duplicate_acknowledged_events",
+      "target": "schema_events_icuevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
+      "target": "schema_events_icuevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_post_finalization_crash_replay_and_downstream_dedup",
+      "target": "schema_events_icuevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L213",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
+      "target": "schema_events_icuevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L291",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_occupancy_calculator_cold_restart_reconstruction",
       "target": "schema_events_icuevent"
     },
     {
@@ -3470,6 +3873,39 @@
       "source_location": "L284",
       "weight": 1.0,
       "source": "unit_test_occupancy_calculator_test_unmatched_discharge_does_not_crash",
+      "target": "schema_events_icuevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L307",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_test_correction_events_supersede_original",
+      "target": "schema_events_icuevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L350",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_test_complex_out_of_order_duplicates_and_orphans",
+      "target": "schema_events_icuevent"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L406",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_test_reprocessing_same_raw_history_is_strictly_idempotent",
       "target": "schema_events_icuevent"
     },
     {
@@ -3577,9 +4013,9 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_occupancy_hourlyoccupancy",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "rationale_for",
@@ -3587,9 +4023,9 @@
       "source_file": "src/schema/events.py",
       "source_location": "L135",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_events_rationale_135",
-      "target": "schema_events_icuevent_to_dict",
-      "confidence_score": 1.0
+      "target": "schema_events_icuevent_to_dict"
     },
     {
       "relation": "contains",
@@ -3597,9 +4033,9 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_schema_occupancy_py",
-      "target": "schema_occupancy_hourlyoccupancy",
-      "confidence_score": 1.0
+      "target": "schema_occupancy_hourlyoccupancy"
     },
     {
       "relation": "rationale_for",
@@ -3607,9 +4043,9 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_occupancy_rationale_1",
-      "target": "src_schema_occupancy_py",
-      "confidence_score": 1.0
+      "target": "src_schema_occupancy_py"
     },
     {
       "relation": "method",
@@ -3617,9 +4053,9 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_occupancy_hourlyoccupancy",
-      "target": "schema_occupancy_hourlyoccupancy_to_dict",
-      "confidence_score": 1.0
+      "target": "schema_occupancy_hourlyoccupancy_to_dict"
     },
     {
       "relation": "rationale_for",
@@ -3627,9 +4063,9 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_occupancy_rationale_13",
-      "target": "schema_occupancy_hourlyoccupancy",
-      "confidence_score": 1.0
+      "target": "schema_occupancy_hourlyoccupancy"
     },
     {
       "relation": "rationale_for",
@@ -3637,9 +4073,9 @@
       "source_file": "src/schema/occupancy.py",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "schema_occupancy_rationale_82",
-      "target": "schema_occupancy_hourlyoccupancy_to_dict",
-      "confidence_score": 1.0
+      "target": "schema_occupancy_hourlyoccupancy_to_dict"
     },
     {
       "relation": "contains",
@@ -3647,9 +4083,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_storage_hdfs_client_py",
-      "target": "storage_hdfs_client_hdfsclient",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient"
     },
     {
       "relation": "rationale_for",
@@ -3657,9 +4093,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_1",
-      "target": "src_storage_hdfs_client_py",
-      "confidence_score": 1.0
+      "target": "src_storage_hdfs_client_py"
     },
     {
       "relation": "method",
@@ -3667,9 +4103,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_init",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_init"
     },
     {
       "relation": "method",
@@ -3677,9 +4113,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L34",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_remap_redirect",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_remap_redirect"
     },
     {
       "relation": "method",
@@ -3687,9 +4123,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_is_healthy",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_is_healthy"
     },
     {
       "relation": "method",
@@ -3697,9 +4133,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_mkdir",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_mkdir"
     },
     {
       "relation": "method",
@@ -3707,9 +4143,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_write_file",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_write_file"
     },
     {
       "relation": "method",
@@ -3717,9 +4153,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_read_file",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_read_file"
     },
     {
       "relation": "method",
@@ -3727,9 +4163,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L111",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_list_dir",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_list_dir"
     },
     {
       "relation": "method",
@@ -3737,9 +4173,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_delete",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_delete"
     },
     {
       "relation": "method",
@@ -3747,9 +4183,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_exists",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_exists"
     },
     {
       "relation": "method",
@@ -3757,9 +4193,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L143",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_rename",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_rename"
     },
     {
       "relation": "method",
@@ -3767,9 +4203,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L158",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_write_jsonl",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_write_jsonl"
     },
     {
       "relation": "method",
@@ -3777,9 +4213,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L164",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_read_jsonl",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_read_jsonl"
     },
     {
       "relation": "method",
@@ -3788,8 +4224,28 @@
       "source_location": "L174",
       "weight": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_write_parquet",
+      "target": "storage_hdfs_client_hdfsclient_find_files",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "storage_hdfs_client_hdfsclient",
+      "target": "storage_hdfs_client_hdfsclient_read_all_jsonl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L174",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "storage_hdfs_client_hdfsclient",
+      "target": "storage_hdfs_client_hdfsclient_write_parquet"
     },
     {
       "relation": "method",
@@ -3797,9 +4253,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient",
-      "target": "storage_hdfs_client_hdfsclient_read_parquet",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_read_parquet"
     },
     {
       "relation": "rationale_for",
@@ -3807,9 +4263,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_17",
-      "target": "storage_hdfs_client_hdfsclient",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient"
     },
     {
       "relation": "uses",
@@ -3817,9 +4273,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L18",
       "weight": 0.8,
+      "confidence_score": 0.5,
       "source": "storage_kafka_sink_kafkahdfssink",
-      "target": "storage_hdfs_client_hdfsclient",
-      "confidence_score": 0.5
+      "target": "storage_hdfs_client_hdfsclient"
     },
     {
       "relation": "calls",
@@ -3892,6 +4348,17 @@
       "context": "call",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_hdfs_client",
+      "target": "storage_hdfs_client_hdfsclient"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L17",
       "weight": 1.0,
@@ -3905,9 +4372,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient_write_file",
-      "target": "storage_hdfs_client_hdfsclient_remap_redirect",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_remap_redirect"
     },
     {
       "relation": "calls",
@@ -3916,9 +4383,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient_read_file",
-      "target": "storage_hdfs_client_hdfsclient_remap_redirect",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_remap_redirect"
     },
     {
       "relation": "rationale_for",
@@ -3926,9 +4393,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_35",
-      "target": "storage_hdfs_client_hdfsclient_remap_redirect",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_remap_redirect"
     },
     {
       "relation": "rationale_for",
@@ -3936,9 +4403,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_49",
-      "target": "storage_hdfs_client_hdfsclient_is_healthy",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_is_healthy"
     },
     {
       "relation": "rationale_for",
@@ -3946,9 +4413,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_58",
-      "target": "storage_hdfs_client_hdfsclient_mkdir",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_mkdir"
     },
     {
       "relation": "calls",
@@ -3957,9 +4424,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L162",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient_write_jsonl",
-      "target": "storage_hdfs_client_hdfsclient_write_file",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_write_file"
     },
     {
       "relation": "calls",
@@ -3968,9 +4435,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L183",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient_write_parquet",
-      "target": "storage_hdfs_client_hdfsclient_write_file",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_write_file"
     },
     {
       "relation": "rationale_for",
@@ -3978,9 +4445,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_66",
-      "target": "storage_hdfs_client_hdfsclient_write_file",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_write_file"
     },
     {
       "relation": "calls",
@@ -3989,9 +4456,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L166",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient_read_jsonl",
-      "target": "storage_hdfs_client_hdfsclient_read_file",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_read_file"
     },
     {
       "relation": "calls",
@@ -4000,9 +4467,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L190",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_hdfsclient_read_parquet",
-      "target": "storage_hdfs_client_hdfsclient_read_file",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_read_file"
     },
     {
       "relation": "rationale_for",
@@ -4010,8 +4477,19 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_95",
-      "target": "storage_hdfs_client_hdfsclient_read_file",
+      "target": "storage_hdfs_client_hdfsclient_read_file"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "storage_hdfs_client_hdfsclient_find_files",
+      "target": "storage_hdfs_client_hdfsclient_list_dir",
       "confidence_score": 1.0
     },
     {
@@ -4020,9 +4498,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L112",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_112",
-      "target": "storage_hdfs_client_hdfsclient_list_dir",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_list_dir"
     },
     {
       "relation": "rationale_for",
@@ -4030,9 +4508,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_121",
-      "target": "storage_hdfs_client_hdfsclient_delete",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_delete"
     },
     {
       "relation": "rationale_for",
@@ -4040,9 +4518,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_132",
-      "target": "storage_hdfs_client_hdfsclient_exists",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_exists"
     },
     {
       "relation": "rationale_for",
@@ -4050,9 +4528,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_144",
-      "target": "storage_hdfs_client_hdfsclient_rename",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_rename"
     },
     {
       "relation": "rationale_for",
@@ -4060,8 +4538,19 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L159",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_159",
-      "target": "storage_hdfs_client_hdfsclient_write_jsonl",
+      "target": "storage_hdfs_client_hdfsclient_write_jsonl"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "source": "storage_hdfs_client_hdfsclient_read_all_jsonl",
+      "target": "storage_hdfs_client_hdfsclient_read_jsonl",
       "confidence_score": 1.0
     },
     {
@@ -4070,8 +4559,19 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L165",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_165",
-      "target": "storage_hdfs_client_hdfsclient_read_jsonl",
+      "target": "storage_hdfs_client_hdfsclient_read_jsonl"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L204",
+      "weight": 1.0,
+      "source": "storage_hdfs_client_hdfsclient_read_all_jsonl",
+      "target": "storage_hdfs_client_hdfsclient_find_files",
       "confidence_score": 1.0
     },
     {
@@ -4081,7 +4581,47 @@
       "source_location": "L175",
       "weight": 1.0,
       "source": "storage_hdfs_client_rationale_175",
+      "target": "storage_hdfs_client_hdfsclient_find_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "storage_hdfs_client_rationale_201",
+      "target": "storage_hdfs_client_hdfsclient_read_all_jsonl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L211",
+      "weight": 1.0,
+      "source": "storage_hdfs_client_rationale_211",
       "target": "storage_hdfs_client_hdfsclient_write_parquet",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L175",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "storage_hdfs_client_rationale_175",
+      "target": "storage_hdfs_client_hdfsclient_write_parquet"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/hdfs_client.py",
+      "source_location": "L222",
+      "weight": 1.0,
+      "source": "storage_hdfs_client_rationale_222",
+      "target": "storage_hdfs_client_hdfsclient_read_parquet",
       "confidence_score": 1.0
     },
     {
@@ -4090,9 +4630,9 @@
       "source_file": "src/storage/hdfs_client.py",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_hdfs_client_rationale_186",
-      "target": "storage_hdfs_client_hdfsclient_read_parquet",
-      "confidence_score": 1.0
+      "target": "storage_hdfs_client_hdfsclient_read_parquet"
     },
     {
       "relation": "contains",
@@ -4100,9 +4640,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_storage_kafka_sink_py",
-      "target": "storage_kafka_sink_kafkahdfssink",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink"
     },
     {
       "relation": "rationale_for",
@@ -4110,9 +4650,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_rationale_1",
-      "target": "src_storage_kafka_sink_py",
-      "confidence_score": 1.0
+      "target": "src_storage_kafka_sink_py"
     },
     {
       "relation": "method",
@@ -4120,9 +4660,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_kafkahdfssink",
-      "target": "storage_kafka_sink_kafkahdfssink_init",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink_init"
     },
     {
       "relation": "method",
@@ -4130,9 +4670,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L62",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_kafkahdfssink",
-      "target": "storage_kafka_sink_kafkahdfssink_parse_message",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink_parse_message"
     },
     {
       "relation": "method",
@@ -4140,9 +4680,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_kafkahdfssink",
-      "target": "storage_kafka_sink_kafkahdfssink_process_batch",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink_process_batch"
     },
     {
       "relation": "method",
@@ -4151,8 +4691,18 @@
       "source_location": "L162",
       "weight": 1.0,
       "source": "storage_kafka_sink_kafkahdfssink",
-      "target": "storage_kafka_sink_kafkahdfssink_poll_and_sink",
+      "target": "storage_kafka_sink_kafkahdfssink_commit_offsets",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L162",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "storage_kafka_sink_kafkahdfssink",
+      "target": "storage_kafka_sink_kafkahdfssink_poll_and_sink"
     },
     {
       "relation": "method",
@@ -4160,9 +4710,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L204",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_kafkahdfssink",
-      "target": "storage_kafka_sink_kafkahdfssink_close",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink_close"
     },
     {
       "relation": "rationale_for",
@@ -4170,9 +4720,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_rationale_22",
-      "target": "storage_kafka_sink_kafkahdfssink",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink"
     },
     {
       "relation": "calls",
@@ -4221,13 +4771,46 @@
     {
       "relation": "calls",
       "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
+      "target": "storage_kafka_sink_kafkahdfssink"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_post_finalization_crash_replay_and_downstream_dedup",
+      "target": "storage_kafka_sink_kafkahdfssink"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L243",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
+      "target": "storage_kafka_sink_kafkahdfssink"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_kafkahdfssink_process_batch",
-      "target": "storage_kafka_sink_kafkahdfssink_parse_message",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink_parse_message"
     },
     {
       "relation": "rationale_for",
@@ -4235,8 +4818,19 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_rationale_63",
-      "target": "storage_kafka_sink_kafkahdfssink_parse_message",
+      "target": "storage_kafka_sink_kafkahdfssink_parse_message"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "storage_kafka_sink_kafkahdfssink_process_batch",
+      "target": "storage_kafka_sink_kafkahdfssink_commit_offsets",
       "confidence_score": 1.0
     },
     {
@@ -4246,9 +4840,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L202",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_kafkahdfssink_poll_and_sink",
-      "target": "storage_kafka_sink_kafkahdfssink_process_batch",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink_process_batch"
     },
     {
       "relation": "rationale_for",
@@ -4256,8 +4850,28 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_rationale_86",
-      "target": "storage_kafka_sink_kafkahdfssink_process_batch",
+      "target": "storage_kafka_sink_kafkahdfssink_process_batch"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L163",
+      "weight": 1.0,
+      "source": "storage_kafka_sink_rationale_163",
+      "target": "storage_kafka_sink_kafkahdfssink_commit_offsets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L172",
+      "weight": 1.0,
+      "source": "storage_kafka_sink_rationale_172",
+      "target": "storage_kafka_sink_kafkahdfssink_poll_and_sink",
       "confidence_score": 1.0
     },
     {
@@ -4266,8 +4880,18 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L168",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_rationale_168",
-      "target": "storage_kafka_sink_kafkahdfssink_poll_and_sink",
+      "target": "storage_kafka_sink_kafkahdfssink_poll_and_sink"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "src/storage/kafka_sink.py",
+      "source_location": "L209",
+      "weight": 1.0,
+      "source": "storage_kafka_sink_rationale_209",
+      "target": "storage_kafka_sink_kafkahdfssink_close",
       "confidence_score": 1.0
     },
     {
@@ -4276,9 +4900,9 @@
       "source_file": "src/storage/kafka_sink.py",
       "source_location": "L205",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_kafka_sink_rationale_205",
-      "target": "storage_kafka_sink_kafkahdfssink_close",
-      "confidence_score": 1.0
+      "target": "storage_kafka_sink_kafkahdfssink_close"
     },
     {
       "relation": "rationale_for",
@@ -4286,9 +4910,9 @@
       "source_file": "src/storage/__init__.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "storage_init_rationale_1",
-      "target": "src_storage_init_py",
-      "confidence_score": 1.0
+      "target": "src_storage_init_py"
     },
     {
       "relation": "contains",
@@ -4296,9 +4920,9 @@
       "source_file": "tests/conftest.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_conftest_py",
-      "target": "tests_conftest_sample_units",
-      "confidence_score": 1.0
+      "target": "tests_conftest_sample_units"
     },
     {
       "relation": "contains",
@@ -4306,9 +4930,9 @@
       "source_file": "tests/conftest.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_conftest_py",
-      "target": "tests_conftest_base_timestamp",
-      "confidence_score": 1.0
+      "target": "tests_conftest_base_timestamp"
     },
     {
       "relation": "rationale_for",
@@ -4316,9 +4940,9 @@
       "source_file": "tests/conftest.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_conftest_rationale_1",
-      "target": "tests_conftest_py",
-      "confidence_score": 1.0
+      "target": "tests_conftest_py"
     },
     {
       "relation": "contains",
@@ -4326,9 +4950,9 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_integration_test_end_to_end_pipeline_py",
-      "target": "integration_test_end_to_end_pipeline_test_kafka_to_hdfs_sink_full_cycle",
-      "confidence_score": 1.0
+      "target": "integration_test_end_to_end_pipeline_test_kafka_to_hdfs_sink_full_cycle"
     },
     {
       "relation": "contains",
@@ -4336,9 +4960,9 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_integration_test_end_to_end_pipeline_py",
-      "target": "integration_test_end_to_end_pipeline_test_malformed_event_quarantine_to_dead_letter",
-      "confidence_score": 1.0
+      "target": "integration_test_end_to_end_pipeline_test_malformed_event_quarantine_to_dead_letter"
     },
     {
       "relation": "contains",
@@ -4346,9 +4970,9 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L140",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_integration_test_end_to_end_pipeline_py",
-      "target": "integration_test_end_to_end_pipeline_test_occupancy_persistence_to_hdfs_and_readback",
-      "confidence_score": 1.0
+      "target": "integration_test_end_to_end_pipeline_test_occupancy_persistence_to_hdfs_and_readback"
     },
     {
       "relation": "rationale_for",
@@ -4356,9 +4980,9 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_end_to_end_pipeline_rationale_1",
-      "target": "tests_integration_test_end_to_end_pipeline_py",
-      "confidence_score": 1.0
+      "target": "tests_integration_test_end_to_end_pipeline_py"
     },
     {
       "relation": "rationale_for",
@@ -4366,9 +4990,9 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_end_to_end_pipeline_rationale_22",
-      "target": "integration_test_end_to_end_pipeline_test_kafka_to_hdfs_sink_full_cycle",
-      "confidence_score": 1.0
+      "target": "integration_test_end_to_end_pipeline_test_kafka_to_hdfs_sink_full_cycle"
     },
     {
       "relation": "rationale_for",
@@ -4376,9 +5000,9 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_end_to_end_pipeline_rationale_94",
-      "target": "integration_test_end_to_end_pipeline_test_malformed_event_quarantine_to_dead_letter",
-      "confidence_score": 1.0
+      "target": "integration_test_end_to_end_pipeline_test_malformed_event_quarantine_to_dead_letter"
     },
     {
       "relation": "rationale_for",
@@ -4386,9 +5010,9 @@
       "source_file": "tests/integration/test_end_to_end_pipeline.py",
       "source_location": "L141",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_end_to_end_pipeline_rationale_141",
-      "target": "integration_test_end_to_end_pipeline_test_occupancy_persistence_to_hdfs_and_readback",
-      "confidence_score": 1.0
+      "target": "integration_test_end_to_end_pipeline_test_occupancy_persistence_to_hdfs_and_readback"
     },
     {
       "relation": "contains",
@@ -4396,9 +5020,9 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_integration_test_failure_recovery_py",
-      "target": "integration_test_failure_recovery_test_hdfs_failure_aborts_offset_commit",
-      "confidence_score": 1.0
+      "target": "integration_test_failure_recovery_test_hdfs_failure_aborts_offset_commit"
     },
     {
       "relation": "contains",
@@ -4406,9 +5030,9 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_integration_test_failure_recovery_py",
-      "target": "integration_test_failure_recovery_test_sink_restart_does_not_duplicate_acknowledged_events",
-      "confidence_score": 1.0
+      "target": "integration_test_failure_recovery_test_sink_restart_does_not_duplicate_acknowledged_events"
     },
     {
       "relation": "rationale_for",
@@ -4416,9 +5040,9 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_failure_recovery_rationale_1",
-      "target": "tests_integration_test_failure_recovery_py",
-      "confidence_score": 1.0
+      "target": "tests_integration_test_failure_recovery_py"
     },
     {
       "relation": "rationale_for",
@@ -4426,9 +5050,9 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_failure_recovery_rationale_23",
-      "target": "integration_test_failure_recovery_test_hdfs_failure_aborts_offset_commit",
-      "confidence_score": 1.0
+      "target": "integration_test_failure_recovery_test_hdfs_failure_aborts_offset_commit"
     },
     {
       "relation": "rationale_for",
@@ -4436,8 +5060,150 @@
       "source_file": "tests/integration/test_failure_recovery.py",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_failure_recovery_rationale_94",
-      "target": "integration_test_failure_recovery_test_sink_restart_does_not_duplicate_acknowledged_events",
+      "target": "integration_test_failure_recovery_test_sink_restart_does_not_duplicate_acknowledged_events"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "tests_integration_test_pipeline_reliability_audit_py",
+      "target": "integration_test_pipeline_reliability_audit_hdfs_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "tests_integration_test_pipeline_reliability_audit_py",
+      "target": "integration_test_pipeline_reliability_audit_kafka_settings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "tests_integration_test_pipeline_reliability_audit_py",
+      "target": "integration_test_pipeline_reliability_audit_create_mock_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "tests_integration_test_pipeline_reliability_audit_py",
+      "target": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L106",
+      "weight": 1.0,
+      "source": "tests_integration_test_pipeline_reliability_audit_py",
+      "target": "integration_test_pipeline_reliability_audit_test_post_finalization_crash_replay_and_downstream_dedup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "tests_integration_test_pipeline_reliability_audit_py",
+      "target": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L278",
+      "weight": 1.0,
+      "source": "tests_integration_test_pipeline_reliability_audit_py",
+      "target": "integration_test_pipeline_reliability_audit_test_occupancy_calculator_cold_restart_reconstruction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_rationale_1",
+      "target": "tests_integration_test_pipeline_reliability_audit_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
+      "target": "integration_test_pipeline_reliability_audit_create_mock_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
+      "target": "integration_test_pipeline_reliability_audit_create_mock_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_rationale_46",
+      "target": "integration_test_pipeline_reliability_audit_test_multi_date_partition_hdfs_failure_aborts_offset_commit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_rationale_107",
+      "target": "integration_test_pipeline_reliability_audit_test_post_finalization_crash_replay_and_downstream_dedup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_rationale_201",
+      "target": "integration_test_pipeline_reliability_audit_test_quarantine_segregation_in_mixed_microbatch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/integration/test_pipeline_reliability_audit.py",
+      "source_location": "L279",
+      "weight": 1.0,
+      "source": "integration_test_pipeline_reliability_audit_rationale_279",
+      "target": "integration_test_pipeline_reliability_audit_test_occupancy_calculator_cold_restart_reconstruction",
       "confidence_score": 1.0
     },
     {
@@ -4446,9 +5212,9 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_integration_test_storage_streaming_py",
-      "target": "integration_test_storage_streaming_test_hdfs_connectivity_and_rw",
-      "confidence_score": 1.0
+      "target": "integration_test_storage_streaming_test_hdfs_connectivity_and_rw"
     },
     {
       "relation": "contains",
@@ -4456,9 +5222,9 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_integration_test_storage_streaming_py",
-      "target": "integration_test_storage_streaming_test_kafka_producer_publish",
-      "confidence_score": 1.0
+      "target": "integration_test_storage_streaming_test_kafka_producer_publish"
     },
     {
       "relation": "rationale_for",
@@ -4466,9 +5232,9 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_storage_streaming_rationale_1",
-      "target": "tests_integration_test_storage_streaming_py",
-      "confidence_score": 1.0
+      "target": "tests_integration_test_storage_streaming_py"
     },
     {
       "relation": "rationale_for",
@@ -4476,9 +5242,9 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_storage_streaming_rationale_15",
-      "target": "integration_test_storage_streaming_test_hdfs_connectivity_and_rw",
-      "confidence_score": 1.0
+      "target": "integration_test_storage_streaming_test_hdfs_connectivity_and_rw"
     },
     {
       "relation": "rationale_for",
@@ -4486,9 +5252,9 @@
       "source_file": "tests/integration/test_storage_streaming.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "integration_test_storage_streaming_rationale_41",
-      "target": "integration_test_storage_streaming_test_kafka_producer_publish",
-      "confidence_score": 1.0
+      "target": "integration_test_storage_streaming_test_kafka_producer_publish"
     },
     {
       "relation": "contains",
@@ -4496,9 +5262,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_deterministic_census_reconstruction",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_deterministic_census_reconstruction"
     },
     {
       "relation": "contains",
@@ -4506,9 +5272,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L99",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_no_double_counting_with_duplicates",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_no_double_counting_with_duplicates"
     },
     {
       "relation": "contains",
@@ -4516,9 +5282,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L134",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_transfer_preserves_total_count",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_transfer_preserves_total_count"
     },
     {
       "relation": "contains",
@@ -4526,9 +5292,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L185",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_capacity_exceedance_representation",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_capacity_exceedance_representation"
     },
     {
       "relation": "contains",
@@ -4536,9 +5302,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L218",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_out_of_order_events",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_out_of_order_events"
     },
     {
       "relation": "contains",
@@ -4546,8 +5312,38 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L279",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_occupancy_calculator_py",
-      "target": "unit_test_occupancy_calculator_test_unmatched_discharge_does_not_crash",
+      "target": "unit_test_occupancy_calculator_test_unmatched_discharge_does_not_crash"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L299",
+      "weight": 1.0,
+      "source": "tests_unit_test_occupancy_calculator_py",
+      "target": "unit_test_occupancy_calculator_test_correction_events_supersede_original",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L339",
+      "weight": 1.0,
+      "source": "tests_unit_test_occupancy_calculator_py",
+      "target": "unit_test_occupancy_calculator_test_complex_out_of_order_duplicates_and_orphans",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L395",
+      "weight": 1.0,
+      "source": "tests_unit_test_occupancy_calculator_py",
+      "target": "unit_test_occupancy_calculator_test_reprocessing_same_raw_history_is_strictly_idempotent",
       "confidence_score": 1.0
     },
     {
@@ -4556,9 +5352,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_1",
-      "target": "tests_unit_test_occupancy_calculator_py",
-      "confidence_score": 1.0
+      "target": "tests_unit_test_occupancy_calculator_py"
     },
     {
       "relation": "rationale_for",
@@ -4566,9 +5362,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_11",
-      "target": "unit_test_occupancy_calculator_test_deterministic_census_reconstruction",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_deterministic_census_reconstruction"
     },
     {
       "relation": "rationale_for",
@@ -4576,9 +5372,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_100",
-      "target": "unit_test_occupancy_calculator_test_no_double_counting_with_duplicates",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_no_double_counting_with_duplicates"
     },
     {
       "relation": "rationale_for",
@@ -4586,9 +5382,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L135",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_135",
-      "target": "unit_test_occupancy_calculator_test_transfer_preserves_total_count",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_transfer_preserves_total_count"
     },
     {
       "relation": "rationale_for",
@@ -4596,9 +5392,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_186",
-      "target": "unit_test_occupancy_calculator_test_capacity_exceedance_representation",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_capacity_exceedance_representation"
     },
     {
       "relation": "rationale_for",
@@ -4606,9 +5402,9 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L219",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_219",
-      "target": "unit_test_occupancy_calculator_test_out_of_order_events",
-      "confidence_score": 1.0
+      "target": "unit_test_occupancy_calculator_test_out_of_order_events"
     },
     {
       "relation": "rationale_for",
@@ -4616,8 +5412,38 @@
       "source_file": "tests/unit/test_occupancy_calculator.py",
       "source_location": "L280",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_occupancy_calculator_rationale_280",
-      "target": "unit_test_occupancy_calculator_test_unmatched_discharge_does_not_crash",
+      "target": "unit_test_occupancy_calculator_test_unmatched_discharge_does_not_crash"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_rationale_300",
+      "target": "unit_test_occupancy_calculator_test_correction_events_supersede_original",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L340",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_rationale_340",
+      "target": "unit_test_occupancy_calculator_test_complex_out_of_order_duplicates_and_orphans",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/unit/test_occupancy_calculator.py",
+      "source_location": "L396",
+      "weight": 1.0,
+      "source": "unit_test_occupancy_calculator_rationale_396",
+      "target": "unit_test_occupancy_calculator_test_reprocessing_same_raw_history_is_strictly_idempotent",
       "confidence_score": 1.0
     },
     {
@@ -4626,9 +5452,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_valid_admission_event",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_valid_admission_event"
     },
     {
       "relation": "contains",
@@ -4636,9 +5462,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_admission_missing_to_unit_fails",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_admission_missing_to_unit_fails"
     },
     {
       "relation": "contains",
@@ -4646,9 +5472,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_admission_with_from_unit_fails",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_admission_with_from_unit_fails"
     },
     {
       "relation": "contains",
@@ -4656,9 +5482,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_valid_discharge_event",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_valid_discharge_event"
     },
     {
       "relation": "contains",
@@ -4666,9 +5492,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_discharge_with_to_unit_fails",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_discharge_with_to_unit_fails"
     },
     {
       "relation": "contains",
@@ -4676,9 +5502,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_valid_transfer_event",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_valid_transfer_event"
     },
     {
       "relation": "contains",
@@ -4686,9 +5512,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_transfer_with_identical_units_fails",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_transfer_with_identical_units_fails"
     },
     {
       "relation": "contains",
@@ -4696,9 +5522,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L111",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_correction_event_validation",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_correction_event_validation"
     },
     {
       "relation": "contains",
@@ -4706,9 +5532,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_schemas_py",
-      "target": "unit_test_schemas_test_serialization_roundtrip",
-      "confidence_score": 1.0
+      "target": "unit_test_schemas_test_serialization_roundtrip"
     },
     {
       "relation": "rationale_for",
@@ -4716,9 +5542,9 @@
       "source_file": "tests/unit/test_schemas.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_schemas_rationale_1",
-      "target": "tests_unit_test_schemas_py",
-      "confidence_score": 1.0
+      "target": "tests_unit_test_schemas_py"
     },
     {
       "relation": "contains",
@@ -4726,9 +5552,9 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_simulator_py",
-      "target": "unit_test_simulator_test_simulation_determinism",
-      "confidence_score": 1.0
+      "target": "unit_test_simulator_test_simulation_determinism"
     },
     {
       "relation": "contains",
@@ -4736,9 +5562,9 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_simulator_py",
-      "target": "unit_test_simulator_test_timeline_consistency",
-      "confidence_score": 1.0
+      "target": "unit_test_simulator_test_timeline_consistency"
     },
     {
       "relation": "contains",
@@ -4746,9 +5572,9 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "tests_unit_test_simulator_py",
-      "target": "unit_test_simulator_test_surge_scenario_impact",
-      "confidence_score": 1.0
+      "target": "unit_test_simulator_test_surge_scenario_impact"
     },
     {
       "relation": "rationale_for",
@@ -4756,11 +5582,11 @@
       "source_file": "tests/unit/test_simulator.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "unit_test_simulator_rationale_1",
-      "target": "tests_unit_test_simulator_py",
-      "confidence_score": 1.0
+      "target": "tests_unit_test_simulator_py"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "31bbe077dce45b61fd4d80c7da86317e07dbdf2d"
+  "built_at_commit": "9e075ec909c6d6d1c434d704e0a7761e5de1ea1f"
 }

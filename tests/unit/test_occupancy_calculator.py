@@ -294,3 +294,131 @@ def test_unmatched_discharge_does_not_crash(sample_units):
     assert not df.empty
     micu_census = df[df["unit_id"] == "MICU"]["occupied_beds"]
     assert (micu_census >= 0).all()
+
+
+def test_correction_events_supersede_original(sample_units):
+    """
+    Verifies that when a correction event arrives superseding an earlier event,
+    the original event is discarded and the correction is applied during census reconstruction.
+    """
+    from uuid import uuid4
+
+    ts = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+    ev_orig = ICUEvent(
+        event_id=uuid4(),
+        patient_id="P-CORR",
+        encounter_id="ENC-CORR",
+        event_type=EventType.ADMISSION,
+        event_timestamp=ts,
+        to_unit="CCU",  # Mistakenly recorded as CCU
+        version=1,
+    )
+    ev_corr = ICUEvent(
+        event_id=uuid4(),
+        patient_id="P-CORR",
+        encounter_id="ENC-CORR",
+        event_type=EventType.ADMISSION,
+        event_timestamp=ts,
+        to_unit="MICU",  # Corrected to MICU
+        is_correction=True,
+        original_event_id=ev_orig.event_id,
+        version=2,
+    )
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = calc.reconstruct([ev_orig, ev_corr])
+
+    # At 11:00, CCU must be 0 and MICU must be 1
+    ccu_11 = df[(df["unit_id"] == "CCU") & (df["timestamp"] == datetime(2026, 10, 1, 11, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+    micu_11 = df[(df["unit_id"] == "MICU") & (df["timestamp"] == datetime(2026, 10, 1, 11, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+
+    assert ccu_11 == 0, "Original superseded event should not produce occupancy in CCU"
+    assert micu_11 == 1, "Correction event should produce occupancy in MICU"
+
+
+def test_complex_out_of_order_duplicates_and_orphans(sample_units):
+    """
+    Verifies deterministic behavior with a stress stream containing:
+    - Multiple duplicate event IDs
+    - Orphan discharge
+    - Out-of-order transfers and admissions
+    """
+    ts1 = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+    ts2 = datetime(2026, 10, 1, 11, 30, tzinfo=timezone.utc)
+    ts3 = datetime(2026, 10, 1, 12, 0, tzinfo=timezone.utc)
+
+    orphan_disch = ICUEvent(
+        patient_id="ORPH-1",
+        encounter_id="ENC-ORPH",
+        event_type=EventType.DISCHARGE,
+        event_timestamp=ts1,
+        from_unit="MICU",
+    )
+    ev_admit = ICUEvent(
+        patient_id="P-NORM",
+        encounter_id="ENC-NORM",
+        event_type=EventType.ADMISSION,
+        event_timestamp=ts1,
+        to_unit="MICU",
+    )
+    ev_transfer = ICUEvent(
+        patient_id="P-NORM",
+        encounter_id="ENC-NORM",
+        event_type=EventType.TRANSFER,
+        event_timestamp=ts2,
+        from_unit="MICU",
+        to_unit="SICU",
+    )
+
+    # Deliver in backwards order with duplicates
+    events = [ev_transfer, ev_admit, orphan_disch, ev_admit, ev_transfer]
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = calc.reconstruct(events)
+
+    hour_11 = datetime(2026, 10, 1, 11, 0, tzinfo=timezone.utc)
+    micu_11 = df[(df["unit_id"] == "MICU") & (df["timestamp"] == hour_11)].iloc[0]["occupied_beds"]
+    sicu_11 = df[(df["unit_id"] == "SICU") & (df["timestamp"] == hour_11)].iloc[0]["occupied_beds"]
+    micu_12 = df[(df["unit_id"] == "MICU") & (df["timestamp"] == ts3)].iloc[0]["occupied_beds"]
+    sicu_12 = df[(df["unit_id"] == "SICU") & (df["timestamp"] == ts3)].iloc[0]["occupied_beds"]
+
+    # No negative beds
+    assert (df["occupied_beds"] >= 0).all()
+    # At 11:00: P-NORM in MICU
+    assert micu_11 == 1
+    assert sicu_11 == 0
+    # At 12:00: transferred to SICU
+    assert micu_12 == 0
+    assert sicu_12 == 1
+
+
+def test_reprocessing_same_raw_history_is_strictly_idempotent(sample_units):
+    """
+    Verifies that computing occupancy across identical raw history multiple times
+    yields identical DataFrames.
+    """
+    import pandas as pd
+
+    ts1 = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+    ts2 = datetime(2026, 10, 1, 12, 0, tzinfo=timezone.utc)
+
+    events = [
+        ICUEvent(
+            patient_id=f"P-{i}",
+            encounter_id=f"ENC-{i}",
+            event_type=EventType.ADMISSION,
+            event_timestamp=ts1,
+            to_unit="MICU",
+        )
+        for i in range(10)
+    ]
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df1 = calc.reconstruct(events)
+    df2 = calc.reconstruct(events)
+    df3 = calc.reconstruct(list(reversed(events)))
+
+    # Ignore processing_watermark timestamp column for exact value comparison
+    cols_to_compare = [c for c in df1.columns if c != "processing_watermark"]
+    pd.testing.assert_frame_equal(df1[cols_to_compare], df2[cols_to_compare])
+    pd.testing.assert_frame_equal(df1[cols_to_compare], df3[cols_to_compare])

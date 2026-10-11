@@ -56,12 +56,48 @@ class OccupancyCalculator:
                 seen_event_ids.add(ev_id_str)
                 deduped_events.append(ev)
 
-        # Step 2: Chronological ordering
-        deduped_events.sort(key=lambda e: (e.event_timestamp, e.version))
+        # Step 2: Resolve event corrections (superseding earlier erroneous events)
+        superseded_ids: Set[str] = set()
+        corrections_by_orig: Dict[str, List[ICUEvent]] = {}
+        for ev in deduped_events:
+            if ev.is_correction and ev.original_event_id:
+                orig_id_str = str(ev.original_event_id)
+                superseded_ids.add(orig_id_str)
+                corrections_by_orig.setdefault(orig_id_str, []).append(ev)
+
+        # If multiple corrections supersede the same original, keep highest version
+        for orig_id, corr_list in corrections_by_orig.items():
+            if len(corr_list) > 1:
+                corr_list.sort(key=lambda c: c.version, reverse=True)
+                for lower_corr in corr_list[1:]:
+                    superseded_ids.add(str(lower_corr.event_id))
+
+        effective_events = [
+            ev for ev in deduped_events if str(ev.event_id) not in superseded_ids
+        ]
+
+        if not effective_events:
+            return pd.DataFrame(columns=[
+                "timestamp", "unit_id", "occupied_beds", "capacity",
+                "available_beds", "occupancy_rate", "admissions_count",
+                "discharges_count", "transfers_in_count", "transfers_out_count",
+                "data_source"
+            ])
+
+        # Step 3: Chronological ordering with deterministic tie-breaking
+        type_priority = {EventType.ADMISSION: 0, EventType.TRANSFER: 1, EventType.DISCHARGE: 2}
+        effective_events.sort(
+            key=lambda e: (
+                e.event_timestamp,
+                e.version,
+                type_priority.get(e.event_type, 99),
+                str(e.event_id),
+            )
+        )
 
         # Determine time horizon boundaries
-        first_event_ts = deduped_events[0].event_timestamp
-        last_event_ts = deduped_events[-1].event_timestamp
+        first_event_ts = effective_events[0].event_timestamp
+        last_event_ts = effective_events[-1].event_timestamp
 
         grid_start = start_hour or first_event_ts.replace(minute=0, second=0, microsecond=0)
         grid_end = end_hour or (last_event_ts.replace(minute=0, second=0, microsecond=0) + timedelta(hours=1))
@@ -82,7 +118,7 @@ class OccupancyCalculator:
         records: List[dict] = []
 
         event_idx = 0
-        num_events = len(deduped_events)
+        num_events = len(effective_events)
 
         prev_milestone = grid_start - timedelta(hours=1)
         calculation_watermark = datetime.now(timezone.utc)
@@ -97,8 +133,8 @@ class OccupancyCalculator:
             transfers_out_interval = {u: 0 for u in self.known_units}
 
             # Process all events occurring up to current_milestone
-            while event_idx < num_events and deduped_events[event_idx].event_timestamp <= current_milestone:
-                ev = deduped_events[event_idx]
+            while event_idx < num_events and effective_events[event_idx].event_timestamp <= current_milestone:
+                ev = effective_events[event_idx]
                 key = f"{ev.patient_id}:{ev.encounter_id}"
                 ev_id_str = str(ev.event_id)
 
@@ -148,7 +184,7 @@ class OccupancyCalculator:
                     unit_census[loc] += 1
 
             # Compile census records for each unit
-            source_label = deduped_events[0].data_source.value if deduped_events else DataSource.SYNTHETIC.value
+            source_label = effective_events[0].data_source.value if effective_events else DataSource.SYNTHETIC.value
 
             for unit_id, capacity in self.unit_capacities.items():
                 occupied = unit_census[unit_id]

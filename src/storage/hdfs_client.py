@@ -171,6 +171,42 @@ class HDFSClient:
                 records.append(json.loads(line))
         return records
 
+    def find_files(self, base_path: str, suffix: str = "") -> List[str]:
+        """
+        Recursively lists all file paths under base_path matching suffix.
+        Ignores hidden directories/files starting with '.' (e.g., .staging).
+        """
+        results: List[str] = []
+        clean_base = "/" + base_path.strip("/")
+
+        try:
+            entries = self.list_dir(clean_base)
+        except Exception:
+            return results
+
+        for entry in entries:
+            name = entry.get("pathSuffix", "")
+            if not name or name.startswith("."):
+                continue
+            child_path = f"{clean_base}/{name}".replace("//", "/")
+            if entry.get("type") == "DIRECTORY":
+                results.extend(self.find_files(child_path, suffix))
+            elif entry.get("type") == "FILE":
+                if not suffix or name.endswith(suffix):
+                    results.append(child_path)
+
+        return results
+
+    def read_all_jsonl(self, base_path: str) -> List[Dict[str, Any]]:
+        """
+        Recursively finds and reads all JSONL files under base_path into a combined list of records.
+        """
+        files = self.find_files(base_path, suffix=".jsonl")
+        all_records = []
+        for f in files:
+            all_records.extend(self.read_jsonl(f))
+        return all_records
+
     def write_parquet(self, hdfs_path: str, df: Any, overwrite: bool = True) -> bool:
         """Serialize a pandas DataFrame to Parquet and write to HDFS."""
         import io

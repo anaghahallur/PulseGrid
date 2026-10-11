@@ -149,7 +149,7 @@ class KafkaHDFSSink:
 
         # 3. Synchronous Kafka Offset Commit (only after durable HDFS finalization)
         try:
-            self.consumer.commit(asynchronous=False)
+            self._commit_offsets()
         except Exception as e:
             raise RuntimeError(f"Critical error committing Kafka offsets post-HDFS write: {e}")
 
@@ -158,6 +158,10 @@ class KafkaHDFSSink:
             "malformed_count": len(malformed_records),
             "batches_finalized": finalized_paths,
         }
+
+    def _commit_offsets(self) -> None:
+        """Synchronously commit Kafka consumer offsets."""
+        self.consumer.commit(asynchronous=False)
 
     def poll_and_sink(
         self,

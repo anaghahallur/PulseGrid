@@ -20,8 +20,8 @@
     "hash": "11060ca842a5839891d6cf7fbde564e3"
   },
   "C:\\building projs\\bda proj\\src\\processing\\occupancy_calculator.py": {
-    "mtime": 1791731599.7757988,
-    "hash": "72cfd73182fea6d84f78da7bdb77af80"
+    "mtime": 1791732817.2702205,
+    "hash": "0eb179e1f64195aab28060c56a191229"
   },
   "C:\\building projs\\bda proj\\src\\processing\\__init__.py": {
     "mtime": 1791730030.853642,
@@ -52,12 +52,12 @@
     "hash": "6b218fdf8e152439bfdd5c0d0a17cf68"
   },
   "C:\\building projs\\bda proj\\src\\storage\\hdfs_client.py": {
-    "mtime": 1791731470.838815,
-    "hash": "9c70bec9fa8242e643b5ed4e40fb55b0"
+    "mtime": 1791732749.2905684,
+    "hash": "95136a60c897aecb4c5ae44f6a0d7995"
   },
   "C:\\building projs\\bda proj\\src\\storage\\kafka_sink.py": {
-    "mtime": 1791731515.787879,
-    "hash": "4bd241b4ec961d933244d1d8cf744588"
+    "mtime": 1791732954.2711573,
+    "hash": "89968f85085948e5a0f625c3bcd526b8"
   },
   "C:\\building projs\\bda proj\\src\\storage\\__init__.py": {
     "mtime": 1791731522.7000854,
@@ -75,13 +75,17 @@
     "mtime": 1791731709.6875544,
     "hash": "b13a006b156ccdec7f2c0ec095f11410"
   },
+  "C:\\building projs\\bda proj\\tests\\integration\\test_pipeline_reliability_audit.py": {
+    "mtime": 1791733023.6588552,
+    "hash": "bf704eefeb5f1d419d124d0079c76467"
+  },
   "C:\\building projs\\bda proj\\tests\\integration\\test_storage_streaming.py": {
     "mtime": 1791730222.8727672,
     "hash": "056c7bb5eae9c264042ad33d8b57751f"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_occupancy_calculator.py": {
-    "mtime": 1791731582.9849412,
-    "hash": "7a09e7f19f3fe9465814577102097d20"
+    "mtime": 1791733066.5783267,
+    "hash": "04d0dd8c1d6a3bc17f976e2f9a009f04"
   },
   "C:\\building projs\\bda proj\\tests\\unit\\test_schemas.py": {
     "mtime": 1791730058.0408955,
