@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Caches and test outputs
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Environments and dependencies
+.venv/
+venv/
+ENV/
+env/
+
+# Credentials and secrets
+.env
+*.env
+!.env.example
+.netrc
+_netrc
+*credential*
+*secret*
+
+# Restricted and downloaded clinical data (NEVER commit patient records)
+data/raw_mimic/
+data/mimic/
+data/mimic_demo/
+*.csv.gz
+
+# Generated simulation data and temporary pipelines
+data/synthetic/
+data/spool/
+logs/
+*.log
+
+# Machine learning model artifacts
+models/*.joblib
+models/*.pkl
+models/*.onnx
+models/*.pt
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
