@@ -10,6 +10,7 @@ __pycache__/
 htmlcov/
 .mypy_cache/
 .ruff_cache/
+graphify-out/cache/
 
 # Environments and dependencies
 .venv/

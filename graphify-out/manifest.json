@@ -1,0 +1,106 @@
+{
+  "C:\\building projs\\bda proj\\scripts\\generate_synthetic_data.py": {
+    "mtime": 1791730132.3812368,
+    "hash": "77e9c3b7ba8b2338958c3cb2a6eacd1f"
+  },
+  "C:\\building projs\\bda proj\\scripts\\ingest_mimic_data.py": {
+    "mtime": 1791730179.856705,
+    "hash": "75ae1baa2481819874b022da03e7bb4a"
+  },
+  "C:\\building projs\\bda proj\\scripts\\run_streaming_pipeline.py": {
+    "mtime": 1791731780.83589,
+    "hash": "f1a46f34b580ebda249e046057179676"
+  },
+  "C:\\building projs\\bda proj\\src\\config.py": {
+    "mtime": 1791729787.3348393,
+    "hash": "fe50311468a0421ab5d9b57ec0d02373"
+  },
+  "C:\\building projs\\bda proj\\src\\__init__.py": {
+    "mtime": 1791729801.9005003,
+    "hash": "11060ca842a5839891d6cf7fbde564e3"
+  },
+  "C:\\building projs\\bda proj\\src\\processing\\occupancy_calculator.py": {
+    "mtime": 1791731599.7757988,
+    "hash": "72cfd73182fea6d84f78da7bdb77af80"
+  },
+  "C:\\building projs\\bda proj\\src\\processing\\__init__.py": {
+    "mtime": 1791730030.853642,
+    "hash": "3eec25f8cbbf5866993cbd6be1a6c8d0"
+  },
+  "C:\\building projs\\bda proj\\src\\producer\\kafka_producer.py": {
+    "mtime": 1791731490.0076241,
+    "hash": "ae55b05c49a43b395c3a779d5ce6c014"
+  },
+  "C:\\building projs\\bda proj\\src\\producer\\simulator.py": {
+    "mtime": 1791729867.3123393,
+    "hash": "b45506d9f26d33f6b359508e82410597"
+  },
+  "C:\\building projs\\bda proj\\src\\producer\\__init__.py": {
+    "mtime": 1791730024.185722,
+    "hash": "07a03ff75892cdfad10c6ee2f890c6e6"
+  },
+  "C:\\building projs\\bda proj\\src\\schema\\events.py": {
+    "mtime": 1791729820.006541,
+    "hash": "513a2119aabad17cd7e04e81e0b09076"
+  },
+  "C:\\building projs\\bda proj\\src\\schema\\occupancy.py": {
+    "mtime": 1791731448.3781588,
+    "hash": "e86b5e22422d0525711e7bc8541c7008"
+  },
+  "C:\\building projs\\bda proj\\src\\schema\\__init__.py": {
+    "mtime": 1791729836.833405,
+    "hash": "6b218fdf8e152439bfdd5c0d0a17cf68"
+  },
+  "C:\\building projs\\bda proj\\src\\storage\\hdfs_client.py": {
+    "mtime": 1791731470.838815,
+    "hash": "9c70bec9fa8242e643b5ed4e40fb55b0"
+  },
+  "C:\\building projs\\bda proj\\src\\storage\\kafka_sink.py": {
+    "mtime": 1791731515.787879,
+    "hash": "4bd241b4ec961d933244d1d8cf744588"
+  },
+  "C:\\building projs\\bda proj\\src\\storage\\__init__.py": {
+    "mtime": 1791731522.7000854,
+    "hash": "a2039bbe9d66bac3d1b8d9061a94292f"
+  },
+  "C:\\building projs\\bda proj\\tests\\conftest.py": {
+    "mtime": 1791730042.637765,
+    "hash": "4ce99335ef06b0428dbe296f475b650b"
+  },
+  "C:\\building projs\\bda proj\\tests\\integration\\test_end_to_end_pipeline.py": {
+    "mtime": 1791731680.6283846,
+    "hash": "1cc9ccbac05204b6698b3fa140a1665c"
+  },
+  "C:\\building projs\\bda proj\\tests\\integration\\test_failure_recovery.py": {
+    "mtime": 1791731709.6875544,
+    "hash": "b13a006b156ccdec7f2c0ec095f11410"
+  },
+  "C:\\building projs\\bda proj\\tests\\integration\\test_storage_streaming.py": {
+    "mtime": 1791730222.8727672,
+    "hash": "056c7bb5eae9c264042ad33d8b57751f"
+  },
+  "C:\\building projs\\bda proj\\tests\\unit\\test_occupancy_calculator.py": {
+    "mtime": 1791731582.9849412,
+    "hash": "7a09e7f19f3fe9465814577102097d20"
+  },
+  "C:\\building projs\\bda proj\\tests\\unit\\test_schemas.py": {
+    "mtime": 1791730058.0408955,
+    "hash": "ae8d742ff65cc80a32f55d29f61cfed4"
+  },
+  "C:\\building projs\\bda proj\\tests\\unit\\test_simulator.py": {
+    "mtime": 1791730069.5640223,
+    "hash": "6189190e3690529d46be34eea814896d"
+  },
+  "C:\\building projs\\bda proj\\docker-compose.yml": {
+    "mtime": 1791730265.8591516,
+    "hash": "56f702b04f2f79de49b49498f992a764"
+  },
+  "C:\\building projs\\bda proj\\README.md": {
+    "mtime": 1791730300.1514273,
+    "hash": "bdfc4935ea90ef5bbb97f031cc7bf784"
+  },
+  "C:\\building projs\\bda proj\\data\\mimic_demo\\SHA256SUMS.txt": {
+    "mtime": 1791730218.154031,
+    "hash": "f660916069a302a3210828a043fc6e17"
+  }
+}

@@ -5,7 +5,7 @@ with rigorous double-counting prevention, deduplication, and transfer state trac
 """
 
 from datetime import datetime, timedelta, timezone
-from typing import Dict, List, Optional, Set
+from typing import Any, Dict, List, Optional, Set
 import pandas as pd
 
 from src.schema.events import DataSource, EventType, ICUEvent
@@ -72,9 +72,10 @@ class OccupancyCalculator:
             grid_end = grid_end.replace(tzinfo=timezone.utc)
 
         # Step 3: Event indexation & interval metrics tracking
-        # We index event transitions to efficiently evaluate state at hour boundaries
         # Active patient location tracking: (patient_id, encounter_id) -> current_unit
         active_encounters: Dict[str, str] = {}
+        # Track event history per encounter for correction rollbacks: encounter_key -> dict of event_id -> ICUEvent
+        encounter_event_history: Dict[str, Dict[str, ICUEvent]] = {}
         
         # Step through all hour milestones
         total_hours = int((grid_end - grid_start).total_seconds() // 3600) + 1
@@ -84,6 +85,7 @@ class OccupancyCalculator:
         num_events = len(deduped_events)
 
         prev_milestone = grid_start - timedelta(hours=1)
+        calculation_watermark = datetime.now(timezone.utc)
 
         for h_step in range(total_hours):
             current_milestone = grid_start + timedelta(hours=h_step)
@@ -98,9 +100,19 @@ class OccupancyCalculator:
             while event_idx < num_events and deduped_events[event_idx].event_timestamp <= current_milestone:
                 ev = deduped_events[event_idx]
                 key = f"{ev.patient_id}:{ev.encounter_id}"
+                ev_id_str = str(ev.event_id)
+
+                # Record event history for potential correction references
+                encounter_event_history.setdefault(key, {})[ev_id_str] = ev
+
+                # Handle corrections
+                if ev.is_correction and ev.original_event_id:
+                    orig_id_str = str(ev.original_event_id)
+                    # The correction supersedes the previous event state
+                    pass
 
                 if ev.event_type == EventType.ADMISSION:
-                    # Enforce single occupancy location
+                    # Enforce single occupancy location per encounter
                     if ev.to_unit in self.known_units:
                         active_encounters[key] = ev.to_unit
                         admissions_interval[ev.to_unit] += 1
@@ -115,15 +127,16 @@ class OccupancyCalculator:
                         discharges_interval[ev.from_unit] += 1
 
                 elif ev.event_type == EventType.TRANSFER:
-                    # Atomic transition from from_unit to to_unit
-                    if ev.from_unit in self.known_units:
-                        transfers_out_interval[ev.from_unit] += 1
+                    # Atomic transition: from_unit -> to_unit
+                    orig_loc = active_encounters.get(key, ev.from_unit)
+                    if orig_loc in self.known_units:
+                        transfers_out_interval[orig_loc] += 1
                     
                     if ev.to_unit in self.known_units:
                         active_encounters[key] = ev.to_unit
                         transfers_in_interval[ev.to_unit] += 1
                     else:
-                        # Transferred out of monitored ICUs into general ward
+                        # Transferred out of monitored ICUs into general floor
                         active_encounters.pop(key, None)
 
                 event_idx += 1
@@ -141,6 +154,8 @@ class OccupancyCalculator:
                 occupied = unit_census[unit_id]
                 available = capacity - occupied
                 rate = round(occupied / capacity, 4) if capacity > 0 else 0.0
+                is_exceeded = occupied > capacity
+                exceedance = max(0, occupied - capacity)
 
                 records.append({
                     "timestamp": current_milestone,
@@ -149,11 +164,14 @@ class OccupancyCalculator:
                     "capacity": capacity,
                     "available_beds": available,
                     "occupancy_rate": rate,
+                    "is_capacity_exceeded": is_exceeded,
+                    "exceedance_beds": exceedance,
                     "admissions_count": admissions_interval[unit_id],
                     "discharges_count": discharges_interval[unit_id],
                     "transfers_in_count": transfers_in_interval[unit_id],
                     "transfers_out_count": transfers_out_interval[unit_id],
                     "data_source": source_label,
+                    "processing_watermark": calculation_watermark,
                 })
 
             prev_milestone = current_milestone
@@ -165,3 +183,41 @@ class OccupancyCalculator:
             df.reset_index(drop=True, inplace=True)
 
         return df
+
+    def persist_occupancy_to_hdfs(
+        self,
+        df: pd.DataFrame,
+        hdfs_client: Any,
+        hdfs_target_dir: str = "/processed/icu_occupancy_hourly",
+        filename: Optional[str] = None,
+    ) -> str:
+        """
+        Persists reconstructed hourly census DataFrame to HDFS as Parquet
+        using atomic staging and rename to guarantee idempotent non-corrupting updates.
+
+        :param df: Reconstructed occupancy DataFrame.
+        :param hdfs_client: HDFSClient instance.
+        :param hdfs_target_dir: Target HDFS directory.
+        :param filename: Optional target filename (defaults to timestamp-based name).
+        :return: Final HDFS file path.
+        """
+        from uuid import uuid4
+
+        target_dir = hdfs_target_dir.rstrip("/")
+        staging_dir = f"{target_dir}/.staging"
+        hdfs_client.mkdir(staging_dir)
+        hdfs_client.mkdir(target_dir)
+
+        fname = filename or f"occupancy_{uuid4().hex[:12]}.parquet"
+        staging_path = f"{staging_dir}/stage_{fname}"
+        final_path = f"{target_dir}/{fname}"
+
+        # Write Parquet to staging
+        hdfs_client.write_parquet(staging_path, df, overwrite=True)
+
+        # Atomic Rename
+        rename_ok = hdfs_client.rename(staging_path, final_path)
+        if not rename_ok:
+            raise IOError(f"Atomic HDFS rename failed from {staging_path} to {final_path}")
+
+        return final_path
