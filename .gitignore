@@ -35,13 +35,13 @@ data/mimic_demo/
 *.csv.gz
 
 # Generated simulation data and temporary pipelines
-data/synthetic/
 data/spool/
 logs/
 *.log
 
-# Machine learning model artifacts
+# Machine learning model artifacts (track canonical forecaster artifact)
 models/*.joblib
+!models/icu_occupancy_forecaster.joblib
 models/*.pkl
 models/*.onnx
 models/*.pt
