@@ -422,3 +422,180 @@ def test_reprocessing_same_raw_history_is_strictly_idempotent(sample_units):
     cols_to_compare = [c for c in df1.columns if c != "processing_watermark"]
     pd.testing.assert_frame_equal(df1[cols_to_compare], df2[cols_to_compare])
     pd.testing.assert_frame_equal(df1[cols_to_compare], df3[cols_to_compare])
+
+
+def test_transfer_origin_mismatch_handled_gracefully(sample_units):
+    """
+    Verifies that when a transfer event specifies from_unit='SICU' but internal state
+    has the encounter in 'MICU', the patient is atomically relocated to to_unit='TSICU'
+    without double-counting or negative census.
+    """
+    ts1 = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+    ts2 = datetime(2026, 10, 1, 12, 0, tzinfo=timezone.utc)
+
+    events = [
+        ICUEvent(
+            patient_id="P-MISMATCH",
+            encounter_id="ENC-MISMATCH",
+            event_type=EventType.ADMISSION,
+            event_timestamp=ts1,
+            to_unit="MICU",
+        ),
+        ICUEvent(
+            patient_id="P-MISMATCH",
+            encounter_id="ENC-MISMATCH",
+            event_type=EventType.TRANSFER,
+            event_timestamp=ts2,
+            from_unit="SICU",  # Mismatch: patient was actually admitted to MICU
+            to_unit="TSICU",
+        ),
+    ]
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = calc.reconstruct(events)
+
+    micu_11 = df[(df["unit_id"] == "MICU") & (df["timestamp"] == datetime(2026, 10, 1, 11, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+    micu_13 = df[(df["unit_id"] == "MICU") & (df["timestamp"] == datetime(2026, 10, 1, 13, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+    sicu_13 = df[(df["unit_id"] == "SICU") & (df["timestamp"] == datetime(2026, 10, 1, 13, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+    tsicu_13 = df[(df["unit_id"] == "TSICU") & (df["timestamp"] == datetime(2026, 10, 1, 13, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+
+    assert micu_11 == 1, "Patient was in MICU at 11:00"
+    assert micu_13 == 0, "Patient vacated MICU after transfer at 12:00"
+    assert sicu_13 == 0, "SICU was never occupied"
+    assert tsicu_13 == 1, "Patient arrived at TSICU after transfer"
+    # Total patient count across all units must remain strictly 1
+    total_13 = df[df["timestamp"] == datetime(2026, 10, 1, 13, 0, tzinfo=timezone.utc)]["occupied_beds"].sum()
+    assert total_13 == 1, "Double-counting prevented despite transfer-origin mismatch"
+
+
+def test_repeated_admission_without_discharge(sample_units):
+    """
+    Verifies that a duplicate/repeated admission for the same encounter without an intervening discharge
+    updates location without double-counting beds.
+    """
+    ts1 = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+    ts2 = datetime(2026, 10, 1, 12, 0, tzinfo=timezone.utc)
+
+    events = [
+        ICUEvent(
+            patient_id="P-REP",
+            encounter_id="ENC-REP",
+            event_type=EventType.ADMISSION,
+            event_timestamp=ts1,
+            to_unit="MICU",
+        ),
+        ICUEvent(
+            patient_id="P-REP",
+            encounter_id="ENC-REP",
+            event_type=EventType.ADMISSION,
+            event_timestamp=ts2,
+            to_unit="SICU",  # Re-admitted to SICU without discharge
+        ),
+    ]
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = calc.reconstruct(events)
+
+    micu_13 = df[(df["unit_id"] == "MICU") & (df["timestamp"] == datetime(2026, 10, 1, 13, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+    sicu_13 = df[(df["unit_id"] == "SICU") & (df["timestamp"] == datetime(2026, 10, 1, 13, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+    total_13 = df[df["timestamp"] == datetime(2026, 10, 1, 13, 0, tzinfo=timezone.utc)]["occupied_beds"].sum()
+
+    assert micu_13 == 0
+    assert sicu_13 == 1
+    assert total_13 == 1, "Patient must only occupy 1 bed across the entire hospital"
+
+
+def test_unmatched_discharge_does_not_corrupt_census(sample_units):
+    """
+    Verifies that an orphan/unmatched discharge for an encounter never admitted
+    does not cause negative census or crash the reconstruction engine.
+    """
+    ts1 = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+
+    events = [
+        ICUEvent(
+            patient_id="P-ORPHAN",
+            encounter_id="ENC-ORPHAN",
+            event_type=EventType.DISCHARGE,
+            event_timestamp=ts1,
+            from_unit="MICU",
+        ),
+    ]
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = calc.reconstruct(events)
+
+    assert (df["occupied_beds"] == 0).all()
+    assert (df["occupied_beds"] >= 0).all(), "Census must never drop below 0"
+
+
+def test_corrections_arriving_in_later_batches_supersede_original(sample_units):
+    """
+    Verifies that a correction event supersedes the original erroneous admission
+    even when both are collected together during cumulative lake reconstruction.
+    """
+    from uuid import uuid4
+
+    orig_id = uuid4()
+    ts1 = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)
+
+    ev_orig = ICUEvent(
+        event_id=orig_id,
+        patient_id="P-CORR",
+        encounter_id="ENC-CORR",
+        event_type=EventType.ADMISSION,
+        event_timestamp=ts1,
+        to_unit="MICU",  # Erroneous initial entry
+    )
+    ev_corr = ICUEvent(
+        event_id=uuid4(),
+        original_event_id=orig_id,
+        version=2,
+        is_correction=True,
+        patient_id="P-CORR",
+        encounter_id="ENC-CORR",
+        event_type=EventType.ADMISSION,
+        event_timestamp=ts1,
+        to_unit="SICU",  # Corrected entry
+    )
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    # Replay with correction present in cumulative raw lake
+    df = calc.reconstruct([ev_orig, ev_corr])
+
+    micu_11 = df[(df["unit_id"] == "MICU") & (df["timestamp"] == datetime(2026, 10, 1, 11, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+    sicu_11 = df[(df["unit_id"] == "SICU") & (df["timestamp"] == datetime(2026, 10, 1, 11, 0, tzinfo=timezone.utc))].iloc[0]["occupied_beds"]
+
+    assert micu_11 == 0, "Original MICU admission was superseded"
+    assert sicu_11 == 1, "Corrected SICU admission was enacted"
+
+
+def test_stays_crossing_processing_window(sample_units):
+    """
+    Verifies that when a patient is admitted before start_hour, replaying lake history
+    correctly tracks their ongoing occupancy during the target window [start_hour, end_hour].
+    Documents architectural requirement: complete lake history must be provided to avoid missing active stays.
+    """
+    admit_ts = datetime(2026, 10, 1, 6, 0, tzinfo=timezone.utc)  # Admitted at 06:00
+    start_window = datetime(2026, 10, 1, 10, 0, tzinfo=timezone.utc)  # Window starts at 10:00
+    end_window = datetime(2026, 10, 1, 14, 0, tzinfo=timezone.utc)
+
+    events = [
+        ICUEvent(
+            patient_id="P-CROSS",
+            encounter_id="ENC-CROSS",
+            event_type=EventType.ADMISSION,
+            event_timestamp=admit_ts,
+            to_unit="CSRU",
+        )
+    ]
+
+    calc = OccupancyCalculator(unit_capacities=sample_units)
+    df = calc.reconstruct(events, start_hour=start_window, end_hour=end_window)
+
+    csru_10 = df[(df["unit_id"] == "CSRU") & (df["timestamp"] == start_window)].iloc[0]["occupied_beds"]
+    csru_14 = df[(df["unit_id"] == "CSRU") & (df["timestamp"] == end_window)].iloc[0]["occupied_beds"]
+
+    assert csru_10 == 1, "Patient admitted prior to start_hour is active at window start"
+    assert csru_14 == 1, "Patient remains active at window end"
+

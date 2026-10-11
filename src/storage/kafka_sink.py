@@ -110,7 +110,9 @@ class KafkaHDFSSink:
         if malformed_records:
             dl_uuid = uuid4().hex
             dl_path = f"{self.dead_letter_base}/dead_letter_{dl_uuid}.jsonl"
-            self.hdfs_client.write_jsonl(dl_path, malformed_records)
+            dl_ok = self.hdfs_client.write_jsonl(dl_path, malformed_records)
+            if not dl_ok:
+                raise IOError(f"Failed to write dead-letter quarantine to HDFS: {dl_path}")
             print(f"[!] Quarantined {len(malformed_records)} malformed message(s) to HDFS: {dl_path}")
 
         # 2. Write and finalize valid events partitioned by date

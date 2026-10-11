@@ -56,12 +56,18 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
-    # Enable CORS for local dashboards (e.g., Streamlit on port 8501)
+    # Restrict CORS to authorized frontend and API origin locations
+    cors_origins = [
+        "http://localhost:8501",
+        "http://127.0.0.1:8501",
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+    ]
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["*"],
+        allow_origins=cors_origins,
         allow_credentials=True,
-        allow_methods=["*"],
+        allow_methods=["GET", "POST", "OPTIONS"],
         allow_headers=["*"],
     )
 
@@ -81,6 +87,21 @@ def create_app() -> FastAPI:
         return JSONResponse(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             content={"detail": str(exc), "error_type": "ServiceUnavailable"},
+        )
+
+    @app.exception_handler(Exception)
+    async def unhandled_exception_handler(request: Request, exc: Exception):
+        """
+        Catches unexpected internal exceptions and returns sanitized HTTP 500.
+        Does NOT expose internal stack traces or internal exception details to client.
+        """
+        logger.exception("Internal server error processing %s: %s", request.url.path, str(exc))
+        return JSONResponse(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            content={
+                "detail": "An internal server error occurred while processing the request.",
+                "error_type": "InternalServerError",
+            },
         )
 
     @app.get("/health", response_model=HealthResponse, tags=["Health"])
@@ -153,7 +174,7 @@ def create_app() -> FastAPI:
             logger.exception("Unexpected error during prediction: %s", str(e))
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail=f"Internal inference error: {str(e)}",
+                detail="An internal server error occurred while processing the prediction.",
             )
 
     return app

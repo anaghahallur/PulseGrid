@@ -175,3 +175,46 @@ def test_predict_surge_capacity_exceedance_warning(client):
         assert p["is_capacity_exceeded"] is True
         assert p["exceedance_beds"] == 4.0
     assert any("exceeds staffed capacity" in w for w in data["warnings"])
+
+
+def test_predict_surfaces_data_provenance_and_simulation_label(client):
+    """Verifies that prediction responses include explicit data source, age, and simulation label."""
+    payload = {
+        "unit_id": "MICU",
+        "model_name": "persistence",
+        "horizons": 1,
+    }
+    resp = client.post("/predict", json=payload)
+    assert resp.status_code == 200
+    data = resp.json()
+    assert "data_source" in data
+    assert "is_live_stream" in data
+    assert "simulation_time_label" in data
+    assert "source_timestamp" in data
+    assert "source_age_hours" in data
+    assert data["simulation_time_label"] in ("STREAMING_LIVE_LAKE", "SYNTHETIC_SIMULATION_BENCHMARK")
+
+
+def test_unhandled_exception_returns_sanitized_500(client, monkeypatch):
+    """
+    Verifies that unexpected internal exceptions return a sanitized HTTP 500
+    without leaking internal traceback or exception messages to the client.
+    """
+    from unittest.mock import MagicMock
+    service = get_forecasting_service()
+
+    def exploding_predict(*args, **kwargs):
+        raise TypeError("Sensitive internal database connection string: user:secret_pass@internal_cluster")
+
+    monkeypatch.setattr(service, "predict", exploding_predict)
+
+    payload = {"unit_id": "MICU", "model_name": "persistence", "horizons": 1}
+    resp = client.post("/predict", json=payload)
+    assert resp.status_code == 500
+    body = resp.json()
+    assert "internal server error occurred" in body["detail"].lower()
+    # Ensure sensitive internal details are NOT leaked!
+    assert "secret_pass" not in resp.text
+    assert "internal_cluster" not in resp.text
+    assert "TypeError" not in resp.text
+

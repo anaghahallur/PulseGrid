@@ -16,6 +16,7 @@ import pandas as pd
 from src.config import get_settings
 from src.ml.features import build_unit_features_and_targets
 from src.ml.models import BaseForecaster, PersistenceBaseline, SeasonalNaiveBaseline
+from src.storage.hdfs_client import HDFSClient
 from src.api.schemas import (
     HourlyCensusRecord,
     HorizonPrediction,
@@ -56,6 +57,8 @@ class ForecastingService:
     def load_model(self) -> bool:
         """
         Loads the trained model artifact and validates its metadata.
+        Validates model/metadata compatibility, feature count, horizon count,
+        sub-estimator dimensions, and artifact provenance at startup.
         Returns True if successfully loaded, False otherwise.
         """
         if not os.path.exists(self.model_path):
@@ -74,12 +77,35 @@ class ForecastingService:
             with open(self.metadata_path, "r", encoding="utf-8") as f:
                 self.metadata = json.load(f)
 
+            # 1. Feature names validation
             if "feature_names" not in self.metadata or not self.metadata["feature_names"]:
                 self.error_detail = "Invalid metadata: missing 'feature_names'"
                 logger.error(self.error_detail)
                 self.is_ready = False
                 return False
 
+            expected_features = self.metadata["feature_names"]
+            num_features = len(expected_features)
+
+            # 2. Feature count consistency validation
+            meta_feature_count = self.metadata.get("feature_count")
+            if meta_feature_count is not None and meta_feature_count != num_features:
+                self.error_detail = (
+                    f"Metadata feature_count mismatch: 'feature_count' is {meta_feature_count} "
+                    f"but {num_features} features are listed in 'feature_names'."
+                )
+                logger.error(self.error_detail)
+                self.is_ready = False
+                return False
+
+            # 3. Provenance and split validation
+            if "split_boundaries" not in self.metadata and "random_seed" not in self.metadata:
+                self.error_detail = "Metadata provenance verification failed: missing training split boundaries."
+                logger.error(self.error_detail)
+                self.is_ready = False
+                return False
+
+            # 4. Deserialization of model artifact
             loaded = joblib.load(self.model_path)
             if not isinstance(loaded, BaseForecaster):
                 self.error_detail = f"Loaded model is not a BaseForecaster: {type(loaded)}"
@@ -87,10 +113,38 @@ class ForecastingService:
                 self.is_ready = False
                 return False
 
+            # 5. Horizon count compatibility validation
+            meta_horizons = self.metadata.get("horizons", 24)
+            if hasattr(loaded, "horizons") and loaded.horizons != meta_horizons:
+                self.error_detail = (
+                    f"Horizon count mismatch: model has {loaded.horizons} horizons, "
+                    f"metadata specifies {meta_horizons}."
+                )
+                logger.error(self.error_detail)
+                self.is_ready = False
+                return False
+
+            # 6. Sub-estimator feature dimension compatibility validation
+            if hasattr(loaded, "models") and isinstance(loaded.models, dict):
+                for h, sub_model in loaded.models.items():
+                    if hasattr(sub_model, "n_features_in_") and sub_model.n_features_in_ != num_features:
+                        self.error_detail = (
+                            f"Model feature dimension mismatch: estimator for horizon {h} expects "
+                            f"{sub_model.n_features_in_} features, but metadata has {num_features}."
+                        )
+                        logger.error(self.error_detail)
+                        self.is_ready = False
+                        return False
+
             self.model = loaded
             self.is_ready = True
             self.error_detail = None
-            logger.info("Successfully loaded and validated %s with %d features", self.metadata["model_name"], len(self.metadata["feature_names"]))
+            logger.info(
+                "Successfully loaded and validated %s with %d features and %d horizons",
+                self.metadata.get("model_name", "Forecaster"),
+                num_features,
+                meta_horizons,
+            )
             return True
         except Exception as e:
             self.error_detail = f"Failed to load model: {str(e)}"
@@ -127,15 +181,67 @@ class ForecastingService:
             ),
         )
 
-    def load_history_from_store(self, unit_id: str, lookback_hours: int = 168) -> List[HourlyCensusRecord]:
+    def load_history_from_store(
+        self, unit_id: str, lookback_hours: int = 168
+    ) -> Tuple[List[HourlyCensusRecord], str, bool]:
         """
-        Retrieves recent contiguous history from the local processed parquet dataset.
-        Used when the client does not provide a custom history array in the request body.
+        Retrieves recent contiguous history.
+        Prioritizes the live processed census lake in HDFS (/processed/icu_occupancy_hourly).
+        Cleanly falls back to local canonical synthetic store when HDFS is unreachable or unpopulated.
+        Returns: (records, data_source_label, is_live_stream)
         """
+        hdfs_records: Optional[List[HourlyCensusRecord]] = None
+        data_source = "LOCAL_SYNTHETIC_STORE"
+        is_live = False
+
+        # Attempt HDFS read first
+        try:
+            hdfs = HDFSClient(
+                base_url=self.settings.hdfs_namenode_url,
+                user=self.settings.hdfs_user,
+                timeout=5,
+            )
+            if hdfs.is_healthy():
+                processed_files = hdfs.find_files(self.settings.hdfs_processed_path, suffix=".parquet")
+                valid_files = [f for f in processed_files if not os.path.basename(f).startswith(".")]
+                if valid_files:
+                    valid_files.sort()
+                    latest_file = valid_files[-1]
+                    logger.info("Attempting to load processed census from HDFS: %s", latest_file)
+                    df_hdfs = hdfs.read_parquet(latest_file)
+                    if isinstance(df_hdfs, pd.DataFrame) and not df_hdfs.empty and "unit_id" in df_hdfs.columns:
+                        unit_df = df_hdfs[df_hdfs["unit_id"] == unit_id].sort_values("timestamp").reset_index(drop=True)
+                        if len(unit_df) >= min(25, lookback_hours + 1):
+                            needed = lookback_hours + 1
+                            tail_df = unit_df.iloc[-needed:].copy()
+                            records = []
+                            for _, row in tail_df.iterrows():
+                                records.append(
+                                    HourlyCensusRecord(
+                                        timestamp=row["timestamp"],
+                                        occupied_beds=float(row["occupied_beds"]),
+                                        capacity=int(row["capacity"]),
+                                        admissions_count=int(row.get("admissions_count", 0)),
+                                        discharges_count=int(row.get("discharges_count", 0)),
+                                        transfers_in_count=int(row.get("transfers_in_count", 0)),
+                                        transfers_out_count=int(row.get("transfers_out_count", 0)),
+                                    )
+                                )
+                            hdfs_records = records
+                            data_source = "HDFS_PROCESSED_LAKE"
+                            is_live = True
+                            logger.info("Successfully loaded %d records from HDFS for unit %s", len(records), unit_id)
+        except Exception as e:
+            logger.warning("Could not read from HDFS processed store (%s); falling back to local store.", str(e))
+
+        if hdfs_records is not None:
+            return hdfs_records, data_source, is_live
+
+        # Fallback to local Parquet store
         if not os.path.exists(self.dataset_fallback_path):
             raise FileNotFoundError(
-                f"Historical store not found at {self.dataset_fallback_path}. "
-                "Please provide 'history' in the request payload or run scripts/generate_synthetic_data.py."
+                f"Historical store not found at {self.dataset_fallback_path} and HDFS processed lake is unavailable. "
+                "Please provide 'history' in request payload or run scripts/generate_synthetic_data.py."
             )
 
         df = pd.read_parquet(self.dataset_fallback_path)
@@ -143,11 +249,10 @@ class ForecastingService:
         if unit_df.empty:
             raise ValueError(f"No records found for unit '{unit_id}' in historical store.")
 
-        # Extract at least lookback_hours + 1 rows to compute lag_168 and rolling_168
         needed = lookback_hours + 1
         tail_df = unit_df.iloc[-needed:].copy()
 
-        records: List[HourlyCensusRecord] = []
+        records = []
         for _, row in tail_df.iterrows():
             records.append(
                 HourlyCensusRecord(
@@ -160,16 +265,25 @@ class ForecastingService:
                     transfers_out_count=int(row.get("transfers_out_count", 0)),
                 )
             )
-        return records
+        return records, "LOCAL_SYNTHETIC_STORE", False
 
-    def prepare_inference_features(
+    def validate_and_normalize_history(
         self,
-        unit_id: str,
         records: List[HourlyCensusRecord],
-    ) -> Tuple[pd.DataFrame, float, datetime, int]:
+        min_required_hours: int,
+        unit_id: str,
+        scenario_capacity: Optional[int] = None,
+    ) -> Tuple[pd.DataFrame, datetime, float, int]:
         """
-        Validates historical continuity and reconstructs the exact 54 features expected by the trained model.
-        NEVER silently treats missing observations as zero.
+        Rigorously validates and normalizes historical observations across all forecasting paths.
+        Enforces:
+        1. Non-empty record list.
+        2. Exact top-of-the-hour alignment (:00:00).
+        3. Chronological sorting (ensuring origin is the newest record).
+        4. Strict timestamp uniqueness (no duplicate hours).
+        5. Exact hourly continuity (gap == 1 hour; never silently zero-filled).
+        6. Minimum historical observation count for the chosen model.
+        7. Physical capacity validation (scenario or server default, must be > 0).
         """
         if not records:
             raise ValueError("History cannot be empty.")
@@ -178,52 +292,94 @@ class ForecastingService:
         rows = [r.model_dump() for r in records]
         df = pd.DataFrame(rows)
         df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+
+        # 1. Check exact top-of-hour alignment
+        for ts in df["timestamp"]:
+            if ts.minute != 0 or ts.second != 0 or ts.microsecond != 0:
+                raise ValueError(
+                    f"Off-hour timestamp detected: {ts.isoformat()}. "
+                    "Historical census records must be aligned to the exact top of the hour (:00:00)."
+                )
+
+        # 2. Chronological sorting to ensure origin is always the newest record
         df = df.sort_values("timestamp").reset_index(drop=True)
 
-        # 1. Check timestamp uniqueness
+        # 3. Check timestamp uniqueness
         if df["timestamp"].duplicated().any():
-            dups = df[df["timestamp"].duplicated()]["timestamp"].tolist()
+            dups = df[df["timestamp"].duplicated()]["timestamp"].dt.strftime("%Y-%m-%dT%H:%M:%SZ").tolist()
             raise ValueError(f"Duplicate hourly timestamps detected in history: {dups}")
 
-        # 2. Check strict hourly continuity
-        time_diffs = df["timestamp"].diff().iloc[1:]
-        gaps = time_diffs[time_diffs != pd.Timedelta(hours=1)]
-        if not gaps.empty:
-            bad_idx = gaps.index[0]
-            t1 = df.loc[bad_idx - 1, "timestamp"]
-            t2 = df.loc[bad_idx, "timestamp"]
-            raise ValueError(
-                f"Non-contiguous hourly history detected between {t1.isoformat()} and {t2.isoformat()} "
-                f"(gap: {gaps.iloc[0]}). Missing observations must not be silently zero-filled."
-            )
+        # 4. Check strict hourly continuity
+        if len(df) > 1:
+            time_diffs = df["timestamp"].diff().iloc[1:]
+            gaps = time_diffs[time_diffs != pd.Timedelta(hours=1)]
+            if not gaps.empty:
+                bad_idx = gaps.index[0]
+                t1 = df.loc[bad_idx - 1, "timestamp"].isoformat()
+                t2 = df.loc[bad_idx, "timestamp"].isoformat()
+                raise ValueError(
+                    f"Non-contiguous hourly history detected between {t1} and {t2} "
+                    f"(gap: {gaps.iloc[0]}). Missing observations must not be silently zero-filled."
+                )
 
-        # 3. Check history duration for 168-hour lookback (requires 169 rows)
-        if len(df) < 169:
+        # 5. Check minimum history count
+        if len(df) < min_required_hours:
             raise ValueError(
-                f"Insufficient historical window: requires at least 168 hours of lookback (169 rows), "
+                f"Insufficient historical window: requires at least {min_required_hours} hourly observations, "
                 f"but received {len(df)} rows. Missing historical observations cannot be assumed."
             )
 
-        # 4. Extract latest slice of exactly 169 records ending at origin t
-        slice_df = df.iloc[-169:].copy().reset_index(drop=True)
-        origin_row = slice_df.iloc[-1]
+        # 6. Extract newest valid record as origin t
+        origin_row = df.iloc[-1]
         origin_timestamp = origin_row["timestamp"].to_pydatetime()
         current_occupancy = float(origin_row["occupied_beds"])
-        capacity = int(origin_row["capacity"])
+
+        # Determine authoritative capacity
+        if scenario_capacity is not None:
+            if scenario_capacity <= 0:
+                raise ValueError(f"Invalid scenario_capacity {scenario_capacity}: must be positive.")
+            capacity = int(scenario_capacity)
+        elif "capacity" in origin_row and pd.notna(origin_row["capacity"]) and origin_row["capacity"] > 0:
+            capacity = int(origin_row["capacity"])
+        else:
+            capacity = self.settings.icu_unit_capacities.get(unit_id, 20)
 
         if capacity <= 0:
             raise ValueError(f"Invalid capacity {capacity}: staffed capacity must be positive.")
 
-        # 5. Build features using identical logic as training pipeline
+        return df, origin_timestamp, current_occupancy, capacity
+
+    def prepare_inference_features(
+        self,
+        unit_id: str,
+        records: List[HourlyCensusRecord],
+        scenario_capacity: Optional[int] = None,
+    ) -> Tuple[pd.DataFrame, float, datetime, int]:
+        """
+        Validates historical continuity and reconstructs the exact 54 features expected by the trained Ridge model.
+        NEVER silently treats missing observations as zero.
+        """
+        df, origin_timestamp, current_occupancy, capacity = self.validate_and_normalize_history(
+            records=records,
+            min_required_hours=169,
+            unit_id=unit_id,
+            scenario_capacity=scenario_capacity,
+        )
+
+        # Extract latest slice of exactly 169 records ending at origin t
+        slice_df = df.iloc[-169:].copy().reset_index(drop=True)
+        slice_df["capacity"] = capacity
+
+        # Build features using identical logic as training pipeline
         feature_df = build_unit_features_and_targets(slice_df)
         single_row = feature_df.iloc[[-1]].copy()
 
-        # 6. Add one-hot unit indicators for known units
+        # Add one-hot unit indicators for known units
         known_units = ["CCU", "CSRU", "MICU", "SICU", "TSICU"]
         for u in known_units:
             single_row[f"unit_{u}"] = 1.0 if u == unit_id else 0.0
 
-        # 7. Align with exact feature_names from model metadata
+        # Align with exact feature_names from model metadata
         expected_features = self.metadata["feature_names"]
         missing_features = [c for c in expected_features if c not in single_row.columns]
         if missing_features:
@@ -231,7 +387,7 @@ class ForecastingService:
 
         X_inference = single_row[expected_features].copy()
 
-        # 8. Check for any NaNs or Inf
+        # Check for any NaNs or Inf
         if X_inference.isna().any().any():
             nan_cols = X_inference.columns[X_inference.isna().any()].tolist()
             raise ValueError(f"NaN values encountered in constructed features: {nan_cols}")
@@ -241,7 +397,7 @@ class ForecastingService:
     def predict(self, request: PredictionRequest) -> PredictionResponse:
         """
         Executes prediction workflow for the given request.
-        Validates unit, evaluates history, selects model, and formats response.
+        Validates unit, evaluates history, selects model, surfaces provenance, and formats response.
         """
         unit_id = request.unit_id
         if unit_id not in self.settings.icu_unit_capacities:
@@ -254,15 +410,20 @@ class ForecastingService:
         ]
 
         # 1. Obtain history
+        data_source = "CLIENT_PAYLOAD"
+        is_live_stream = False
         records = request.history
+
         if records is None:
             try:
-                records = self.load_history_from_store(unit_id, lookback_hours=168)
-                warnings.append("History was not provided in request body; loaded latest history from data lake.")
+                records, data_source, is_live_stream = self.load_history_from_store(unit_id, lookback_hours=168)
+                if is_live_stream:
+                    warnings.append("History refreshed live from HDFS processed census lake.")
+                else:
+                    warnings.append("History was loaded from local synthetic store (offline benchmark replay).")
             except Exception as e:
                 raise ValueError(f"Could not load historical data for unit '{unit_id}': {str(e)}")
 
-        # 2. Check model choice and fallback options
         target_model = request.model_name
         is_baseline = False
         model_used = ""
@@ -271,33 +432,27 @@ class ForecastingService:
         if target_model in ("persistence", "persistence_baseline"):
             is_baseline = True
             model_used = "Persistence Baseline"
-            latest_record = records[-1]
-            origin_timestamp = latest_record.timestamp
-            current_occupancy = float(latest_record.occupied_beds)
-            capacity = int(latest_record.capacity)
-            if capacity <= 0:
-                raise ValueError("Configured capacity must be positive.")
-
-            # Create dummy features dataframe with latest occupancy for baseline
+            _, origin_timestamp, current_occupancy, capacity = self.validate_and_normalize_history(
+                records=records,
+                min_required_hours=1,
+                unit_id=unit_id,
+                scenario_capacity=request.scenario_capacity,
+            )
             dummy_x = pd.DataFrame({"occ_current": [current_occupancy]})
             preds_array = self.persistence_baseline.predict(dummy_x)[0]
 
         elif target_model in ("seasonal_naive", "seasonal"):
             is_baseline = True
             model_used = "Seasonal-Naive Baseline (24h)"
-            if len(records) < 25:
-                raise ValueError(
-                    f"Seasonal-Naive baseline requires at least 24 hours of history, received {len(records)}."
-                )
-            latest_record = records[-1]
-            origin_timestamp = latest_record.timestamp
-            current_occupancy = float(latest_record.occupied_beds)
-            capacity = int(latest_record.capacity)
-
-            # Build recent lag series
+            norm_df, origin_timestamp, current_occupancy, capacity = self.validate_and_normalize_history(
+                records=records,
+                min_required_hours=25,
+                unit_id=unit_id,
+                scenario_capacity=request.scenario_capacity,
+            )
             lags_dict = {"occ_current": [current_occupancy]}
             for lag in range(1, 25):
-                lags_dict[f"lag_{lag}"] = [float(records[-1 - lag].occupied_beds)]
+                lags_dict[f"lag_{lag}"] = [float(norm_df.iloc[-1 - lag]["occupied_beds"])]
             dummy_x = pd.DataFrame(lags_dict)
             preds_array = self.seasonal_baseline.predict(dummy_x)[0]
 
@@ -305,20 +460,23 @@ class ForecastingService:
             if not self.is_ready or self.model is None:
                 raise RuntimeError("Direct Ridge Regression model is not loaded or service is not ready.")
 
-            # Attempt to construct 54 features
             try:
                 X_infer, current_occupancy, origin_timestamp, capacity = self.prepare_inference_features(
-                    unit_id, records
+                    unit_id=unit_id,
+                    records=records,
+                    scenario_capacity=request.scenario_capacity,
                 )
                 raw_preds = self.model.predict(X_infer)
                 preds_array = raw_preds[0]
                 model_used = "Direct Ridge Regression"
             except ValueError as ve:
                 if request.allow_persistence_fallback:
-                    latest_record = records[-1]
-                    origin_timestamp = latest_record.timestamp
-                    current_occupancy = float(latest_record.occupied_beds)
-                    capacity = int(latest_record.capacity)
+                    _, origin_timestamp, current_occupancy, capacity = self.validate_and_normalize_history(
+                        records=records,
+                        min_required_hours=1,
+                        unit_id=unit_id,
+                        scenario_capacity=request.scenario_capacity,
+                    )
                     dummy_x = pd.DataFrame({"occ_current": [current_occupancy]})
                     preds_array = self.persistence_baseline.predict(dummy_x)[0]
                     is_baseline = True
@@ -334,7 +492,23 @@ class ForecastingService:
                 f"Unknown model_name '{target_model}'. Allowed models: 'direct_ridge', 'persistence', 'seasonal_naive'."
             )
 
-        # 3. Format Horizon Predictions
+        # 3. Source Age and Simulation-Time Labeling
+        now_utc = datetime.now(timezone.utc)
+        source_age_hours = round(max(0.0, (now_utc - origin_timestamp).total_seconds() / 3600.0), 2)
+
+        if is_live_stream:
+            simulation_label = "STREAMING_LIVE_LAKE"
+            if source_age_hours > 2.0:
+                warnings.append(
+                    f"STALE_STREAM_WARNING: Newest census event in HDFS is {source_age_hours:.1f} hours old."
+                )
+        else:
+            simulation_label = "SYNTHETIC_SIMULATION_BENCHMARK"
+            warnings.append(
+                "HISTORICAL_REPLAY: Forecast origin is from synthetic benchmark simulation, not active streaming telemetry."
+            )
+
+        # 4. Format Horizon Predictions
         horizon_preds: List[HorizonPrediction] = []
         num_horizons = request.horizons
 
@@ -368,6 +542,11 @@ class ForecastingService:
             is_baseline=is_baseline,
             staffed_capacity=capacity,
             current_occupancy=round(current_occupancy, 2),
+            data_source=data_source,
+            is_live_stream=is_live_stream,
+            source_timestamp=origin_timestamp,
+            source_age_hours=source_age_hours,
+            simulation_time_label=simulation_label,
             predictions=horizon_preds,
             warnings=warnings,
         )

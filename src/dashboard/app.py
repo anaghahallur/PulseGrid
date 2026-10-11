@@ -203,6 +203,31 @@ def main():
         peak_pred = max([p["predicted_occupancy"] for p in preds_list])
         capacity_exceeded = any([p["is_capacity_exceeded"] for p in preds_list])
 
+        # Prominent Fallback and Provenance Status Callouts
+        if prediction_data.get("is_baseline") or "Fallback" in prediction_data.get("model_used", ""):
+            st.warning(
+                f"⚠️ **BASELINE FALLBACK ACTIVE ({prediction_data.get('model_used')}):** "
+                "Forecasts are generated using an operational persistence baseline instead of the ML Ridge forecaster. "
+                "Review historical data continuity or model selection."
+            )
+
+        # Provenance and Data Freshness Banner
+        is_live = prediction_data.get("is_live_stream", False)
+        data_src = prediction_data.get("data_source", "LOCAL_SYNTHETIC_STORE")
+        origin_str = prediction_data.get("forecast_origin", "")
+        age_hours = prediction_data.get("source_age_hours")
+
+        if is_live:
+            st.success(
+                f"⚡ **LIVE STREAMING LAKE DATA:** Forecast origin: `{origin_str}` | Source: `{data_src}` "
+                f"(Refreshed from active Kafka-to-HDFS streaming pipeline)"
+            )
+        else:
+            st.info(
+                f"🏛️ **HISTORICAL SYNTHETIC SIMULATION REPLAY:** Forecast origin: `{origin_str}` | Source: `{data_src}` "
+                f"| Age: `{age_hours}h` (Static synthetic benchmark dataset; not active live clinical telemetry)"
+            )
+
         # Top KPI Metrics
         col1, col2, col3, col4, col5 = st.columns(5)
         with col1:

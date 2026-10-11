@@ -159,3 +159,146 @@ def test_model_loading_failure_handling():
     assert loaded is False
     assert broken_service.is_ready is False
     assert "not found" in broken_service.error_detail
+
+
+def test_service_rejects_off_hour_timestamps():
+    """Verifies that records with minute/second offsets (off-hour) are rejected across models."""
+    service = ForecastingService()
+    start = datetime(2026, 10, 1, 12, 17, 30, tzinfo=timezone.utc)
+    records = [
+        HourlyCensusRecord(timestamp=start, occupied_beds=5.0, capacity=10)
+    ]
+    req = PredictionRequest(unit_id="MICU", model_name="persistence", history=records)
+    with pytest.raises(ValueError, match="Off-hour timestamp detected"):
+        service.predict(req)
+
+
+def test_service_sorts_unsorted_records_ensuring_newest_origin():
+    """Verifies that unsorted records are sorted chronologically and origin is newest record."""
+    service = ForecastingService()
+    t1 = datetime(2026, 10, 1, 10, 0, 0, tzinfo=timezone.utc)
+    t2 = datetime(2026, 10, 1, 11, 0, 0, tzinfo=timezone.utc)
+    t3 = datetime(2026, 10, 1, 12, 0, 0, tzinfo=timezone.utc)
+
+    # Provide records in scrambled order: t2, t3, t1
+    scrambled = [
+        HourlyCensusRecord(timestamp=t2, occupied_beds=6.0, capacity=10),
+        HourlyCensusRecord(timestamp=t3, occupied_beds=9.0, capacity=10),
+        HourlyCensusRecord(timestamp=t1, occupied_beds=4.0, capacity=10),
+    ]
+
+    req = PredictionRequest(unit_id="MICU", model_name="persistence", history=scrambled)
+    res = service.predict(req)
+    # Origin must be newest timestamp t3 with occupancy 9.0
+    assert res.forecast_origin == t3
+    assert res.current_occupancy == 9.0
+    for p in res.predictions:
+        assert p.predicted_occupancy == 9.0
+
+
+def test_service_rejects_gap_and_duplicates_on_seasonal_naive():
+    """Verifies that duplicate and gap validation applies to seasonal-naive baseline."""
+    service = ForecastingService()
+    start = datetime(2026, 10, 1, 0, 0, 0, tzinfo=timezone.utc)
+    records = [
+        HourlyCensusRecord(timestamp=start + timedelta(hours=h), occupied_beds=5.0, capacity=10)
+        for h in range(25)
+    ]
+    # Inject duplicate
+    records[10].timestamp = records[9].timestamp
+    req_dup = PredictionRequest(unit_id="MICU", model_name="seasonal_naive", history=records)
+    with pytest.raises(ValueError, match="Duplicate hourly timestamps detected"):
+        service.predict(req_dup)
+
+
+def test_service_rejects_short_history_on_seasonal_naive():
+    """Verifies that fewer than 25 records is rejected for seasonal-naive."""
+    service = ForecastingService()
+    start = datetime(2026, 10, 1, 0, 0, 0, tzinfo=timezone.utc)
+    records = [
+        HourlyCensusRecord(timestamp=start + timedelta(hours=h), occupied_beds=5.0, capacity=10)
+        for h in range(20)
+    ]
+    req = PredictionRequest(unit_id="MICU", model_name="seasonal_naive", history=records)
+    with pytest.raises(ValueError, match="Insufficient historical window"):
+        service.predict(req)
+
+
+def test_service_validates_scenario_capacity_override():
+    """Verifies that explicit scenario_capacity overrides unit default and affects exceedance."""
+    service = ForecastingService()
+    start = datetime(2026, 10, 1, 12, 0, 0, tzinfo=timezone.utc)
+    records = [
+        HourlyCensusRecord(timestamp=start, occupied_beds=15.0, capacity=20)
+    ]
+    # Unit MICU default capacity is 24, but scenario sets capacity to 10 (surge scenario)
+    req = PredictionRequest(
+        unit_id="MICU",
+        model_name="persistence",
+        history=records,
+        scenario_capacity=10,
+    )
+    res = service.predict(req)
+    assert res.staffed_capacity == 10
+    assert res.predictions[0].is_capacity_exceeded is True
+    assert res.predictions[0].exceedance_beds == 5.0
+
+
+def test_service_rejects_invalid_scenario_capacity():
+    """Verifies that non-positive scenario_capacity is rejected."""
+    with pytest.raises(ValidationError):
+        PredictionRequest(unit_id="MICU", scenario_capacity=0)
+
+
+def test_service_rejects_metadata_mismatched_feature_count(tmp_path):
+    """Verifies that load_model fails if feature_count does not match feature_names length."""
+    import json
+    import joblib
+    from src.ml.models import PersistenceBaseline
+
+    fake_model_path = tmp_path / "model.joblib"
+    fake_meta_path = tmp_path / "metadata.json"
+
+    dummy = PersistenceBaseline(horizons=24)
+    joblib.dump(dummy, fake_model_path)
+
+    bad_meta = {
+        "model_name": "Direct Ridge Regression",
+        "horizons": 24,
+        "feature_count": 99,  # Mismatch with actual length of 2
+        "feature_names": ["f1", "f2"],
+        "random_seed": 42,
+    }
+    with open(fake_meta_path, "w") as f:
+        json.dump(bad_meta, f)
+
+    test_service = ForecastingService(model_path=str(fake_model_path), metadata_path=str(fake_meta_path))
+    assert test_service.load_model() is False
+    assert "feature_count mismatch" in test_service.error_detail
+
+
+def test_service_rejects_metadata_mismatched_horizons(tmp_path):
+    """Verifies that load_model fails if model horizons do not match metadata horizons."""
+    import json
+    import joblib
+    from src.ml.models import PersistenceBaseline
+
+    fake_model_path = tmp_path / "model.joblib"
+    fake_meta_path = tmp_path / "metadata.json"
+
+    dummy = PersistenceBaseline(horizons=12)  # Model has 12
+    joblib.dump(dummy, fake_model_path)
+
+    bad_meta = {
+        "model_name": "Persistence",
+        "horizons": 24,  # Metadata claims 24
+        "feature_count": 1,
+        "feature_names": ["occ_current"],
+        "random_seed": 42,
+    }
+    with open(fake_meta_path, "w") as f:
+        json.dump(bad_meta, f)
+
+    test_service = ForecastingService(model_path=str(fake_model_path), metadata_path=str(fake_meta_path))
+    assert test_service.load_model() is False
+    assert "Horizon count mismatch" in test_service.error_detail

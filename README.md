@@ -60,7 +60,7 @@ uv pip install -e ".[ml,test]"
 ```
 
 #### C. Prediction Serving & Dashboard (Phase 4)
-To run the FastAPI service and Streamlit dashboard (`fastapi`, `uvicorn`, `streamlit`, `plotly`):
+To run the FastAPI service and Streamlit dashboard (self-contained for inference: `fastapi`, `uvicorn`, `streamlit`, `plotly`, `scikit-learn`, `joblib`):
 ```powershell
 uv pip install -e ".[serving]"
 # Or: pip install -e ".[serving]"

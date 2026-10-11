@@ -1,7 +1,7 @@
 # Synthetic-Data ICU Occupancy 24-Hour Forecasting — Evaluation Report
 
 **Selected Model:** Direct Ridge Regression (selected based on lowest Validation MAE)
-**Generated:** 2026-10-11T17:19:16.995680+00:00
+**Generated:** 2026-10-11T19:51:49.336609+00:00
 **Random Seed:** 42
 
 ## 1. Dataset & Chronological Split Boundaries

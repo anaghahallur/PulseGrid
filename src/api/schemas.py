@@ -54,6 +54,11 @@ class PredictionRequest(BaseModel):
         default=False,
         description="If True and history is insufficient for ridge regression, falls back to persistence baseline.",
     )
+    scenario_capacity: Optional[int] = Field(
+        default=None,
+        gt=0,
+        description="Optional explicit scenario capacity (> 0) for operational surge or contraction what-if analysis.",
+    )
 
     @field_validator("unit_id")
     @classmethod
@@ -84,14 +89,34 @@ class PredictionResponse(BaseModel):
     forecast_origin: datetime = Field(..., description="Origin timestamp from which predictions project")
     model_used: str = Field(..., description="Name of the model that generated the forecasts")
     is_baseline: bool = Field(..., description="True if a baseline model produced this forecast")
-    staffed_capacity: int = Field(..., gt=0, description="Configured capacity of the unit")
+    staffed_capacity: int = Field(..., gt=0, description="Configured or scenario capacity of the unit")
     current_occupancy: float = Field(..., ge=0.0, description="Occupancy at forecast origin")
+    data_source: str = Field(
+        default="CLIENT_PAYLOAD",
+        description="Data provenance source ('HDFS_PROCESSED_LAKE', 'LOCAL_SYNTHETIC_STORE', 'CLIENT_PAYLOAD')",
+    )
+    is_live_stream: bool = Field(
+        default=False,
+        description="True strictly if data was refreshed from active HDFS streaming census lake",
+    )
+    source_timestamp: Optional[datetime] = Field(
+        default=None,
+        description="Newest timestamp present in historical observations",
+    )
+    source_age_hours: Optional[float] = Field(
+        default=None,
+        description="Hours elapsed since newest observation timestamp",
+    )
+    simulation_time_label: str = Field(
+        default="SIMULATION_DATA",
+        description="Label indicating timeline is an academic synthetic simulation",
+    )
     predictions: List[HorizonPrediction] = Field(..., description="List of hourly horizon forecasts")
     warnings: List[str] = Field(default_factory=list, description="Operational notices and warnings")
     disclaimer: str = Field(
         default=(
             "All forecasts are generated from synthetic simulation data. "
-            "This service demonstrates data pipeline and multi-horizon forecasting architecture "
+            "This service demonstrates big data pipeline and multi-horizon forecasting architecture "
             "and does not constitute a certified medical device."
         ),
         description="Clinical validity and academic usage disclaimer",

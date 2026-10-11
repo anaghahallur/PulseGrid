@@ -328,3 +328,43 @@ def test_occupancy_calculator_cold_restart_reconstruction(kafka_settings, hdfs_c
 
     # Cleanup
     hdfs_client.delete(f"/test_cold_restart_{test_id}", recursive=True)
+
+
+def test_dlq_write_failure_aborts_offset_commit(hdfs_client):
+    """
+    Scenario: A micro-batch contains a malformed message.
+    Writing the dead-letter quarantine to HDFS fails (e.g. returns False or throws).
+    Verifies that the sink raises IOError and aborts the Kafka offset commit,
+    preventing silent loss of unparseable telemetry.
+    """
+    audit_id = uuid4().hex[:8]
+    raw_base = f"/test_audit_dlq_fail_{audit_id}/raw"
+    dl_base = f"/test_audit_dlq_fail_{audit_id}/dead_letter"
+
+    msg_corrupt = _create_mock_message(b'{"malformed": true, broken', offset=10)
+
+    sink = KafkaHDFSSink(
+        topic="test-dlq-topic",
+        group_id=f"audit-dlq-group-{audit_id}",
+        hdfs_client=hdfs_client,
+        raw_hdfs_base=raw_base,
+        dead_letter_base=dl_base,
+    )
+    sink._commit_offsets = MagicMock()
+
+    real_write_jsonl = hdfs_client.write_jsonl
+    def failing_write_jsonl(path: str, records: list, overwrite: bool = True) -> bool:
+        if dl_base in path:
+            return False  # Simulate DLQ write failure
+        return real_write_jsonl(path, records, overwrite=overwrite)
+
+    hdfs_client.write_jsonl = failing_write_jsonl
+    try:
+        with pytest.raises(IOError) as exc_info:
+            sink.process_batch([msg_corrupt])
+        assert "Failed to write dead-letter quarantine" in str(exc_info.value)
+        # CRITICAL AUDIT CHECK: Offsets must NOT be committed!
+        sink._commit_offsets.assert_not_called()
+    finally:
+        hdfs_client.write_jsonl = real_write_jsonl
+

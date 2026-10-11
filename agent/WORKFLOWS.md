@@ -10,10 +10,13 @@ This runbook lists the exact terminal commands required to run, test, reproduce,
 # Activate virtual environment
 .\.venv\Scripts\Activate.ps1
 
-# Install all optional dependencies (testing, ML, and serving)
+# Option A: Install all optional dependencies (testing, ML, and serving)
 uv pip install -e ".[test,ml,serving]"
 # Or via standard pip:
 pip install -e ".[test,ml,serving]"
+
+# Option B: Serving-only installation (now self-contained for inference)
+pip install -e ".[serving]"
 ```
 
 ---
@@ -43,7 +46,49 @@ docker compose down
 
 ---
 
-## 3. Synthetic Data Generation
+## 3. Streaming Ingestion to HDFS Runbook
+
+```powershell
+# 1. Produce streaming synthetic events into Kafka topic 'icu-events'
+python -c "
+from src.producer.simulator import ICUSimulator
+from src.producer.kafka_producer import ICUKafkaProducer
+sim = ICUSimulator(days=7, seed=42)
+events = sim.generate_events()
+prod = ICUKafkaProducer()
+prod.publish_stream(events[:100], raise_on_error=True)
+print(f'Published {len(events[:100])} events to Kafka')
+"
+
+# 2. Sink events from Kafka micro-batch into HDFS lake (/raw/icu_events/)
+python -c "
+from src.storage.kafka_sink import KafkaHDFSSink
+sink = KafkaHDFSSink()
+stats = sink.poll_and_sink(max_messages=100, poll_timeout=2.0, idle_timeout=5.0)
+print('Sink results:', stats)
+sink.close()
+"
+
+# 3. Reconstruct hourly census from HDFS raw lake and persist to /processed/icu_occupancy_hourly/
+python -c "
+from src.storage.hdfs_client import HDFSClient
+from src.processing.occupancy_calculator import OccupancyCalculator
+from src.schema.events import ICUEvent
+from src.config import get_settings
+settings = get_settings()
+hdfs = HDFSClient()
+raw_records = hdfs.read_all_jsonl(settings.hdfs_raw_path)
+events = [ICUEvent.model_validate(r) for r in raw_records]
+calc = OccupancyCalculator(unit_capacities=settings.icu_unit_capacities)
+df = calc.reconstruct(events)
+saved_path = calc.persist_occupancy_to_hdfs(df, hdfs, hdfs_target_dir=settings.hdfs_processed_path)
+print(f'Reconstructed and persisted census to: {saved_path}')
+"
+```
+
+---
+
+## 4. Synthetic Data Generation
 
 ```powershell
 # Generate 90-day canonical dataset with TSICU surge scenario
@@ -54,7 +99,7 @@ python scripts/generate_synthetic_data.py --days 90 --seed 42 --surge
 
 ---
 
-## 4. Model Training & Evaluation
+## 5. Model Training & Evaluation
 
 ```powershell
 # Run chronological training, validation selection, test evaluation, and artifact serialization
@@ -71,7 +116,7 @@ python scripts/train_eval_forecaster.py `
 
 ---
 
-## 5. Running the Backend API (FastAPI)
+## 6. Running the Backend API (FastAPI)
 
 ```powershell
 # Run FastAPI server locally with Uvicorn (reload mode for development)
@@ -88,7 +133,7 @@ Endpoints available:
 
 ---
 
-## 6. Running the Dashboard (Streamlit)
+## 7. Running the Dashboard (Streamlit)
 
 ```powershell
 # Run Streamlit dashboard
@@ -98,10 +143,10 @@ streamlit run src/dashboard/app.py --server.port 8501
 
 ---
 
-## 7. Running the Automated Test Suite
+## 8. Running the Automated Test Suite
 
 ```powershell
-# Run entire test suite (unit + integration)
+# Run entire test suite (79 unit + integration tests)
 pytest -v
 
 # Run only unit tests
@@ -113,7 +158,7 @@ pytest tests/integration/ -v
 
 ---
 
-## 8. Knowledge Graph Maintenance (Graphify)
+## 9. Knowledge Graph Maintenance (Graphify)
 
 Whenever source files or configurations are meaningfully modified:
 ```powershell
