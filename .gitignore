@@ -18,7 +18,7 @@ venv/
 ENV/
 env/
 
-# Credentials and secrets
+# Credentials, secrets, and machine-specific local environment
 .env
 *.env
 !.env.example
@@ -34,20 +34,27 @@ data/mimic/
 data/mimic_demo/
 *.csv.gz
 
-# Generated simulation data and temporary pipelines
+# Generated simulation spool and temporary logs
 data/spool/
 logs/
 *.log
 
-# Machine learning model artifacts (track canonical forecaster artifact)
+# Machine learning model artifacts
 models/*.joblib
 !models/icu_occupancy_forecaster.joblib
+!models/mimic_occupancy_forecaster.joblib
 models/*.pkl
 models/*.onnx
 models/*.pt
+
+# Streamlit local configuration override protection
+# (Preserve committed production config.toml)
+!.streamlit/config.toml
 
 # OS / Editor artifacts
 .DS_Store
 Thumbs.db
 .idea/
 .vscode/
+*.swp
+*~

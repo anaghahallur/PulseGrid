@@ -20,6 +20,7 @@ from src.api.schemas import (
     UnitInfo,
 )
 from src.api.service import ForecastingService, get_forecasting_service
+from src.config import get_settings
 
 logger = logging.getLogger("icu_forecast_api")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
@@ -56,12 +57,17 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
 
+    settings = get_settings()
     # Restrict CORS to authorized frontend and API origin locations
     cors_origins = [
         "http://localhost:8501",
         "http://127.0.0.1:8501",
         "http://localhost:8000",
         "http://127.0.0.1:8000",
+        f"http://localhost:{settings.fastapi_port}",
+        f"http://127.0.0.1:{settings.fastapi_port}",
+        f"http://localhost:{settings.streamlit_port}",
+        f"http://127.0.0.1:{settings.streamlit_port}",
     ]
     app.add_middleware(
         CORSMiddleware,

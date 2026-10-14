@@ -148,3 +148,147 @@ class ICUEvent(BaseModel):
             "data_source": self.data_source.value,
             "metadata": self.metadata,
         }
+
+
+class VitalSignEvent(BaseModel):
+    """
+    Validated representation of an ICU patient vital-sign observation event.
+    Standardized payload for Kafka streaming and raw HDFS lake storage.
+
+    Field Optionality Rationale:
+    In clinical ICU telemetry, continuous bedside monitors stream multi-parameter data.
+    Different modalities update at varying frequencies (e.g., continuous pulse oximetry
+    and ECG streaming every few seconds, vs. episodic NIBP cuff inflations every 15-30 minutes).
+    Furthermore, individual sensor leads may momentarily detach or suffer artifact.
+    Therefore, individual measurement channels are optional, but every valid VitalSignEvent
+    must contain at least one valid measurement channel to prevent empty telemetry frames.
+    """
+
+    event_id: UUID = Field(
+        default_factory=uuid4,
+        description="Unique event UUID serving as idempotency key",
+    )
+    patient_id: str = Field(
+        ...,
+        min_length=1,
+        description="Anonymized patient identifier (e.g. SYN-P-000101)",
+    )
+    encounter_id: str = Field(
+        ...,
+        min_length=1,
+        description="Hospital stay / encounter identifier (e.g. SYN-ENC-000101)",
+    )
+    unit_id: str = Field(
+        ...,
+        min_length=1,
+        description="ICU unit where telemetry observation occurred (e.g. MICU, SICU, CCU, TSICU, CSRU)",
+    )
+    event_timestamp: datetime = Field(
+        ...,
+        description="Observation timestamp in UTC",
+    )
+    heart_rate: Optional[float] = Field(
+        default=None,
+        ge=20.0,
+        le=300.0,
+        description="Heart rate in beats per minute (plausible clinical range: 20-300 bpm)",
+    )
+    temperature_c: Optional[float] = Field(
+        default=None,
+        ge=25.0,
+        le=45.0,
+        description="Body temperature in degrees Celsius (plausible clinical range: 25.0-45.0 °C)",
+    )
+    systolic_bp: Optional[float] = Field(
+        default=None,
+        ge=40.0,
+        le=300.0,
+        description="Systolic blood pressure in mmHg (plausible clinical range: 40-300 mmHg)",
+    )
+    diastolic_bp: Optional[float] = Field(
+        default=None,
+        ge=20.0,
+        le=200.0,
+        description="Diastolic blood pressure in mmHg (plausible clinical range: 20-200 mmHg)",
+    )
+    respiratory_rate: Optional[float] = Field(
+        default=None,
+        ge=4.0,
+        le=80.0,
+        description="Respiratory rate in breaths per minute (plausible clinical range: 4-80 bpm)",
+    )
+    spo2: Optional[float] = Field(
+        default=None,
+        ge=50.0,
+        le=100.0,
+        description="Pulse oximetry oxygen saturation percentage (plausible clinical range: 50.0-100.0 %)",
+    )
+    data_source: DataSource = Field(
+        default=DataSource.SYNTHETIC,
+        description="Data provenance label (SYNTHETIC, MIMIC_DEMO, MIMIC_CLINICAL)",
+    )
+    metadata: Optional[dict] = Field(
+        default=None,
+        description="Auxiliary telemetry attributes (e.g. device_id, sensor_status, is_synthetic)",
+    )
+
+    @field_validator("event_timestamp")
+    @classmethod
+    def ensure_utc(cls, v: datetime) -> datetime:
+        """Ensure timestamp has explicit timezone awareness in UTC."""
+        if v.tzinfo is None:
+            return v.replace(tzinfo=timezone.utc)
+        return v.astimezone(timezone.utc)
+
+    @field_validator("unit_id")
+    @classmethod
+    def normalize_unit_id(cls, v: str) -> str:
+        return v.strip().upper()
+
+    @model_validator(mode="after")
+    def validate_vitals_payload(self) -> "VitalSignEvent":
+        """
+        Validates:
+        1. At least one vital sign measurement must be present.
+        2. If both systolic and diastolic blood pressure are provided, systolic >= diastolic.
+        """
+        vital_measurements = [
+            self.heart_rate,
+            self.temperature_c,
+            self.systolic_bp,
+            self.diastolic_bp,
+            self.respiratory_rate,
+            self.spo2,
+        ]
+        if all(v is None for v in vital_measurements):
+            raise ValueError(
+                "VitalSignEvent must contain at least one valid measurement "
+                "(heart_rate, temperature_c, systolic_bp, diastolic_bp, respiratory_rate, or spo2)."
+            )
+
+        if self.systolic_bp is not None and self.diastolic_bp is not None:
+            if self.systolic_bp < self.diastolic_bp:
+                raise ValueError(
+                    f"Systolic BP ({self.systolic_bp} mmHg) cannot be lower than "
+                    f"diastolic BP ({self.diastolic_bp} mmHg)."
+                )
+
+        return self
+
+    def to_dict(self) -> dict:
+        """Convert vital sign event to serialized dictionary with ISO string timestamps and UUID strings."""
+        return {
+            "event_id": str(self.event_id),
+            "patient_id": self.patient_id,
+            "encounter_id": self.encounter_id,
+            "unit_id": self.unit_id,
+            "event_timestamp": self.event_timestamp.isoformat(),
+            "heart_rate": self.heart_rate,
+            "temperature_c": self.temperature_c,
+            "systolic_bp": self.systolic_bp,
+            "diastolic_bp": self.diastolic_bp,
+            "respiratory_rate": self.respiratory_rate,
+            "spo2": self.spo2,
+            "data_source": self.data_source.value,
+            "metadata": self.metadata,
+        }

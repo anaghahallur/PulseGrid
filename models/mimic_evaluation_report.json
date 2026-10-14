@@ -1,0 +1,40 @@
+{
+  "dataset": "MIMIC-IV Demo Synchronized Cohort",
+  "selected_model": "Direct Ridge Regression",
+  "boundaries": {
+    "train_start": "2026-09-08 05:00:00+00:00",
+    "train_end": "2026-09-27 22:00:00+00:00",
+    "val_start": "2026-09-28 22:00:00+00:00",
+    "val_end": "2026-10-02 09:00:00+00:00",
+    "test_start": "2026-10-03 09:00:00+00:00",
+    "test_end": "2026-10-07 19:00:00+00:00",
+    "target_buffer_hours": 24,
+    "sample_counts": {
+      "train": 2370,
+      "val": 420,
+      "test": 535
+    }
+  },
+  "test_metrics": {
+    "Persistence Baseline": {
+      "mae": 0.1022,
+      "rmse": 0.3199,
+      "wape": 0.065
+    },
+    "Seasonal-Naive Baseline (24h)": {
+      "mae": 0.2051,
+      "rmse": 0.4531,
+      "wape": 0.1304
+    },
+    "Direct Ridge Regression": {
+      "mae": 0.8224,
+      "rmse": 1.3666,
+      "wape": 0.5229
+    },
+    "Direct HistGradientBoosting": {
+      "mae": 0.5559,
+      "rmse": 0.7404,
+      "wape": 0.3535
+    }
+  }
+}

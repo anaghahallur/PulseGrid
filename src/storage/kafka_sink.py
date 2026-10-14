@@ -14,7 +14,7 @@ from uuid import uuid4
 from confluent_kafka import Consumer, KafkaError, KafkaException, Message
 
 from src.config import get_settings
-from src.schema.events import ICUEvent
+from src.schema.events import ICUEvent, VitalSignEvent
 from src.storage.hdfs_client import HDFSClient
 
 
@@ -33,6 +33,7 @@ class KafkaHDFSSink:
         raw_hdfs_base: Optional[str] = None,
         dead_letter_base: str = "/dead_letter/malformed_events",
         auto_offset_reset: str = "earliest",
+        event_parser: Any = ICUEvent,
     ):
         settings = get_settings()
         self.bootstrap_servers = bootstrap_servers or settings.kafka_bootstrap_servers
@@ -41,6 +42,7 @@ class KafkaHDFSSink:
         self.raw_hdfs_base = (raw_hdfs_base or settings.hdfs_raw_path).rstrip("/")
         self.dead_letter_base = dead_letter_base.rstrip("/")
         self.hdfs_client = hdfs_client or HDFSClient()
+        self.event_parser = event_parser
 
         self.conf = {
             "bootstrap.servers": self.bootstrap_servers,
@@ -59,9 +61,9 @@ class KafkaHDFSSink:
             self.hdfs_client.mkdir(self.staging_dir)
             self.hdfs_client.mkdir(self.dead_letter_base)
 
-    def _parse_message(self, msg: Message) -> Tuple[Optional[ICUEvent], Optional[dict]]:
+    def _parse_message(self, msg: Message) -> Tuple[Optional[Any], Optional[dict]]:
         """
-        Parses and validates a Kafka message payload.
+        Parses and validates a Kafka message payload using the configured event parser.
         Returns (valid_event, None) or (None, malformed_info).
         """
         raw_bytes = msg.value()
@@ -71,7 +73,7 @@ class KafkaHDFSSink:
         try:
             payload_str = raw_bytes.decode("utf-8")
             data = json.loads(payload_str)
-            event = ICUEvent.model_validate(data)
+            event = self.event_parser.model_validate(data)
             return event, None
         except Exception as e:
             return None, {
@@ -210,3 +212,33 @@ class KafkaHDFSSink:
     def close(self) -> None:
         """Closes the Kafka consumer safely."""
         self.consumer.close()
+
+
+class KafkaVitalsHDFSSink(KafkaHDFSSink):
+    """
+    Dedicated micro-batch consumer for patient vital signs telemetry.
+    Consumes from Kafka topic 'icu-vitals' and lands into partitioned HDFS lake storage
+    under '/raw/icu_vitals' with dead-letter quarantine and atomic renames.
+    """
+
+    def __init__(
+        self,
+        bootstrap_servers: Optional[str] = None,
+        topic: Optional[str] = None,
+        group_id: Optional[str] = None,
+        hdfs_client: Optional[HDFSClient] = None,
+        raw_hdfs_base: Optional[str] = None,
+        dead_letter_base: str = "/dead_letter/malformed_vitals",
+        auto_offset_reset: str = "earliest",
+    ):
+        settings = get_settings()
+        super().__init__(
+            bootstrap_servers=bootstrap_servers or settings.kafka_bootstrap_servers,
+            topic=topic or settings.kafka_topic_icu_vitals,
+            group_id=group_id or settings.kafka_vitals_consumer_group_id,
+            hdfs_client=hdfs_client,
+            raw_hdfs_base=(raw_hdfs_base or settings.hdfs_vitals_raw_path).rstrip("/"),
+            dead_letter_base=dead_letter_base.rstrip("/"),
+            auto_offset_reset=auto_offset_reset,
+            event_parser=VitalSignEvent,
+        )

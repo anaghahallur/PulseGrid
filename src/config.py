@@ -21,9 +21,17 @@ class Settings(BaseSettings):
         default="icu-events",
         description="Primary topic for ICU ADT events",
     )
+    kafka_topic_icu_vitals: str = Field(
+        default="icu-vitals",
+        description="Topic for ICU patient vital signs telemetry",
+    )
     kafka_consumer_group_id: str = Field(
         default="icu-hdfs-sink-group",
         description="Consumer group ID for HDFS sink writer",
+    )
+    kafka_vitals_consumer_group_id: str = Field(
+        default="icu-vitals-hdfs-sink-group",
+        description="Consumer group ID for vitals HDFS sink writer",
     )
     kafka_auto_offset_reset: str = Field(
         default="earliest",
@@ -46,6 +54,10 @@ class Settings(BaseSettings):
     hdfs_raw_path: str = Field(
         default="/raw/icu_events",
         description="HDFS path for raw ingested event batches",
+    )
+    hdfs_vitals_raw_path: str = Field(
+        default="/raw/icu_vitals",
+        description="HDFS path for raw ingested vital sign event batches",
     )
     hdfs_processed_path: str = Field(
         default="/processed/icu_occupancy_hourly",

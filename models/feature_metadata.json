@@ -59,22 +59,22 @@
     "unit_TSICU"
   ],
   "split_boundaries": {
-    "train_start": "2026-08-08 01:00:00+00:00",
-    "train_end": "2026-10-07 06:00:00+00:00",
-    "val_start": "2026-10-08 06:00:00+00:00",
-    "val_end": "2026-10-20 09:00:00+00:00",
-    "test_start": "2026-10-21 09:00:00+00:00",
-    "test_end": "2026-11-03 11:00:00+00:00",
+    "train_start": "2026-07-23 10:00:00+00:00",
+    "train_end": "2026-09-17 20:00:00+00:00",
+    "val_start": "2026-09-18 20:00:00+00:00",
+    "val_end": "2026-09-30 03:00:00+00:00",
+    "test_start": "2026-10-01 03:00:00+00:00",
+    "test_end": "2026-10-13 10:00:00+00:00",
     "target_buffer_hours": 24,
     "sample_counts": {
-      "train": 7230,
-      "val": 1460,
-      "test": 1575
+      "train": 6775,
+      "val": 1360,
+      "test": 1480
     }
   },
   "drop_stats": {
-    "initial_rows": 11455,
-    "valid_rows_retained": 10495,
+    "initial_rows": 10805,
+    "valid_rows_retained": 9845,
     "rows_dropped_total": 960,
     "lookback_warmup_hours_per_unit": 168,
     "forecast_horizon_tail_hours_per_unit": 24
